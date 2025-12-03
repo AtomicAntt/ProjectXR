@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://d3jcn2ew83ufg"]
+[gd_scene load_steps=15 format=3 uid="uid://d3jcn2ew83ufg"]
 
 [ext_resource type="Script" uid="uid://dpmnk2ghhukkf" path="res://Levels/world.gd" id="1_a02cp"]
 [ext_resource type="PackedScene" uid="uid://dysl4qvaovevq" path="res://Player/player.tscn" id="2_kycxd"]
+[ext_resource type="Texture2D" uid="uid://c7gkcaf557ybm" path="res://GameAssets/Textures/Floor.svg" id="3_ks8n1"]
 [ext_resource type="PackedScene" uid="uid://b4lk67nckvjgq" path="res://GameObjects/Cube.tscn" id="3_pa6j6"]
+[ext_resource type="Texture2D" uid="uid://1ljep0iwevab" path="res://GameAssets/Textures/Wall.svg" id="4_x5oxt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a02cp"]
 
@@ -16,13 +18,23 @@ sky = SubResource("Sky_go701")
 [sub_resource type="BoxShape3D" id="BoxShape3D_a02cp"]
 size = Vector3(5, 0.1, 5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vqnaq"]
+albedo_texture = ExtResource("3_ks8n1")
+uv1_triplanar = true
+
 [sub_resource type="BoxMesh" id="BoxMesh_go701"]
+material = SubResource("StandardMaterial3D_vqnaq")
 size = Vector3(5, 0.1, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kycxd"]
 size = Vector3(3, 0.5, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rljl1"]
+albedo_texture = ExtResource("4_x5oxt")
+uv1_triplanar = true
+
 [sub_resource type="BoxMesh" id="BoxMesh_pa6j6"]
+material = SubResource("StandardMaterial3D_rljl1")
 size = Vector3(3, 0.5, 1)
 
 [node name="World" type="Node3D"]
