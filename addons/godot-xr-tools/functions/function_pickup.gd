@@ -20,6 +20,8 @@ signal has_picked_up(what)
 ## Signal emitted when the pickup drops something
 signal has_dropped
 
+## CUSTOM SIGNAL: Signal emitted when something can be picked up
+signal has_hover_entered
 
 # Default pickup collision mask of 3:pickable and 19:handle
 const DEFAULT_GRAB_MASK := 0b0000_0000_0000_0100_0000_0000_0000_0100
@@ -281,6 +283,7 @@ func _on_grab_entered(target: Node3D) -> void:
 
 	# Add to the list of objects in grab area
 	_object_in_grab_area.push_back(target)
+	emit_signal("has_hover_entered")
 
 
 # Called when an object enters the ranged-grab cylinder

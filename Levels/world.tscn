@@ -29,6 +29,7 @@ size = Vector3(3, 0.5, 1)
 script = ExtResource("1_a02cp")
 
 [node name="Player" parent="." instance=ExtResource("2_kycxd")]
+current = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.1924881e-08, 1, 0, -1, 1.1924881e-08, 0, 2.5809178, 0)
