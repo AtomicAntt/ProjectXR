@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=3 uid="uid://d3jcn2ew83ufg"]
+
+[ext_resource type="Script" uid="uid://dpmnk2ghhukkf" path="res://Levels/world.gd" id="1_a02cp"]
+[ext_resource type="PackedScene" uid="uid://dysl4qvaovevq" path="res://Player/player.tscn" id="2_kycxd"]
+[ext_resource type="PackedScene" uid="uid://b4lk67nckvjgq" path="res://GameObjects/Cube.tscn" id="3_pa6j6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a02cp"]
+
+[sub_resource type="Sky" id="Sky_go701"]
+sky_material = SubResource("ProceduralSkyMaterial_a02cp")
+
+[sub_resource type="Environment" id="Environment_5a7ea"]
+background_mode = 2
+sky = SubResource("Sky_go701")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a02cp"]
+size = Vector3(5, 0.1, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_go701"]
+size = Vector3(5, 0.1, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kycxd"]
+size = Vector3(3, 0.5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pa6j6"]
+size = Vector3(3, 0.5, 1)
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_a02cp")
+
+[node name="Player" parent="." instance=ExtResource("2_kycxd")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.1924881e-08, 1, 0, -1, 1.1924881e-08, 0, 2.5809178, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5a7ea")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_a02cp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/CollisionShape3D"]
+mesh = SubResource("BoxMesh_go701")
+
+[node name="Table" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04953003, 0.23630369, -1.0593262)
+shape = SubResource("BoxShape3D_kycxd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Table/CollisionShape3D"]
+mesh = SubResource("BoxMesh_pa6j6")
+
+[node name="Cube" parent="." instance=ExtResource("3_pa6j6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28740093, 0.5363037, -0.86592233)
