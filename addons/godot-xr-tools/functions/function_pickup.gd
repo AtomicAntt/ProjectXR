@@ -283,7 +283,7 @@ func _on_grab_entered(target: Node3D) -> void:
 
 	# Add to the list of objects in grab area
 	_object_in_grab_area.push_back(target)
-	emit_signal("has_hover_entered")
+	
 
 
 # Called when an object enters the ranged-grab cylinder
@@ -333,7 +333,7 @@ func _update_closest_object() -> void:
 	closest_object = new_closest_obj
 	if is_instance_valid(closest_object):
 		closest_object.request_highlight(self, true)
-
+		emit_signal("has_hover_entered")
 
 # Find the pickable object closest to our hand's grab location
 func _get_closest_grab() -> Node3D:

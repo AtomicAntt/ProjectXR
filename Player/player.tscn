@@ -29,6 +29,7 @@ tracker = &"left_hand"
 [node name="LeftHand" parent="LeftHand" instance=ExtResource("1_4ntmi")]
 
 [node name="FunctionPickup" parent="LeftHand" instance=ExtResource("2_gwnis")]
+grab_distance = 0.1
 
 [node name="RightHand" type="XRController3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
@@ -37,6 +38,7 @@ tracker = &"right_hand"
 [node name="RightHand" parent="RightHand" instance=ExtResource("2_btcbx")]
 
 [node name="FunctionPickup" parent="RightHand" instance=ExtResource("2_gwnis")]
+grab_distance = 0.1
 
 [node name="HapticsManager" type="Node" parent="."]
 script = ExtResource("4_fhl08")
