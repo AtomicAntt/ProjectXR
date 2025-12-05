@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://d3jcn2ew83ufg"]
 
-[ext_resource type="Script" uid="uid://dpmnk2ghhukkf" path="res://Levels/world.gd" id="1_a02cp"]
+[ext_resource type="Script" uid="uid://dkpuultcnw1nk" path="res://Levels/StartScript.gd" id="1_x5oxt"]
 [ext_resource type="PackedScene" uid="uid://dysl4qvaovevq" path="res://Player/player.tscn" id="2_kycxd"]
 [ext_resource type="Texture2D" uid="uid://c7gkcaf557ybm" path="res://GameAssets/Textures/Floor.svg" id="3_ks8n1"]
 [ext_resource type="Texture2D" uid="uid://1ljep0iwevab" path="res://GameAssets/Textures/Wall.svg" id="4_x5oxt"]
@@ -39,7 +39,7 @@ material = SubResource("StandardMaterial3D_rljl1")
 size = Vector3(3, 0.5, 1)
 
 [node name="World" type="Node3D"]
-script = ExtResource("1_a02cp")
+script = ExtResource("1_x5oxt")
 
 [node name="Player" parent="." instance=ExtResource("2_kycxd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.34063888)

@@ -39,6 +39,9 @@ flip_faces = true
 size = Vector3(0.11, 0.11, 0.11)
 
 [node name="Cube2" instance=ExtResource("1_nxx43")]
+continuous_cd = true
+release_mode = 0
+second_hand_grab = 1
 
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("BoxShape3D_yp7dl")
