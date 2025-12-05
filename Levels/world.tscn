@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://dpmnk2ghhukkf" path="res://Levels/world.gd" id="1_a02cp"]
 [ext_resource type="PackedScene" uid="uid://dysl4qvaovevq" path="res://Player/player.tscn" id="2_kycxd"]
 [ext_resource type="Texture2D" uid="uid://c7gkcaf557ybm" path="res://GameAssets/Textures/Floor.svg" id="3_ks8n1"]
-[ext_resource type="PackedScene" uid="uid://b4lk67nckvjgq" path="res://GameObjects/Cube.tscn" id="3_pa6j6"]
 [ext_resource type="Texture2D" uid="uid://1ljep0iwevab" path="res://GameAssets/Textures/Wall.svg" id="4_x5oxt"]
+[ext_resource type="PackedScene" uid="uid://8b07fmgymyqh" path="res://GameObjects/Cube2.tscn" id="6_vqnaq"]
 [ext_resource type="PackedScene" uid="uid://prqx2avnwg3j" path="res://GameObjects/Gun.tscn" id="6_x5oxt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a02cp"]
@@ -42,6 +42,7 @@ size = Vector3(3, 0.5, 1)
 script = ExtResource("1_a02cp")
 
 [node name="Player" parent="." instance=ExtResource("2_kycxd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.34063888)
 current = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -67,8 +68,14 @@ shape = SubResource("BoxShape3D_kycxd")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Table/CollisionShape3D"]
 mesh = SubResource("BoxMesh_pa6j6")
 
-[node name="Cube" parent="." instance=ExtResource("3_pa6j6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28740093, 0.5363037, -0.86592233)
-
 [node name="Gun" parent="." instance=ExtResource("6_x5oxt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.62293243, 0.5835218, -0.9127219)
+
+[node name="Gun2" parent="." instance=ExtResource("6_x5oxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3698223, 0.5835218, -0.9127219)
+
+[node name="Cube2" parent="." instance=ExtResource("6_vqnaq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3292436, 0.5642525, -0.98438454)
+
+[node name="Cube3" parent="." instance=ExtResource("6_vqnaq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5756956, 0.5642525, -0.9996362)

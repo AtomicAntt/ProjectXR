@@ -29,6 +29,7 @@ script = ExtResource("10_rl54b")
 metadata/_custom_type_script = "uid://cuf42fufnnrds"
 
 [node name="Gun" instance=ExtResource("1_ta275")]
+collision_priority = 0.9
 script = ExtResource("2_hod80")
 second_hand_grab = 1
 
@@ -44,11 +45,11 @@ wait_time = 0.1
 one_shot = true
 
 [node name="GrabPointHandLeft" parent="." index="3" instance=ExtResource("4_dmkvk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0013236888, -0.020696988, -0.035792105)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0013236888, -0.020696988, -0.019145742)
 hand_pose = SubResource("Resource_ab3tn")
 
 [node name="GrabPointHandRight" parent="." index="4" instance=ExtResource("7_ab3tn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0014999658, -0.020696988, -0.04139752)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0014999658, -0.020696988, -0.024751157)
 hand_pose = SubResource("Resource_idis7")
 
 [node name="Shoot" type="Node" parent="." index="5"]
