@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyr3dwgcbbkkb"]
+
+[ext_resource type="Script" uid="uid://b3sglad23kgs3" path="res://GameObjects/target.gd" id="1_34iqm"]
+[ext_resource type="PackedScene" uid="uid://cnwkixo71xegw" path="res://GameAssets/Weapons/target-large.glb" id="1_hq483"]
+[ext_resource type="AudioStream" uid="uid://brcac8vh08ss6" path="res://GameAssets/SFX/468837__christianand__25_metal_chocando.wav" id="3_q37fw"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_34iqm"]
+height = 0.1
+radius = 0.17529297
+
+[node name="Target" type="Node3D"]
+script = ExtResource("1_34iqm")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_34iqm")
+
+[node name="target-large2" parent="Area3D" instance=ExtResource("1_hq483")]
+
+[node name="HitSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_q37fw")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

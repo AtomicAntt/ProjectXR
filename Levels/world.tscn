@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://1ljep0iwevab" path="res://GameAssets/Textures/Wall.svg" id="4_x5oxt"]
 [ext_resource type="PackedScene" uid="uid://8b07fmgymyqh" path="res://GameObjects/Cube2.tscn" id="6_vqnaq"]
 [ext_resource type="PackedScene" uid="uid://prqx2avnwg3j" path="res://GameObjects/Gun.tscn" id="6_x5oxt"]
-[ext_resource type="PackedScene" uid="uid://cnwkixo71xegw" path="res://GameAssets/Weapons/target-large.glb" id="7_vqnaq"]
+[ext_resource type="PackedScene" uid="uid://dyr3dwgcbbkkb" path="res://GameObjects/target.tscn" id="7_vqnaq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a02cp"]
 
@@ -81,11 +81,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3292436, 0.5642525, -0.9843
 [node name="Cube3" parent="." instance=ExtResource("6_vqnaq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5756956, 0.5642525, -0.9996362)
 
-[node name="target-large2" parent="." instance=ExtResource("7_vqnaq")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.9592108, 0.60400593, -4.2627606)
-
-[node name="target-large3" parent="." instance=ExtResource("7_vqnaq")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.79061824, 0.60400593, -4.2627606)
-
-[node name="target-large4" parent="." instance=ExtResource("7_vqnaq")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.06087333, 1.5087336, -4.2627606)
+[node name="Target" parent="." instance=ExtResource("7_vqnaq")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.025, 1.2439772, -4.9818974)
