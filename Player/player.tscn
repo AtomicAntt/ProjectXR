@@ -23,13 +23,12 @@ metadata/_custom_type_script = "uid://cuf42fufnnrds"
 [node name="XRCamera3D" type="XRCamera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0718591, 0)
 
-[node name="SteamAudioListener" type="SteamAudioListener" parent="XRCamera3D"]
-
 [node name="LeftHand" type="XRController3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
 tracker = &"left_hand"
 
 [node name="LeftPhysicsHand" parent="LeftHand" instance=ExtResource("2_fhl08")]
+finger_speed = null
 
 [node name="FunctionPickup" parent="LeftHand" instance=ExtResource("2_gwnis")]
 grab_distance = 0.1
@@ -40,6 +39,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
 tracker = &"right_hand"
 
 [node name="RightPhysicsHand" parent="RightHand" instance=ExtResource("3_fhl08")]
+finger_speed = null
 
 [node name="FunctionPickup" parent="RightHand" instance=ExtResource("2_gwnis")]
 grab_distance = 0.1

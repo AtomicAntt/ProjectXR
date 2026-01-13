@@ -24,7 +24,7 @@ func spawn_bullet():
 			add_child(bullet_instance)
 			bullet_instance.transform = $SpawnPoint.global_transform
 			bullet_instance.linear_velocity = bullet_instance.transform.basis.z * bullet_speed
-			$SteamAudioPlayer.play()
+			$ShootSound.play()
 
 func _on_cooldown_timeout() -> void:
 	can_fire = true

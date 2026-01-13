@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://d3jcn2ew83ufg"]
+[gd_scene load_steps=17 format=3 uid="uid://d3jcn2ew83ufg"]
 
 [ext_resource type="Script" uid="uid://dkpuultcnw1nk" path="res://Levels/StartScript.gd" id="1_x5oxt"]
 [ext_resource type="PackedScene" uid="uid://dysl4qvaovevq" path="res://Player/player.tscn" id="2_kycxd"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://8b07fmgymyqh" path="res://GameObjects/Cube2.tscn" id="6_vqnaq"]
 [ext_resource type="PackedScene" uid="uid://prqx2avnwg3j" path="res://GameObjects/Gun.tscn" id="6_x5oxt"]
 [ext_resource type="PackedScene" uid="uid://dyr3dwgcbbkkb" path="res://GameObjects/target.tscn" id="7_vqnaq"]
-[ext_resource type="AudioStream" uid="uid://81c67owea1r6" path="res://GameAssets/SFX/234288__leosalom__fireplace.wav" id="8_rljl1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a02cp"]
 
@@ -39,12 +38,6 @@ uv1_triplanar = true
 [sub_resource type="BoxMesh" id="BoxMesh_pa6j6"]
 material = SubResource("StandardMaterial3D_rljl1")
 size = Vector3(3, 0.5, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06jdw"]
-albedo_color = Color(1, 0.2, 0.07450981, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_7ey7r"]
-material = SubResource("StandardMaterial3D_06jdw")
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_x5oxt")
@@ -90,25 +83,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5756956, 0.5642525, -0.9996
 
 [node name="Target" parent="." instance=ExtResource("7_vqnaq")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.025, 1.2439772, -4.9818974)
-
-[node name="Fire" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35090446, 0.30998456, 0.5969707)
-mesh = SubResource("SphereMesh_7ey7r")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Fire"]
-stream = ExtResource("8_rljl1")
-unit_size = 6.33
-max_distance = 43.6
-panning_strength = 38.2
-emission_angle_enabled = true
-
-[node name="SteamAudioPlayer" type="SteamAudioPlayer" parent="Fire"]
-distance_attenuation = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.3187962)
-stream = ExtResource("8_rljl1")
-attenuation_model = 3
-autoplay = true
-panning_strength = 0.0
-
-[node name="SteamAudioConfig" type="SteamAudioConfig" parent="."]
-hrtf_volume = 0.0
