@@ -33,6 +33,9 @@ signal hand_scale_changed(scale)
 ## Name of the Trigger action in the OpenXR Action Map.
 @export var trigger_action : String = "trigger"
 
+## Name of the Trigger Touch action in the OpenXR Action Map.
+@export var trigger_touch_action : String = "trigger_touch"
+
 
 ## Last world scale (for scaling hands)
 var _last_world_scale : float = 1.0
@@ -138,11 +141,15 @@ func _ready() -> void:
 	_update_pose()
 	_update_target()
 
+var trigger: float
+
+## The speed at which the fingers move in between two states (this is for when you touch the trigger and stop touching the trigger)
+@export var finger_speed: float = 8
 
 ## This method checks for world-scale changes and scales itself causing the
 ## hand mesh and skeleton to scale appropriately. It then reads the grip and
 ## trigger action values to animate the hand.
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	# Do not run physics if in the editor
 	if Engine.is_editor_hint():
 		return
@@ -156,14 +163,24 @@ func _physics_process(_delta: float) -> void:
 	# Animate the hand mesh with the controller inputs
 	if _controller:
 		var grip : float = _controller.get_float(grip_action)
-		var trigger : float = _controller.get_float(trigger_action)
+		grip = clampf(grip, 0.2, 1.0)
+		if _controller.get_float(trigger_touch_action) < 0.1:
+			trigger = move_toward(trigger, 0.0, delta * finger_speed)
+		else:
+			if trigger < grip:
+				trigger = move_toward(trigger, grip, delta * finger_speed)
+			else:
+				trigger = _controller.get_float(trigger_action) * 0.3
+				trigger = clampf(trigger, grip, 1.0)
 
 		# Allow overriding of grip and trigger
 		if _force_grip >= 0.0: grip = _force_grip
 		if _force_trigger >= 0.0: trigger = _force_trigger
-
+		
 		$AnimationTree.set("parameters/Grip/blend_amount", grip)
 		$AnimationTree.set("parameters/Trigger/blend_amount", trigger)
+		
+		
 
 	# Move to target
 	global_transform = _target.global_transform * _transform
