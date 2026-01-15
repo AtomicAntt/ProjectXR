@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://dysl4qvaovevq"]
 
-[ext_resource type="PackedScene" uid="uid://nqiyqnx42m61" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_fullglove_physics_hand.tscn" id="2_fhl08"]
+[ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="2_fhl08"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="2_gwnis"]
-[ext_resource type="PackedScene" uid="uid://cigx2gnf4tg4d" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_fullglove_physics_hand.tscn" id="3_fhl08"]
+[ext_resource type="PackedScene" uid="uid://raeeicvvindd" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_hand.tscn" id="3_vtle1"]
 [ext_resource type="Script" uid="uid://covp6418gkimy" path="res://Player/haptics_manager.gd" id="4_fhl08"]
 [ext_resource type="Script" uid="uid://b1dtx7o3p7qgq" path="res://addons/godot-xr-tools/rumble/rumbler.gd" id="5_vtle1"]
 [ext_resource type="Script" uid="uid://cuf42fufnnrds" path="res://addons/godot-xr-tools/rumble/rumble_event.gd" id="6_od3ui"]
@@ -27,23 +27,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0718591, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
 tracker = &"left_hand"
 
-[node name="LeftPhysicsHand" parent="LeftHand" instance=ExtResource("2_fhl08")]
-finger_speed = null
-
 [node name="FunctionPickup" parent="LeftHand" instance=ExtResource("2_gwnis")]
 grab_distance = 0.1
 ranged_enable = false
+
+[node name="LeftHand" parent="LeftHand" instance=ExtResource("2_fhl08")]
 
 [node name="RightHand" type="XRController3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
 tracker = &"right_hand"
 
-[node name="RightPhysicsHand" parent="RightHand" instance=ExtResource("3_fhl08")]
-finger_speed = null
-
 [node name="FunctionPickup" parent="RightHand" instance=ExtResource("2_gwnis")]
 grab_distance = 0.1
 ranged_enable = false
+
+[node name="RightHand" parent="RightHand" instance=ExtResource("3_vtle1")]
 
 [node name="HapticsManager" type="Node" parent="."]
 script = ExtResource("4_fhl08")

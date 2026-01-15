@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://oy0hqt1qfnow"]
+
+[ext_resource type="PackedScene" uid="uid://dfct6ltvhade3" path="res://GameAssets/Props/Potion2.glb" id="1_ikip8"]
+[ext_resource type="Shader" uid="uid://c3vuuhke4j854" path="res://Shaders/Glass.gdshader" id="2_gjm2w"]
+[ext_resource type="Material" uid="uid://d3px0xw5w2khp" path="res://Shaders/Liquid.tres" id="3_xe3a6"]
+[ext_resource type="Script" uid="uid://eer7cj22rryo" path="res://Shaders/Liquid.gd" id="4_bd5pa"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_t3btk"]
+radius = 0.15
+height = 0.6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s0pyo"]
+render_priority = 0
+shader = ExtResource("2_gjm2w")
+shader_parameter/AlphaAmount = 0.13600000646
+shader_parameter/Metallic = 0.0970000046075
+shader_parameter/Roughness = 0.310000014725
+shader_parameter/Rim = 0.30000001425
+shader_parameter/RimTint = 0.618000029355
+shader_parameter/Specular = 0.870000041325
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gjm2w"]
+radius = 0.15
+height = 0.6
+
+[node name="Potion2" instance=ExtResource("1_ikip8")]
+
+[node name="Bottle" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_t3btk")
+surface_material_override/0 = SubResource("ShaderMaterial_s0pyo")
+
+[node name="Bottle2" type="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("CapsuleMesh_gjm2w")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("3_xe3a6")
+script = ExtResource("4_bd5pa")
+liquidShaderMaterial = ExtResource("3_xe3a6")
