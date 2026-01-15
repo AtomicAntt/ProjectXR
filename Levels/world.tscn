@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://8b07fmgymyqh" path="res://GameObjects/Cube2.tscn" id="6_vqnaq"]
 [ext_resource type="PackedScene" uid="uid://prqx2avnwg3j" path="res://GameObjects/Gun.tscn" id="6_x5oxt"]
 [ext_resource type="PackedScene" uid="uid://dyr3dwgcbbkkb" path="res://GameObjects/target.tscn" id="7_vqnaq"]
-[ext_resource type="PackedScene" uid="uid://dvv1ldka1d3yl" path="res://GameObjects/Potion2.tscn" id="8_rljl1"]
+[ext_resource type="PackedScene" uid="uid://ekrgs4wcsu5f" path="res://GameObjects/Bottle.tscn" id="8_rljl1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a02cp"]
 
@@ -85,5 +85,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5756956, 0.5642525, -0.9996
 [node name="Target" parent="." instance=ExtResource("7_vqnaq")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.025, 1.2439772, -4.9818974)
 
-[node name="Potion" parent="." instance=ExtResource("8_rljl1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06503731, 0.7863037, -0.92049235)
+[node name="Bottle" parent="." instance=ExtResource("8_rljl1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.049962312, 0.48630366, -0.9473654)

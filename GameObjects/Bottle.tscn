@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ekrgs4wcsu5f"]
+
+[ext_resource type="PackedScene" uid="uid://71on3inleftl" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_rpe3v"]
+[ext_resource type="PackedScene" uid="uid://b405qe7whgaai" path="res://GameAssets/Props/Bottle.tscn" id="2_rpe3v"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wpp67"]
+radius = 0.03857422
+height = 0.27778476
+
+[node name="Bottle" instance=ExtResource("1_rpe3v")]
+second_hand_grab = 1
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12863848, 0)
+shape = SubResource("CapsuleShape3D_wpp67")
+
+[node name="Bottle" parent="." index="1" instance=ExtResource("2_rpe3v")]
