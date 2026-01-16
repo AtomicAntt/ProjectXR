@@ -25,7 +25,7 @@ func _physics_process(delta):
 	var accell_3d:Vector3 = (pos3 - 2 * pos2 + pos1) * 3600.0
 	pos1 = pos2
 	pos2 = pos3
-	pos3 = get_global_transform().origin + rotation
+	pos3 = get_global_transform().origin + abs(rotation)
 	accell = Vector2(accell_3d.x + accell_3d.y, accell_3d.z + accell_3d.y)
 	coeff_old_old = coeff_old
 	coeff_old = coeff

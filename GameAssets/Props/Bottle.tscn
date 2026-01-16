@@ -1,19 +1,20 @@
-[gd_scene load_steps=9 format=4 uid="uid://b405qe7whgaai"]
+[gd_scene load_steps=12 format=4 uid="uid://b405qe7whgaai"]
 
 [ext_resource type="PackedScene" uid="uid://dxb1xd22psqd8" path="res://GameAssets/Props/Bottle.glb" id="1_x1sd4"]
 [ext_resource type="Shader" uid="uid://c3vuuhke4j854" path="res://Shaders/Glass.gdshader" id="2_se5ua"]
-[ext_resource type="Script" uid="uid://eer7cj22rryo" path="res://Shaders/Liquid.gd" id="3_guyv4"]
-[ext_resource type="Material" uid="uid://d3px0xw5w2khp" path="res://Shaders/Liquid.tres" id="4_5uqj6"]
+[ext_resource type="Shader" uid="uid://dg0bl783apojb" path="res://Shaders/Liquid2.gdshader" id="3_k8ybv"]
+[ext_resource type="Shader" uid="uid://rmgil4vao15o" path="res://Shaders/Surface.gdshader" id="3_x1sd4"]
+[ext_resource type="Script" uid="uid://eer7cj22rryo" path="res://Shaders/Liquid.gd" id="5_se5ua"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2bxkj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_guyv4"]
 render_priority = 0
 shader = ExtResource("2_se5ua")
-shader_parameter/AlphaAmount = 0.3470000164825
-shader_parameter/Metallic = 0.478000022705
-shader_parameter/Roughness = 0.646000030685
-shader_parameter/Rim = 0.09600000456
-shader_parameter/RimTint = 0.94400004484
-shader_parameter/Specular = 0.994000047215
+shader_parameter/AlphaAmount = 0.2070000098325
+shader_parameter/Metallic = 0.7810000370975
+shader_parameter/Roughness = 0.2410000114475
+shader_parameter/Rim = 0.62400002964
+shader_parameter/RimTint = 0.5250000249375
+shader_parameter/Specular = 0.702000033345
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vbig"]
 
@@ -49,15 +50,42 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_d6fta")
 
-[node name="Bottle" instance=ExtResource("1_x1sd4")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_se5ua"]
+render_priority = 0
+shader = ExtResource("3_x1sd4")
+shader_parameter/coeff = Vector2(0, 0)
+shader_parameter/fill_amount = 0.30000001425
+shader_parameter/glass_thickness = 0.01
+shader_parameter/height = 0.32
+shader_parameter/width = 0.1
+shader_parameter/wave_intensity = 0.05
+shader_parameter/liquid_color = Color(0, 0, 0, 1)
+shader_parameter/glow_color = Color(0.83033526, 0.83033514, 0.83033514, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x1sd4"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_se5ua")
+shader = ExtResource("3_k8ybv")
+shader_parameter/coeff = Vector2(-5.4251734e-07, -5.4251734e-07)
+shader_parameter/vel = 0.0
+shader_parameter/fill_amount = 0.30000001425
+shader_parameter/height = 0.32
+shader_parameter/width = 0.1
+shader_parameter/glass_thickness = 0.01
+shader_parameter/wave_intensity = 0.05
+shader_parameter/liquid_color = Color(0.99999994, 0.28730664, 0.22523737, 1)
+shader_parameter/glow_color = Color(0, 0, 0, 1)
+
+[node name="Bottle2" instance=ExtResource("1_x1sd4")]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
 
 [node name="bottle" parent="." index="1"]
-surface_material_override/0 = SubResource("ShaderMaterial_2bxkj")
+surface_material_override/0 = SubResource("ShaderMaterial_guyv4")
 
 [node name="liquid" type="MeshInstance3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11762123, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.118, 0)
 mesh = SubResource("ArrayMesh_4568t")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("4_5uqj6")
-script = ExtResource("3_guyv4")
-liquidShaderMaterial = ExtResource("4_5uqj6")
+surface_material_override/0 = SubResource("ShaderMaterial_x1sd4")
+script = ExtResource("5_se5ua")
+liquidShaderMaterial = SubResource("ShaderMaterial_x1sd4")
