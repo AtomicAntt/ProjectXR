@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://d3jcn2ew83ufg"]
+[gd_scene load_steps=19 format=3 uid="uid://d3jcn2ew83ufg"]
 
 [ext_resource type="Script" uid="uid://dkpuultcnw1nk" path="res://Levels/StartScript.gd" id="1_x5oxt"]
 [ext_resource type="PackedScene" uid="uid://dysl4qvaovevq" path="res://Player/player.tscn" id="2_kycxd"]
 [ext_resource type="Texture2D" uid="uid://c7gkcaf557ybm" path="res://GameAssets/Textures/Floor.svg" id="3_ks8n1"]
+[ext_resource type="Script" uid="uid://6iy38vucd46p" path="res://Levels/ItemRefresher.gd" id="4_06jdw"]
 [ext_resource type="Texture2D" uid="uid://1ljep0iwevab" path="res://GameAssets/Textures/Wall.svg" id="4_x5oxt"]
 [ext_resource type="PackedScene" uid="uid://8b07fmgymyqh" path="res://GameObjects/Cube2.tscn" id="6_vqnaq"]
 [ext_resource type="PackedScene" uid="uid://prqx2avnwg3j" path="res://GameObjects/Gun.tscn" id="6_x5oxt"]
@@ -61,14 +62,21 @@ shape = SubResource("BoxShape3D_a02cp")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/CollisionShape3D"]
 mesh = SubResource("BoxMesh_go701")
 
-[node name="Table" type="StaticBody3D" parent="."]
+[node name="Table" type="StaticBody3D" parent="." node_paths=PackedStringArray("pickables")]
+script = ExtResource("4_06jdw")
+pickables = [NodePath("../Gun"), NodePath("../Gun2"), NodePath("../Cube2"), NodePath("../Cube3"), NodePath("../Bottle")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Table"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04953003, 0.23630369, -1.0593262)
 shape = SubResource("BoxShape3D_kycxd")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Table/CollisionShape3D"]
+[node name="Timer" type="Timer" parent="Table"]
+autostart = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04953003, 0.23630369, -1.0593262)
 mesh = SubResource("BoxMesh_pa6j6")
+skeleton = NodePath("../CollisionShape3D")
 
 [node name="Gun" parent="." instance=ExtResource("6_x5oxt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.62293243, 0.5835218, -0.9127219)
@@ -87,3 +95,5 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.02
 
 [node name="Bottle" parent="." instance=ExtResource("8_rljl1")]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -0.048619427, 0.48697305, -0.8541182)
+
+[connection signal="timeout" from="Table/Timer" to="Table" method="_on_timer_timeout"]
