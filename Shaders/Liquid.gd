@@ -3,6 +3,7 @@ extends MeshInstance3D
 
 @export_group("Child Dependencies")
 @export var liquidShaderMaterial: ShaderMaterial
+@export var liquidShaderMaterial2: ShaderMaterial
 
 @export_group("Liquid Simulation")
 @export_range (0.0, 1.0, 0.001) var liquid_mobility: float = 0.1 
@@ -21,6 +22,11 @@ var coeff : Vector2
 var coeff_old : Vector2
 var coeff_old_old : Vector2
 
+## Sets the liquid shader Fill Amount to the value given.
+func set_fill(amount: float) -> void:
+	liquidShaderMaterial.set_shader_parameter("fill_amount", amount)
+	liquidShaderMaterial2.set_shader_parameter("fill_amount", amount)
+
 func _physics_process(delta):
 	var accell_3d:Vector3 = (pos3 - 2 * pos2 + pos1) * 3600.0
 	pos1 = pos2
@@ -31,6 +37,7 @@ func _physics_process(delta):
 	coeff_old = coeff
 	coeff = (-springConstant * coeff_old - reaction * accell) / 3600.0 + 2 * coeff_old - coeff_old_old - delta * dampening * (coeff_old - coeff_old_old) 
 	liquidShaderMaterial.set_shader_parameter("coeff", coeff*liquid_mobility)
+	liquidShaderMaterial2.set_shader_parameter("coeff", coeff*liquid_mobility)
 	if (pos1.distance_to(pos3) < 0.01):
 		vel = clamp (vel-delta*1.0,0.0,1.0)
 	else:
