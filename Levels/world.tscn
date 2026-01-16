@@ -6,9 +6,9 @@
 [ext_resource type="Script" uid="uid://6iy38vucd46p" path="res://Levels/ItemRefresher.gd" id="4_06jdw"]
 [ext_resource type="Texture2D" uid="uid://1ljep0iwevab" path="res://GameAssets/Textures/Wall.svg" id="4_x5oxt"]
 [ext_resource type="PackedScene" uid="uid://8b07fmgymyqh" path="res://GameObjects/Cube2.tscn" id="6_vqnaq"]
-[ext_resource type="PackedScene" uid="uid://prqx2avnwg3j" path="res://GameObjects/Gun.tscn" id="6_x5oxt"]
+[ext_resource type="PackedScene" uid="uid://prqx2avnwg3j" path="res://GameObjects/Weapons/Gun.tscn" id="6_x5oxt"]
 [ext_resource type="PackedScene" uid="uid://dyr3dwgcbbkkb" path="res://GameObjects/target.tscn" id="7_vqnaq"]
-[ext_resource type="PackedScene" uid="uid://ekrgs4wcsu5f" path="res://GameObjects/Bottle.tscn" id="8_rljl1"]
+[ext_resource type="PackedScene" uid="uid://ekrgs4wcsu5f" path="res://GameObjects/Props/Bottle.tscn" id="8_rljl1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a02cp"]
 
