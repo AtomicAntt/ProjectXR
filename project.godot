@@ -24,6 +24,10 @@ XRToolsRumbleManager="*res://addons/godot-xr-tools/rumble/rumble_manager.gd"
 
 enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg")
 
+[global_group]
+
+BottleCap="Pickable that can be snapped into a bottle."
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
@@ -32,4 +36,5 @@ renderer/rendering_method.mobile="gl_compatibility"
 [xr]
 
 openxr/enabled=true
+openxr/foveation_level=3
 shaders/enabled=true

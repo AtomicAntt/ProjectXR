@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=4 uid="uid://besw3dspbhtck"]
+[gd_scene load_steps=6 format=4 uid="uid://besw3dspbhtck"]
+
+[ext_resource type="Script" uid="uid://c5kechbnb2oxx" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_ln6ut"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ffbxf"]
 
@@ -37,9 +39,14 @@ shadow_mesh = SubResource("ArrayMesh_5tpqg")
 height = 0.019119024
 radius = 0.016113281
 
-[node name="BottleCap" type="RigidBody3D"]
-collision_layer = 2
-collision_mask = 3
+[node name="BottleCap" type="RigidBody3D" groups=["BottleCap"]]
+top_level = true
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_ln6ut")
+ranged_grab_method = 0
+second_hand_grab = 1
+metadata/_custom_type_script = "uid://c5kechbnb2oxx"
 
 [node name="Cap" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_60db1")

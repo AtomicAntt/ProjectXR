@@ -47,6 +47,7 @@ shadow_mesh = SubResource("ArrayMesh_kib82")
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("2_kplt7")
 bottle_cap = ExtResource("3_rjrcd")
+open_force = null
 second_hand_grab = 1
 
 [node name="CollisionShape3D" parent="." index="0"]

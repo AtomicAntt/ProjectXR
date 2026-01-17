@@ -62,9 +62,8 @@ shape = SubResource("BoxShape3D_a02cp")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/CollisionShape3D"]
 mesh = SubResource("BoxMesh_go701")
 
-[node name="Table" type="StaticBody3D" parent="." node_paths=PackedStringArray("pickables")]
+[node name="Table" type="StaticBody3D" parent="."]
 script = ExtResource("4_06jdw")
-pickables = [NodePath("../Gun"), NodePath("../Gun2"), NodePath("../Cube2"), NodePath("../Cube3"), NodePath("../Bottle")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Table"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04953003, 0.23630369, -1.0593262)
@@ -78,22 +77,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04953003, 0.23630369, -1.0
 mesh = SubResource("BoxMesh_pa6j6")
 skeleton = NodePath("../CollisionShape3D")
 
-[node name="Gun" parent="." instance=ExtResource("6_x5oxt")]
+[node name="Gun" parent="." groups=["Refreshable"] instance=ExtResource("6_x5oxt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.62293243, 0.5835218, -0.9127219)
 
-[node name="Gun2" parent="." instance=ExtResource("6_x5oxt")]
+[node name="Gun2" parent="." groups=["Refreshable"] instance=ExtResource("6_x5oxt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3698223, 0.5835218, -0.9127219)
 
-[node name="Cube2" parent="." instance=ExtResource("6_vqnaq")]
+[node name="Cube2" parent="." groups=["Refreshable"] instance=ExtResource("6_vqnaq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3292436, 0.5642525, -0.98438454)
 
-[node name="Cube3" parent="." instance=ExtResource("6_vqnaq")]
+[node name="Cube3" parent="." groups=["Refreshable"] instance=ExtResource("6_vqnaq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5756956, 0.5642525, -0.9996362)
 
 [node name="Target" parent="." instance=ExtResource("7_vqnaq")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.025, 1.2439772, -4.9818974)
 
-[node name="Bottle" parent="." instance=ExtResource("8_rljl1")]
+[node name="Bottle" parent="." groups=["Refreshable"] instance=ExtResource("8_rljl1")]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -0.048619427, 0.48697305, -0.8541182)
+open_force = null
 
 [connection signal="timeout" from="Table/Timer" to="Table" method="_on_timer_timeout"]
