@@ -77,6 +77,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04953003, 0.23630369, -1.0
 mesh = SubResource("BoxMesh_pa6j6")
 skeleton = NodePath("../CollisionShape3D")
 
+[node name="RefreshThreshold" type="Marker3D" parent="Table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29945025, -0.36716583)
+
 [node name="Gun" parent="." groups=["Refreshable"] instance=ExtResource("6_x5oxt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.62293243, 0.5835218, -0.9127219)
 
@@ -94,6 +97,6 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.02
 
 [node name="Bottle" parent="." groups=["Refreshable"] instance=ExtResource("8_rljl1")]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -0.048619427, 0.48697305, -0.8541182)
-open_force = null
+open_force = 3.0
 
 [connection signal="timeout" from="Table/Timer" to="Table" method="_on_timer_timeout"]

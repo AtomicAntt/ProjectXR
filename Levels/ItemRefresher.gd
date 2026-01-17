@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func _on_timer_timeout() -> void:
 	for item: XRToolsPickable in get_tree().get_nodes_in_group("Refreshable"):
-		if item.global_position.y < global_position.y:
+		if item.global_position.y < $RefreshThreshold.global_position.y and not item.is_picked_up():
 			item.global_transform = pickable_position_data[item]
 			item.linear_velocity = Vector3.ZERO
 			item.angular_velocity = Vector3.ZERO
