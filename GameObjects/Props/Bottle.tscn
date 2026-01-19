@@ -73,7 +73,7 @@ radius = 0.01
 height = 0.02
 
 [node name="Bottle" instance=ExtResource("1_rpe3v")]
-transform = Transform3D(0.9999999, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0)
+transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 top_level = true
 script = ExtResource("2_kplt7")
 bottle_cap = ExtResource("3_rjrcd")
@@ -91,6 +91,7 @@ shape = SubResource("CapsuleShape3D_wpp67")
 
 [node name="Cap" type="MeshInstance3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.190716e-05, 0.24434283, -0.0003096905)
+visible = false
 mesh = SubResource("ArrayMesh_rpe3v")
 skeleton = NodePath("")
 
