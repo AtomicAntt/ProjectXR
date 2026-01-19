@@ -91,7 +91,6 @@ shape = SubResource("CapsuleShape3D_wpp67")
 
 [node name="Cap" type="MeshInstance3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.190716e-05, 0.24434283, -0.0003096905)
-visible = false
 mesh = SubResource("ArrayMesh_rpe3v")
 skeleton = NodePath("")
 
