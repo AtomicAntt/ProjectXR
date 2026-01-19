@@ -3,6 +3,8 @@ extends XRToolsPickable
 
 @export var bottle_cap: PackedScene
 @export var open_force: float = 3.0
+@export var fill_amount: float = 0.5
+@export var spill_speed: float = 0.3
 
 ## The largest angle between gravity and the object's orientation before spilling.
 @export_range(0, 180) var angle_threshold: float = 90
@@ -13,8 +15,16 @@ extends XRToolsPickable
 @onready var gravity_direction: Vector3 = Vector3.DOWN
 @onready var threshold: float = cos(deg_to_rad(angle_threshold))
 
+func _ready() -> void:
+	set_fill(fill_amount)
+
 func refresh() -> void:
 	cap_mesh.visible = true
+	fill_amount = 0.5
+	set_fill(fill_amount)
+	
+func set_fill(amount: float) -> void:
+	$Bottle.set_fill(amount)
 
 func action() -> void:
 	super.action()
@@ -32,12 +42,14 @@ func action() -> void:
 		cap_mesh.visible = false
 		open_sound.play()
 
-var within_threshold: bool = false
+# if within, then liquid will not spill.
+var within_threshold: bool = true
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	# returns the cos(theta) between the gravity vector and the object's local up vector
-	# -1 represents that the object is upright (since the gravity vector should be 180 degrees from object)
-	# 1 represents the object up direction and gravity direction are the same
+	# -1 represents that the object is upright (180 degrees)
+	# 0 represents object is sideways (90 degrees)
+	# 1 represents the object is upsidedown (0 degrees)
 	var angle_between: float = gravity_direction.dot(global_transform.basis.y)
 	
 	# make it more difficult to exit the pouring/not pouring state
@@ -46,12 +58,19 @@ func _physics_process(_delta: float) -> void:
 	else:
 		angle_between += 0.03
 	
-	if angle_between <= threshold or cap_mesh.visible:
+	if angle_between <= threshold or cap_mesh.visible or fill_amount <= 0:
 		# no spill
 		within_threshold = true
-		print("no spill")
 	else: 
 		# spill
 		within_threshold = false
-		print("spill")
 	
+	if not within_threshold: # if spilling with liquid
+		var spill_ratio: float = inverse_lerp(threshold, 1, angle_between)
+		$GPUParticles3D.amount_ratio = spill_ratio
+		if not Engine.is_editor_hint():
+			fill_amount -= delta * spill_speed * spill_ratio
+			clampf(fill_amount, 0, 1)
+			set_fill(fill_amount)
+	else:
+		$GPUParticles3D.amount_ratio = 0

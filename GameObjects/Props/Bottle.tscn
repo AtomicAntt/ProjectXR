@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://ekrgs4wcsu5f"]
+[gd_scene load_steps=17 format=4 uid="uid://ekrgs4wcsu5f"]
 
 [ext_resource type="PackedScene" uid="uid://71on3inleftl" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_rpe3v"]
 [ext_resource type="Script" uid="uid://7q7b18bh2l2n" path="res://GameObjects/Props/BottlePickable.gd" id="2_kplt7"]
@@ -43,11 +43,43 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_kib82")
 
+[sub_resource type="Gradient" id="Gradient_rjrcd"]
+offsets = PackedFloat32Array(0.018181818, 1)
+colors = PackedColorArray(0, 0.6401787, 0.9444205, 1, 0, 0.41679367, 0.8538706, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_o3cvd"]
+gradient = SubResource("Gradient_rjrcd")
+
+[sub_resource type="Curve" id="Curve_rjrcd"]
+_data = [Vector2(0, 0.5617978), 0.0, 0.0, 0, 0, Vector2(0.75735295, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_o3cvd"]
+curve = SubResource("Curve_rjrcd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rjrcd"]
+scale_min = 0.79999995
+scale_max = 0.79999995
+scale_curve = SubResource("CurveTexture_o3cvd")
+color_ramp = SubResource("GradientTexture1D_o3cvd")
+collision_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rjrcd"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_rjrcd"]
+material = SubResource("StandardMaterial3D_rjrcd")
+radius = 0.01
+height = 0.02
+
 [node name="Bottle" instance=ExtResource("1_rpe3v")]
-transform = Transform3D(0.9999999, 0, 0, 0, 0.99985176, 0.01722555, 0, -0.01722555, 0.99985176, 0, 0, 0)
+transform = Transform3D(0.9999999, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0)
+top_level = true
 script = ExtResource("2_kplt7")
 bottle_cap = ExtResource("3_rjrcd")
 open_force = 3.0
+fill_amount = 0.5
+spill_speed = 0.3
 angle_threshold = 90.0
 second_hand_grab = 1
 
@@ -65,3 +97,11 @@ skeleton = NodePath("")
 [node name="BottleOpen" type="AudioStreamPlayer3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25628853, 0)
 stream = ExtResource("4_l1357")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26792157, -1.3445038e-05)
+amount = 16
+amount_ratio = 0.0
+lifetime = 0.41
+process_material = SubResource("ParticleProcessMaterial_rjrcd")
+draw_pass_1 = SubResource("SphereMesh_rjrcd")
