@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://vim70ijfhwbk"]
+[gd_scene load_steps=11 format=3 uid="uid://vim70ijfhwbk"]
 
 [ext_resource type="PackedScene" uid="uid://ctr88eew5jbtm" path="res://GameAssets/Props/Potion.glb" id="1_1l4fv"]
 [ext_resource type="Script" uid="uid://bwbimkd4moo3d" path="res://GameObjects/Props/Bottle.gd" id="2_4iatu"]
@@ -7,15 +7,17 @@
 [ext_resource type="Script" uid="uid://eer7cj22rryo" path="res://Shaders/Liquid.gd" id="5_bnhr8"]
 [ext_resource type="Shader" uid="uid://dg0bl783apojb" path="res://Shaders/Liquid2.gdshader" id="6_4iatu"]
 [ext_resource type="Shader" uid="uid://rmgil4vao15o" path="res://Shaders/Surface.gdshader" id="6_mg17y"]
+[ext_resource type="Texture2D" uid="uid://c77gjujx3g2hg" path="res://GameAssets/Textures/worley.png" id="7_3a02t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3a02t"]
 render_priority = 0
 shader = ExtResource("6_mg17y")
-shader_parameter/coeff = Vector2(0, 0)
+shader_parameter/coeff = Vector2(0.018108059, -0.1340926)
 shader_parameter/fill_amount = 0.350000016625
 shader_parameter/glass_thickness = 0.01
 shader_parameter/height = 0.32
 shader_parameter/width = 0.1
+shader_parameter/waves_noise = ExtResource("7_3a02t")
 shader_parameter/wave_intensity = 0.05
 shader_parameter/liquid_color = Color(1, 0.23137255, 0.17254902, 1)
 shader_parameter/glow_color = Color(1, 0.6, 0.5411765, 1)
@@ -24,15 +26,16 @@ shader_parameter/glow_color = Color(1, 0.6, 0.5411765, 1)
 render_priority = 0
 next_pass = SubResource("ShaderMaterial_3a02t")
 shader = ExtResource("6_4iatu")
-shader_parameter/coeff = Vector2(0, 0)
-shader_parameter/vel = 0.0
+shader_parameter/coeff = Vector2(0.018108059, -0.1340926)
+shader_parameter/vel = 0.3666666666666652
 shader_parameter/fill_amount = 0.350000016625
 shader_parameter/height = 0.32
 shader_parameter/width = 0.1
 shader_parameter/glass_thickness = 0.01
-shader_parameter/wave_intensity = 0.05
+shader_parameter/wave_intensity = 0.03
 shader_parameter/liquid_color = Color(0.99999994, 0.22953573, 0.17418528, 1)
 shader_parameter/glow_color = Color(1, 0.60004175, 0.5395275, 1)
+shader_parameter/waves_noise = ExtResource("7_3a02t")
 
 [node name="Potion" instance=ExtResource("1_1l4fv")]
 script = ExtResource("2_4iatu")
@@ -45,8 +48,9 @@ visible = false
 surface_material_override/0 = ExtResource("3_mg17y")
 
 [node name="Liquid" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0.09201972, -8.683426e-06)
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0.09201972, -8.683426e-06)
 surface_material_override/0 = SubResource("ShaderMaterial_w1ecm")
 script = ExtResource("5_bnhr8")
 liquidShaderMaterial = SubResource("ShaderMaterial_w1ecm")
 liquidShaderMaterial2 = SubResource("ShaderMaterial_3a02t")
+liquid_mobility = 1.0
