@@ -54,7 +54,7 @@ shadow_mesh = SubResource("ArrayMesh_d6fta")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_se5ua"]
 render_priority = 0
 shader = ExtResource("3_x1sd4")
-shader_parameter/coeff = Vector2(-0.0008827188, 0)
+shader_parameter/coeff = Vector2(0, 0)
 shader_parameter/fill_amount = 0.30000001425
 shader_parameter/glass_thickness = 0.01
 shader_parameter/height = 0.32
@@ -67,7 +67,7 @@ shader_parameter/glow_color = Color(0.35686275, 0.5568628, 1, 1)
 render_priority = 0
 next_pass = SubResource("ShaderMaterial_se5ua")
 shader = ExtResource("3_k8ybv")
-shader_parameter/coeff = Vector2(-0.0008827188, 0)
+shader_parameter/coeff = Vector2(0, 0)
 shader_parameter/vel = 0.0
 shader_parameter/fill_amount = 0.30000001425
 shader_parameter/height = 0.32
@@ -87,7 +87,7 @@ visible = false
 [node name="bottle" parent="." index="1"]
 surface_material_override/0 = SubResource("ShaderMaterial_guyv4")
 
-[node name="liquid" type="MeshInstance3D" parent="." index="2"]
+[node name="Liquid" type="MeshInstance3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.118, 0)
 mesh = SubResource("ArrayMesh_4568t")
 skeleton = NodePath("")

@@ -105,6 +105,6 @@ func _on_openxr_stopping() -> void:
 func _on_openxr_pose_recentered() -> void:
 	# User recentered view, we have to react to this by recentering the view.
 	# This is game implementation dependent.
-	XRServer.center_on_hmd(XRServer.RESET_BUT_KEEP_TILT, true)
+	#XRServer.center_on_hmd(XRServer.RESET_BUT_KEEP_TILT, true)
 	
 	emit_signal("pose_recentered")

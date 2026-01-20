@@ -33,9 +33,11 @@ func action() -> void:
 	if not cap_mesh.visible:
 		return
 	
-	var cap_instance: RigidBody3D = bottle_cap.instantiate()
+	var cap_instance: BottleCap = bottle_cap.instantiate()
 	if cap_instance:
 		cap_instance.set_as_top_level(true)
+		cap_instance.set_mesh($Cap.mesh)
+		cap_instance.set_material($Cap.material_override)
 		add_child(cap_instance)
 		cap_instance.global_transform = cap_mesh.global_transform
 		cap_instance.apply_impulse(cap_mesh.global_transform.basis.y * open_force, cap_mesh.global_position - cap_mesh.global_transform.basis.y)

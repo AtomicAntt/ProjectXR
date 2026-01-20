@@ -7,9 +7,8 @@
 [ext_resource type="Material" uid="uid://cl13p1oneig2v" path="res://Materials/Cork.tres" id="6_33yk0"]
 [ext_resource type="PackedScene" uid="uid://vim70ijfhwbk" path="res://GameAssets/Props/Potion.tscn" id="6_skq8k"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wpp67"]
-radius = 0.03857422
-height = 0.25621378
+[sub_resource type="SphereShape3D" id="SphereShape3D_skq8k"]
+radius = 0.09451982
 
 [sub_resource type="Curve" id="Curve_rjrcd"]
 _data = [Vector2(0, 0.5617978), 0.0, 0.0, 0, 0, Vector2(0.75735295, 1), 0.0, 0.0, 0, 0]
@@ -67,7 +66,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_whlq4")
 
-[node name="Bottle" instance=ExtResource("1_o7frl")]
+[node name="Potion" instance=ExtResource("1_o7frl")]
 transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 top_level = true
 script = ExtResource("2_skq8k")
@@ -79,25 +78,25 @@ angle_threshold = 90.0
 second_hand_grab = 1
 
 [node name="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(0.9999936, 0, 0, 0, 0.9999936, 0, 0, 0, 1, 0, 0.11785295, 0)
-shape = SubResource("CapsuleShape3D_wpp67")
+transform = Transform3D(0.9999939, 0, 0, 0, 0.9999936, 0, 0, 0, 1, 0.0032375623, 0.087306164, 0)
+shape = SubResource("SphereShape3D_skq8k")
 
 [node name="BottleOpen" type="AudioStreamPlayer3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25628853, 0)
 stream = ExtResource("5_lxh1c")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26792157, -1.3445038e-05)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24330616, -1.3445038e-05)
 amount = 16
 amount_ratio = 0.0
 lifetime = 0.41
 process_material = SubResource("ParticleProcessMaterial_rjrcd")
 draw_pass_1 = SubResource("SphereMesh_rjrcd")
 
-[node name="Potion" parent="." index="3" instance=ExtResource("6_skq8k")]
+[node name="Bottle" parent="." index="3" instance=ExtResource("6_skq8k")]
 
 [node name="Cap" type="MeshInstance3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1138258e-05, 0.22991745, -0.0007564719)
+material_override = ExtResource("6_33yk0")
 mesh = SubResource("ArrayMesh_nxjs7")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("6_33yk0")

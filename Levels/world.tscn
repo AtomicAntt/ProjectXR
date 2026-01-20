@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d3jcn2ew83ufg"]
+[gd_scene load_steps=20 format=3 uid="uid://d3jcn2ew83ufg"]
 
 [ext_resource type="Script" uid="uid://dkpuultcnw1nk" path="res://Levels/StartScript.gd" id="1_x5oxt"]
 [ext_resource type="PackedScene" uid="uid://dysl4qvaovevq" path="res://Player/player.tscn" id="2_kycxd"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://prqx2avnwg3j" path="res://GameObjects/Weapons/Gun.tscn" id="6_x5oxt"]
 [ext_resource type="PackedScene" uid="uid://dyr3dwgcbbkkb" path="res://GameObjects/target.tscn" id="7_vqnaq"]
 [ext_resource type="PackedScene" uid="uid://ekrgs4wcsu5f" path="res://GameObjects/Props/Bottle.tscn" id="8_rljl1"]
+[ext_resource type="PackedScene" uid="uid://cf8ik4xbe81gh" path="res://GameObjects/Props/Potion.tscn" id="10_7ey7r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a02cp"]
 
@@ -96,6 +97,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5756956, 0.5642525, -0.9996
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.025, 1.2439772, -4.9818974)
 
 [node name="Bottle" parent="." groups=["Refreshable"] instance=ExtResource("8_rljl1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0.48643458, -0.9643236)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0.10815787, 0.49730653, -0.9643236)
+
+[node name="Potion" parent="." groups=["Refreshable"] instance=ExtResource("10_7ey7r")]
+transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 1, -0.15015748, 0.5004066, -1.0072048)
 
 [connection signal="timeout" from="Table/Timer" to="Table" method="_on_timer_timeout"]

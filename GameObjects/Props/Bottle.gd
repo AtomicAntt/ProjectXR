@@ -6,4 +6,4 @@ extends Node3D
 	#set_fill(fill_amount)
 
 func set_fill(amount: float) -> void:
-	$liquid.set_fill(amount)
+	$Liquid.set_fill(amount)
