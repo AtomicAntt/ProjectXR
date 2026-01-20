@@ -96,7 +96,7 @@ draw_pass_1 = SubResource("SphereMesh_rjrcd")
 [node name="Bottle" parent="." index="3" instance=ExtResource("6_skq8k")]
 
 [node name="Cap" type="MeshInstance3D" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1138258e-05, 0.22991745, -0.0007564719)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20884474, 0)
 material_override = ExtResource("6_33yk0")
 mesh = SubResource("ArrayMesh_nxjs7")
 skeleton = NodePath("")
