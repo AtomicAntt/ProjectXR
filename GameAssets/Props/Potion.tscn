@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://jlnc7l8i20e0"]
+
+[ext_resource type="PackedScene" uid="uid://cx6tnj2ak13i5" path="res://GameAssets/Props/Potion.glb" id="1_kcgyy"]
+[ext_resource type="Shader" uid="uid://dg0bl783apojb" path="res://Shaders/Liquid2.gdshader" id="2_0vcgu"]
+[ext_resource type="Shader" uid="uid://c3vuuhke4j854" path="res://Shaders/Glass.gdshader" id="2_1l4fv"]
+[ext_resource type="Shader" uid="uid://rmgil4vao15o" path="res://Shaders/Surface.gdshader" id="3_bnhr8"]
+[ext_resource type="Script" uid="uid://eer7cj22rryo" path="res://Shaders/Liquid.gd" id="4_bnhr8"]
+[ext_resource type="PackedScene" uid="uid://wp4shiyxf0f2" path="res://GameAssets/Props/PotionCork.tscn" id="6_mg17y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mg17y"]
+render_priority = 0
+shader = ExtResource("2_1l4fv")
+shader_parameter/AlphaAmount = 0.1970000093575
+shader_parameter/Metallic = 0.91600004351
+shader_parameter/Roughness = 0.0510000024225
+shader_parameter/Rim = 0.6910000328225
+shader_parameter/RimTint = 0.9150000434625
+shader_parameter/Specular = 0.938000044555
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4iatu"]
+render_priority = 0
+shader = ExtResource("3_bnhr8")
+shader_parameter/coeff = Vector2(0, 0)
+shader_parameter/fill_amount = 0.350000016625
+shader_parameter/glass_thickness = 0.01
+shader_parameter/height = 0.32
+shader_parameter/width = 0.1
+shader_parameter/wave_intensity = 0.05
+shader_parameter/liquid_color = Color(1, 0.23137255, 0.17254902, 1)
+shader_parameter/glow_color = Color(1, 0.6, 0.5411765, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tb7jr"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_4iatu")
+shader = ExtResource("2_0vcgu")
+shader_parameter/coeff = Vector2(-3e-45, 6e-45)
+shader_parameter/vel = 0.0
+shader_parameter/fill_amount = 0.350000016625
+shader_parameter/height = 0.32
+shader_parameter/width = 0.1
+shader_parameter/glass_thickness = 0.01
+shader_parameter/wave_intensity = 0.05
+shader_parameter/liquid_color = Color(0.99999994, 0.22953573, 0.17418528, 1)
+shader_parameter/glow_color = Color(1, 0.60004175, 0.5395275, 1)
+
+[node name="Potion" instance=ExtResource("1_kcgyy")]
+
+[node name="Bottle" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_mg17y")
+
+[node name="Cork" parent="." index="1"]
+visible = false
+
+[node name="Liquid" parent="." index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_tb7jr")
+script = ExtResource("4_bnhr8")
+liquidShaderMaterial = SubResource("ShaderMaterial_tb7jr")
+
+[node name="PotionCork" parent="." index="3" instance=ExtResource("6_mg17y")]

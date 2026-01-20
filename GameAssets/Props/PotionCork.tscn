@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://wp4shiyxf0f2"]
+
+[ext_resource type="PackedScene" uid="uid://cbwqcubpt2ycn" path="res://GameAssets/Props/PotionCork.glb" id="1_u0j7n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rmqjr"]
+albedo_color = Color(0.3445371, 0.18399414, 0.048374623, 1)
+
+[node name="PotionCork" instance=ExtResource("1_u0j7n")]
+
+[node name="Cork" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rmqjr")
