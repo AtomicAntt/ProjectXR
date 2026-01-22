@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://d3jcn2ew83ufg"]
+[gd_scene load_steps=21 format=3 uid="uid://d3jcn2ew83ufg"]
 
 [ext_resource type="Script" uid="uid://dkpuultcnw1nk" path="res://Levels/StartScript.gd" id="1_x5oxt"]
 [ext_resource type="PackedScene" uid="uid://dysl4qvaovevq" path="res://Player/player.tscn" id="2_kycxd"]
 [ext_resource type="Texture2D" uid="uid://c7gkcaf557ybm" path="res://GameAssets/Textures/Floor.svg" id="3_ks8n1"]
 [ext_resource type="Script" uid="uid://6iy38vucd46p" path="res://Levels/ItemRefresher.gd" id="4_06jdw"]
 [ext_resource type="Texture2D" uid="uid://1ljep0iwevab" path="res://GameAssets/Textures/Wall.svg" id="4_x5oxt"]
+[ext_resource type="PackedScene" uid="uid://d4awg3m1fvmtr" path="res://GameObjects/Environment/Mushroom.tscn" id="6_ay5oo"]
 [ext_resource type="PackedScene" uid="uid://8b07fmgymyqh" path="res://GameObjects/Cube2.tscn" id="6_vqnaq"]
 [ext_resource type="PackedScene" uid="uid://prqx2avnwg3j" path="res://GameObjects/Weapons/Gun.tscn" id="6_x5oxt"]
 [ext_resource type="PackedScene" uid="uid://dyr3dwgcbbkkb" path="res://GameObjects/target.tscn" id="7_vqnaq"]
@@ -101,5 +102,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0.10815787, 0.4973065
 
 [node name="Potion" parent="." groups=["Refreshable"] instance=ExtResource("10_7ey7r")]
 transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 1, -0.15015748, 0.5004066, -1.0072048)
+
+[node name="Mushroom" parent="." groups=["Refreshable"] instance=ExtResource("6_ay5oo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.035369698, 0.5763836, -1.2184482)
 
 [connection signal="timeout" from="Table/Timer" to="Table" method="_on_timer_timeout"]

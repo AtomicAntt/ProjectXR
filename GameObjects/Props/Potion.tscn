@@ -78,7 +78,7 @@ angle_threshold = 90.0
 second_hand_grab = 1
 
 [node name="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(0.9999939, 0, 0, 0, 0.9999936, 0, 0, 0, 1, 0.0032375623, 0.087306164, 0)
+transform = Transform3D(0.999994, 0, 0, 0, 0.9999936, 0, 0, 0, 1, 0.0032375625, 0.06639766, 0)
 shape = SubResource("SphereShape3D_skq8k")
 
 [node name="BottleOpen" type="AudioStreamPlayer3D" parent="." index="1"]

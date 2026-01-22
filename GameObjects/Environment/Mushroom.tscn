@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4awg3m1fvmtr"]
+
+[ext_resource type="PackedScene" uid="uid://71on3inleftl" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_lkqwq"]
+[ext_resource type="PackedScene" uid="uid://bjm3vttmqqjlv" path="res://GameAssets/Environment/Mushroom.glb" id="2_lkqwq"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tcwmd"]
+height = 0.06939697
+radius = 0.016113281
+
+[node name="Mushroom" instance=ExtResource("1_lkqwq")]
+second_hand_grab = 1
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0037326217, -0.039154053, 0)
+shape = SubResource("CylinderShape3D_tcwmd")
+
+[node name="Mushroom2" parent="." index="1" instance=ExtResource("2_lkqwq")]
