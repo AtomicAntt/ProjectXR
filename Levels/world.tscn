@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d3jcn2ew83ufg"]
+[gd_scene format=3 uid="uid://d3jcn2ew83ufg"]
 
 [ext_resource type="Script" uid="uid://dkpuultcnw1nk" path="res://Levels/StartScript.gd" id="1_x5oxt"]
 [ext_resource type="PackedScene" uid="uid://dysl4qvaovevq" path="res://Player/player.tscn" id="2_kycxd"]
@@ -43,67 +43,67 @@ uv1_triplanar = true
 material = SubResource("StandardMaterial3D_rljl1")
 size = Vector3(3, 0.5, 1)
 
-[node name="World" type="Node3D"]
+[node name="World" type="Node3D" unique_id=1602794049]
 script = ExtResource("1_x5oxt")
 
-[node name="Player" parent="." instance=ExtResource("2_kycxd")]
+[node name="Player" parent="." unique_id=916850063 instance=ExtResource("2_kycxd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.34063888)
 current = true
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1202337412]
 transform = Transform3D(1, 0, 0, 0, 1.1924881e-08, 1, 0, -1, 1.1924881e-08, 0, 2.5809178, 0)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=424916173]
 environment = SubResource("Environment_5a7ea")
 
-[node name="Floor" type="StaticBody3D" parent="."]
+[node name="Floor" type="StaticBody3D" parent="." unique_id=250711996]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=229735072]
 shape = SubResource("BoxShape3D_a02cp")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/CollisionShape3D" unique_id=715785761]
 mesh = SubResource("BoxMesh_go701")
 
-[node name="Table" type="StaticBody3D" parent="."]
+[node name="Table" type="StaticBody3D" parent="." unique_id=1222816918]
 script = ExtResource("4_06jdw")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Table"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Table" unique_id=1269694546]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04953003, 0.23630369, -1.0593262)
 shape = SubResource("BoxShape3D_kycxd")
 
-[node name="Timer" type="Timer" parent="Table"]
+[node name="Timer" type="Timer" parent="Table" unique_id=605379735]
 autostart = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Table"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Table" unique_id=2127380755]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04953003, 0.23630369, -1.0593262)
 mesh = SubResource("BoxMesh_pa6j6")
 skeleton = NodePath("../CollisionShape3D")
 
-[node name="RefreshThreshold" type="Marker3D" parent="Table"]
+[node name="RefreshThreshold" type="Marker3D" parent="Table" unique_id=520666036]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29945025, -0.36716583)
 
-[node name="Gun" parent="." groups=["Refreshable"] instance=ExtResource("6_x5oxt")]
+[node name="Gun" parent="." unique_id=1750568555 groups=["Refreshable"] instance=ExtResource("6_x5oxt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.62293243, 0.5835218, -0.9127219)
 
-[node name="Gun2" parent="." groups=["Refreshable"] instance=ExtResource("6_x5oxt")]
+[node name="Gun2" parent="." unique_id=640081859 groups=["Refreshable"] instance=ExtResource("6_x5oxt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3698223, 0.5835218, -0.9127219)
 
-[node name="Cube2" parent="." groups=["Refreshable"] instance=ExtResource("6_vqnaq")]
+[node name="Cube2" parent="." unique_id=473216969 groups=["Refreshable"] instance=ExtResource("6_vqnaq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3292436, 0.5642525, -0.98438454)
 
-[node name="Cube3" parent="." groups=["Refreshable"] instance=ExtResource("6_vqnaq")]
+[node name="Cube3" parent="." unique_id=896698313 groups=["Refreshable"] instance=ExtResource("6_vqnaq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5756956, 0.5642525, -0.9996362)
 
-[node name="Target" parent="." instance=ExtResource("7_vqnaq")]
+[node name="Target" parent="." unique_id=2074579225 instance=ExtResource("7_vqnaq")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.025, 1.2439772, -4.9818974)
 
-[node name="Bottle" parent="." groups=["Refreshable"] instance=ExtResource("8_rljl1")]
+[node name="Bottle" parent="." unique_id=795672236 groups=["Refreshable"] instance=ExtResource("8_rljl1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0.10815787, 0.49730653, -0.9643236)
 
-[node name="Potion" parent="." groups=["Refreshable"] instance=ExtResource("10_7ey7r")]
+[node name="Potion" parent="." unique_id=212535759 groups=["Refreshable"] instance=ExtResource("10_7ey7r")]
 transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 1, -0.15015748, 0.5004066, -1.0072048)
 
-[node name="Mushroom" parent="." groups=["Refreshable"] instance=ExtResource("6_ay5oo")]
+[node name="Mushroom" parent="." unique_id=353640077 groups=["Refreshable"] instance=ExtResource("6_ay5oo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.035369698, 0.5763836, -1.2184482)
 
 [connection signal="timeout" from="Table/Timer" to="Table" method="_on_timer_timeout"]
