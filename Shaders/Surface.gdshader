@@ -60,4 +60,6 @@ void light() {
 	float d = dot(-VIEW, LIGHT);
 	float dd = d*d;
 	if (d > 0.0f) DIFFUSE_LIGHT = dd * glow_color.rgb;
+	
+	DIFFUSE_LIGHT = liquid_color.rgb;
 }

@@ -288,6 +288,7 @@ func pick_up(by: Node3D) -> void:
 
 		# Swapping hands, let go with the primary grab
 		print_verbose("%s> letting go to swap hands" % name)
+		_grab_driver.primary.controller.visible = true
 		let_go(_grab_driver.primary.by, Vector3.ZERO, Vector3.ZERO)
 
 	# Remember the mode before pickup
@@ -356,7 +357,7 @@ func let_go(by: Node3D, p_linear_velocity: Vector3, p_angular_velocity: Vector3)
 
 		# Grab is still good
 		return
-
+	
 	# Drop the grab-driver
 	print_verbose("%s> dropping" % name)
 	_grab_driver.discard()
@@ -370,6 +371,7 @@ func let_go(by: Node3D, p_linear_velocity: Vector3, p_angular_velocity: Vector3)
 	# Set velocity
 	linear_velocity = p_linear_velocity
 	angular_velocity = p_angular_velocity
+	
 
 	# let interested parties know
 	dropped.emit(self)

@@ -62,29 +62,31 @@ void light() {
 	float d = dot(-VIEW, LIGHT);
 	float dd = d*d;
 	if (d > 0.0f) DIFFUSE_LIGHT = dd * glow_color.rgb;
-
-	/* Bubbles */
-
-	/* First, triplanar map the bubble texture (or at least "diplanar" map it
-	 * to the sides.)
-	 * Also, distort the bubbles a bit so it looks like they are wavy. */
-	vec2 distortion = vec2(0.0f, 0.005f * texture(waves_noise, 10.0f*pos.yx).y - 0.005f);
-	vec2 uv_front = pos.yx + distortion;
-	vec2 uv_side = pos.yz + distortion;
-	vec4 bubbles_front = texture(bubbles_tex, 15.0f*uv_front - TIME * vec2(2.0f, 0.0f));
-	vec4 bubbles_side = texture(bubbles_tex, 15.0f*uv_side - TIME * vec2(2.0f, 0.0f));
-	vec4 bubbles = weights.z * bubbles_front + weights.x * bubbles_side;
-
-	/* Remove bubbles from top and bottom of the liquid. */
-	float bubbles_alpha = bubbles.a;
-	if (bubbles_alpha != 0.0f) {
-		if (pos.y > liquid_line - 0.01f) bubbles_alpha *= (liquid_line - pos.y)/ 0.01f;
-		else if (pos.y < -height / 2.0f + 0.02f) bubbles_alpha *= clamp((pos.y + height / 2.0f) / 0.02f, 0.0f, 1.0f);
-		/* Bubbles should disappear on the sides and revert color depending on
-		 * view angle, resulting in a shadow or glow effect. */
-		bubbles_alpha *= d;
-		/* Bubbles should only appear when the liquid is in motion. */
-		bubbles_alpha *= clamp(vel, 0.0f, 1.0f);
-	}
-	DIFFUSE_LIGHT -= bubbles_alpha * glow_color.rgb;
+	
+	//DIFFUSE_LIGHT = liquid_color.rgb;
+	
+	///* Bubbles */
+//
+	///* First, triplanar map the bubble texture (or at least "diplanar" map it
+	 //* to the sides.)
+	 //* Also, distort the bubbles a bit so it looks like they are wavy. */
+	//vec2 distortion = vec2(0.0f, 0.005f * texture(waves_noise, 10.0f*pos.yx).y - 0.005f);
+	//vec2 uv_front = pos.yx + distortion;
+	//vec2 uv_side = pos.yz + distortion;
+	//vec4 bubbles_front = texture(bubbles_tex, 15.0f*uv_front - TIME * vec2(2.0f, 0.0f));
+	//vec4 bubbles_side = texture(bubbles_tex, 15.0f*uv_side - TIME * vec2(2.0f, 0.0f));
+	//vec4 bubbles = weights.z * bubbles_front + weights.x * bubbles_side;
+//
+	///* Remove bubbles from top and bottom of the liquid. */
+	//float bubbles_alpha = bubbles.a;
+	//if (bubbles_alpha != 0.0f) {
+		//if (pos.y > liquid_line - 0.01f) bubbles_alpha *= (liquid_line - pos.y)/ 0.01f;
+		//else if (pos.y < -height / 2.0f + 0.02f) bubbles_alpha *= clamp((pos.y + height / 2.0f) / 0.02f, 0.0f, 1.0f);
+		///* Bubbles should disappear on the sides and revert color depending on
+		 //* view angle, resulting in a shadow or glow effect. */
+		//bubbles_alpha *= d;
+		///* Bubbles should only appear when the liquid is in motion. */
+		//bubbles_alpha *= clamp(vel, 0.0f, 1.0f);
+	//}
+	//DIFFUSE_LIGHT -= bubbles_alpha * glow_color.rgb;
 }

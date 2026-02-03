@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cf8ik4xbe81gh"]
+[gd_scene format=4 uid="uid://cf8ik4xbe81gh"]
 
 [ext_resource type="PackedScene" uid="uid://71on3inleftl" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_o7frl"]
 [ext_resource type="Script" uid="uid://7q7b18bh2l2n" path="res://GameObjects/Props/BottlePickable.gd" id="2_skq8k"]
@@ -66,7 +66,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_whlq4")
 
-[node name="Potion" instance=ExtResource("1_o7frl")]
+[node name="Potion" unique_id=97275592 instance=ExtResource("1_o7frl")]
 transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 top_level = true
 script = ExtResource("2_skq8k")
@@ -81,11 +81,11 @@ second_hand_grab = 1
 transform = Transform3D(0.999994, 0, 0, 0, 0.9999936, 0, 0, 0, 1, 0.0032375625, 0.06639766, 0)
 shape = SubResource("SphereShape3D_skq8k")
 
-[node name="BottleOpen" type="AudioStreamPlayer3D" parent="." index="1"]
+[node name="BottleOpen" type="AudioStreamPlayer3D" parent="." index="1" unique_id=493742920]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25628853, 0)
 stream = ExtResource("5_lxh1c")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="2"]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="2" unique_id=1171745748]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24330616, -1.3445038e-05)
 amount = 16
 amount_ratio = 0.0
@@ -93,9 +93,9 @@ lifetime = 0.41
 process_material = SubResource("ParticleProcessMaterial_rjrcd")
 draw_pass_1 = SubResource("SphereMesh_rjrcd")
 
-[node name="Bottle" parent="." index="3" instance=ExtResource("6_skq8k")]
+[node name="Bottle" parent="." index="3" unique_id=548152217 instance=ExtResource("6_skq8k")]
 
-[node name="Cap" type="MeshInstance3D" parent="." index="4"]
+[node name="Cap" type="MeshInstance3D" parent="." index="4" unique_id=765550241]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20884474, 0)
 material_override = ExtResource("6_33yk0")
 mesh = SubResource("ArrayMesh_nxjs7")

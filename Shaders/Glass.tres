@@ -1,13 +1,13 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bves7ql5401vm"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bves7ql5401vm"]
 
 [ext_resource type="Shader" uid="uid://c3vuuhke4j854" path="res://Shaders/Glass.gdshader" id="1_vrret"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_vrret")
-shader_parameter/AlphaAmount = 0.1970000093575
-shader_parameter/Metallic = 0.91600004351
-shader_parameter/Roughness = 0.0510000024225
-shader_parameter/Rim = 0.6910000328225
-shader_parameter/RimTint = 0.9150000434625
-shader_parameter/Specular = 0.938000044555
+shader_parameter/AlphaAmount = 0.0800000038
+shader_parameter/Metallic = 0.2390000113525
+shader_parameter/Roughness = 0.210000009975
+shader_parameter/Rim = 0.322000015295
+shader_parameter/RimTint = 0.14400000684
+shader_parameter/Specular = 1.0

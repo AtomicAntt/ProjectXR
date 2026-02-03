@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://vim70ijfhwbk"]
+[gd_scene format=3 uid="uid://vim70ijfhwbk"]
 
 [ext_resource type="PackedScene" uid="uid://ctr88eew5jbtm" path="res://GameAssets/Props/Potion.glb" id="1_1l4fv"]
 [ext_resource type="Script" uid="uid://bwbimkd4moo3d" path="res://GameObjects/Props/Bottle.gd" id="2_4iatu"]
@@ -12,7 +12,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3a02t"]
 render_priority = 0
 shader = ExtResource("6_mg17y")
-shader_parameter/coeff = Vector2(-0.043157443, 0.056122918)
+shader_parameter/coeff = Vector2(0, 0)
 shader_parameter/fill_amount = 0.30000001425
 shader_parameter/glass_thickness = 0.01
 shader_parameter/height = 0.32
@@ -26,8 +26,8 @@ shader_parameter/glow_color = Color(1, 0.6, 0.5411765, 1)
 render_priority = 0
 next_pass = SubResource("ShaderMaterial_3a02t")
 shader = ExtResource("6_4iatu")
-shader_parameter/coeff = Vector2(-0.043157443, 0.056122918)
-shader_parameter/vel = 0.24999999999999856
+shader_parameter/coeff = Vector2(0, 0)
+shader_parameter/vel = 0.0
 shader_parameter/fill_amount = 0.30000001425
 shader_parameter/height = 0.32
 shader_parameter/width = 0.32
@@ -37,7 +37,7 @@ shader_parameter/liquid_color = Color(0.99999994, 0.22953573, 0.17418528, 1)
 shader_parameter/glow_color = Color(1, 0.60004175, 0.5395275, 1)
 shader_parameter/waves_noise = ExtResource("7_3a02t")
 
-[node name="Potion" instance=ExtResource("1_1l4fv")]
+[node name="Potion" unique_id=933410483 instance=ExtResource("1_1l4fv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.023827732, 0)
 script = ExtResource("2_4iatu")
 

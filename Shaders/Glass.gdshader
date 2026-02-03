@@ -9,7 +9,7 @@ uniform float RimTint: hint_range(0.0, 1.0, 0.001) = 0.5;
 uniform float Specular: hint_range(0.0, 1.0, 0.001) = 0.5;
 
 void fragment() {
-	ALBEDO = vec3(0.0);
+	ALBEDO = vec3(0.1);
 	ALPHA     = AlphaAmount;
 	METALLIC  = Metallic;
 	ROUGHNESS = Roughness;
