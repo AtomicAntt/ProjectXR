@@ -3,9 +3,16 @@ render_mode blend_mix, depth_draw_opaque, diffuse_toon, specular_toon;
 
 uniform vec4 albedo : source_color;
 uniform sampler2D color_gradient;
+uniform sampler2D fresnel_gradient;
+
+float fresnel(float amount, vec3 normal, vec3 view)
+{
+	return pow((1.0 - clamp(dot(normalize(normal), normalize(view)), 0.0, 1.0 )), amount);
+}
 
 void fragment() {
-	ALBEDO = albedo.rgb;
+	float basic_fresnel = fresnel(4.0, NORMAL, VIEW);
+	ALBEDO = albedo.rgb + (basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0);
 }
 
 void light() {

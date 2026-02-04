@@ -2,23 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://bpdj5njb8nhot" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_fullglove_hand.tscn" id="2_fhl08"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="2_gwnis"]
-[ext_resource type="Shader" uid="uid://dgnnnlrl0233n" path="res://Shaders/CelShading/Celshading.gdshader" id="3_od3ui"]
-[ext_resource type="PackedScene" uid="uid://raeeicvvindd" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_hand.tscn" id="3_vtle1"]
+[ext_resource type="Material" uid="uid://c1mchr3k7irl" path="res://Shaders/Materials/Hand.tres" id="3_vtle1"]
 [ext_resource type="Script" uid="uid://covp6418gkimy" path="res://Player/haptics_manager.gd" id="4_fhl08"]
+[ext_resource type="PackedScene" uid="uid://d1tl07geqm5xq" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_fullglove_hand.tscn" id="4_od3ui"]
 [ext_resource type="Script" uid="uid://b1dtx7o3p7qgq" path="res://addons/godot-xr-tools/rumble/rumbler.gd" id="5_vtle1"]
 [ext_resource type="Script" uid="uid://cuf42fufnnrds" path="res://addons/godot-xr-tools/rumble/rumble_event.gd" id="6_od3ui"]
-
-[sub_resource type="Gradient" id="Gradient_vtle1"]
-offsets = PackedFloat32Array(0.51428574, 0.55)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_od3ui"]
-gradient = SubResource("Gradient_vtle1")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vtle1"]
-render_priority = 0
-shader = ExtResource("3_od3ui")
-shader_parameter/albedo = Color(0.8999871, 0.62274975, 0.38101733, 1)
-shader_parameter/color_gradient = SubResource("GradientTexture1D_od3ui")
 
 [sub_resource type="Resource" id="Resource_fhl08"]
 script = ExtResource("6_od3ui")
@@ -45,8 +33,7 @@ grab_distance = 0.1
 ranged_enable = false
 
 [node name="LeftHand" parent="LeftHand" unique_id=262369141 instance=ExtResource("2_fhl08")]
-transform = Transform3D(1, 0, 0, 0, 0.9999507, 0.009930761, 0, -0.009930761, 0.9999507, 0, 0, 0)
-hand_material_override = SubResource("ShaderMaterial_vtle1")
+hand_material_override = ExtResource("3_vtle1")
 
 [node name="RightHand" type="XRController3D" parent="." unique_id=1415243163]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
@@ -56,7 +43,8 @@ tracker = &"right_hand"
 grab_distance = 0.1
 ranged_enable = false
 
-[node name="RightHand" parent="RightHand" unique_id=85273869 instance=ExtResource("3_vtle1")]
+[node name="RightHand" parent="RightHand" unique_id=1841102392 instance=ExtResource("4_od3ui")]
+hand_material_override = ExtResource("3_vtle1")
 
 [node name="HapticsManager" type="Node" parent="." unique_id=698386841]
 script = ExtResource("4_fhl08")
