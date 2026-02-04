@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://ctr88eew5jbtm" path="res://GameAssets/Props/Potion.glb" id="1_1l4fv"]
 [ext_resource type="Script" uid="uid://bwbimkd4moo3d" path="res://GameObjects/Props/Bottle.gd" id="2_4iatu"]
-[ext_resource type="Material" uid="uid://bves7ql5401vm" path="res://Shaders/Glass.tres" id="2_bnhr8"]
+[ext_resource type="Material" uid="uid://bves7ql5401vm" path="res://Shaders/Materials/Glass.tres" id="2_bnhr8"]
 [ext_resource type="Material" uid="uid://cl13p1oneig2v" path="res://Materials/Cork.tres" id="3_mg17y"]
-[ext_resource type="Script" uid="uid://eer7cj22rryo" path="res://Shaders/Liquid.gd" id="5_bnhr8"]
-[ext_resource type="Shader" uid="uid://dg0bl783apojb" path="res://Shaders/Liquid2.gdshader" id="6_4iatu"]
-[ext_resource type="Shader" uid="uid://rmgil4vao15o" path="res://Shaders/Surface.gdshader" id="6_mg17y"]
+[ext_resource type="Script" uid="uid://eer7cj22rryo" path="res://Shaders/Liquids/Liquid.gd" id="5_bnhr8"]
+[ext_resource type="Shader" uid="uid://dg0bl783apojb" path="res://Shaders/Liquids/Liquid2.gdshader" id="6_4iatu"]
+[ext_resource type="Shader" uid="uid://rmgil4vao15o" path="res://Shaders/Liquids/Surface.gdshader" id="6_mg17y"]
 [ext_resource type="Texture2D" uid="uid://c77gjujx3g2hg" path="res://GameAssets/Textures/worley.png" id="7_3a02t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3a02t"]

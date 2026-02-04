@@ -1,11 +1,24 @@
-[gd_scene load_steps=9 format=3 uid="uid://dysl4qvaovevq"]
+[gd_scene format=3 uid="uid://dysl4qvaovevq"]
 
-[ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="2_fhl08"]
+[ext_resource type="PackedScene" uid="uid://bpdj5njb8nhot" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_fullglove_hand.tscn" id="2_fhl08"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="2_gwnis"]
+[ext_resource type="Shader" uid="uid://dgnnnlrl0233n" path="res://Shaders/CelShading/Celshading.gdshader" id="3_od3ui"]
 [ext_resource type="PackedScene" uid="uid://raeeicvvindd" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_hand.tscn" id="3_vtle1"]
 [ext_resource type="Script" uid="uid://covp6418gkimy" path="res://Player/haptics_manager.gd" id="4_fhl08"]
 [ext_resource type="Script" uid="uid://b1dtx7o3p7qgq" path="res://addons/godot-xr-tools/rumble/rumbler.gd" id="5_vtle1"]
 [ext_resource type="Script" uid="uid://cuf42fufnnrds" path="res://addons/godot-xr-tools/rumble/rumble_event.gd" id="6_od3ui"]
+
+[sub_resource type="Gradient" id="Gradient_vtle1"]
+offsets = PackedFloat32Array(0.51428574, 0.55)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_od3ui"]
+gradient = SubResource("Gradient_vtle1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vtle1"]
+render_priority = 0
+shader = ExtResource("3_od3ui")
+shader_parameter/albedo = Color(0.8999871, 0.62274975, 0.38101733, 1)
+shader_parameter/color_gradient = SubResource("GradientTexture1D_od3ui")
 
 [sub_resource type="Resource" id="Resource_fhl08"]
 script = ExtResource("6_od3ui")
@@ -18,40 +31,42 @@ magnitude = 0.2
 duration_ms = 10
 metadata/_custom_type_script = "uid://cuf42fufnnrds"
 
-[node name="Player" type="XROrigin3D"]
+[node name="Player" type="XROrigin3D" unique_id=1709512524]
 
-[node name="XRCamera3D" type="XRCamera3D" parent="."]
+[node name="XRCamera3D" type="XRCamera3D" parent="." unique_id=1005326857]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0718591, 0)
 
-[node name="LeftHand" type="XRController3D" parent="."]
+[node name="LeftHand" type="XRController3D" parent="." unique_id=291603510]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
 tracker = &"left_hand"
 
-[node name="FunctionPickup" parent="LeftHand" instance=ExtResource("2_gwnis")]
+[node name="FunctionPickup" parent="LeftHand" unique_id=988206081 instance=ExtResource("2_gwnis")]
 grab_distance = 0.1
 ranged_enable = false
 
-[node name="LeftHand" parent="LeftHand" instance=ExtResource("2_fhl08")]
+[node name="LeftHand" parent="LeftHand" unique_id=262369141 instance=ExtResource("2_fhl08")]
+transform = Transform3D(1, 0, 0, 0, 0.9999507, 0.009930761, 0, -0.009930761, 0.9999507, 0, 0, 0)
+hand_material_override = SubResource("ShaderMaterial_vtle1")
 
-[node name="RightHand" type="XRController3D" parent="."]
+[node name="RightHand" type="XRController3D" parent="." unique_id=1415243163]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
 tracker = &"right_hand"
 
-[node name="FunctionPickup" parent="RightHand" instance=ExtResource("2_gwnis")]
+[node name="FunctionPickup" parent="RightHand" unique_id=1995802462 instance=ExtResource("2_gwnis")]
 grab_distance = 0.1
 ranged_enable = false
 
-[node name="RightHand" parent="RightHand" instance=ExtResource("3_vtle1")]
+[node name="RightHand" parent="RightHand" unique_id=85273869 instance=ExtResource("3_vtle1")]
 
-[node name="HapticsManager" type="Node" parent="."]
+[node name="HapticsManager" type="Node" parent="." unique_id=698386841]
 script = ExtResource("4_fhl08")
 
-[node name="PickUpRumbler" type="Node" parent="HapticsManager"]
+[node name="PickUpRumbler" type="Node" parent="HapticsManager" unique_id=1574065087]
 script = ExtResource("5_vtle1")
 event = SubResource("Resource_fhl08")
 metadata/_custom_type_script = "uid://b1dtx7o3p7qgq"
 
-[node name="HoverItemRumbler" type="Node" parent="HapticsManager"]
+[node name="HoverItemRumbler" type="Node" parent="HapticsManager" unique_id=7134099]
 script = ExtResource("5_vtle1")
 event = SubResource("Resource_vtle1")
 metadata/_custom_type_script = "uid://b1dtx7o3p7qgq"

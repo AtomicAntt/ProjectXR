@@ -1,7 +1,7 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://dhnanx5nx0xly"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dhnanx5nx0xly"]
 
-[ext_resource type="Shader" uid="uid://rmgil4vao15o" path="res://Shaders/Surface.gdshader" id="1_oudyq"]
-[ext_resource type="Shader" uid="uid://dg0bl783apojb" path="res://Shaders/Liquid2.gdshader" id="2_ypjo5"]
+[ext_resource type="Shader" uid="uid://rmgil4vao15o" path="res://Shaders/Liquids/Surface.gdshader" id="1_oudyq"]
+[ext_resource type="Shader" uid="uid://dg0bl783apojb" path="res://Shaders/Liquids/Liquid2.gdshader" id="2_ypjo5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4iatu"]
 render_priority = 0

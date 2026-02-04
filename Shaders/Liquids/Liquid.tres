@@ -1,6 +1,6 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://d3px0xw5w2khp"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d3px0xw5w2khp"]
 
-[ext_resource type="Shader" uid="uid://dnblrj5xs33gl" path="res://Shaders/Liquid.gdshader" id="1_mn5x3"]
+[ext_resource type="Shader" uid="uid://dnblrj5xs33gl" path="res://Shaders/Liquids/Liquid.gdshader" id="1_mn5x3"]
 
 [resource]
 render_priority = 0
