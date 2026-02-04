@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://ck0lw7k56iym"]
+
+[ext_resource type="Texture2D" uid="uid://c7gkcaf557ybm" path="res://GameAssets/Textures/Floor.svg" id="1_jeepb"]
+[ext_resource type="Script" uid="uid://6iy38vucd46p" path="res://Levels/ItemRefresher.gd" id="2_8x8nf"]
+[ext_resource type="Texture2D" uid="uid://1ljep0iwevab" path="res://GameAssets/Textures/Wall.svg" id="3_ej1bv"]
+[ext_resource type="PackedScene" uid="uid://prqx2avnwg3j" path="res://GameObjects/Weapons/Gun.tscn" id="4_cxxvu"]
+[ext_resource type="PackedScene" uid="uid://8b07fmgymyqh" path="res://GameObjects/Cube2.tscn" id="5_a5le3"]
+[ext_resource type="PackedScene" uid="uid://dyr3dwgcbbkkb" path="res://GameObjects/target.tscn" id="6_ijb51"]
+[ext_resource type="PackedScene" uid="uid://ekrgs4wcsu5f" path="res://GameObjects/Props/Bottle.tscn" id="7_76fkc"]
+[ext_resource type="PackedScene" uid="uid://cf8ik4xbe81gh" path="res://GameObjects/Props/Potion.tscn" id="8_jfium"]
+[ext_resource type="PackedScene" uid="uid://d4awg3m1fvmtr" path="res://GameObjects/Environment/Mushroom.tscn" id="9_wenv2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a02cp"]
+size = Vector3(5, 0.1, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vqnaq"]
+albedo_texture = ExtResource("1_jeepb")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_go701"]
+material = SubResource("StandardMaterial3D_vqnaq")
+size = Vector3(5, 0.1, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kycxd"]
+size = Vector3(3, 0.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rljl1"]
+albedo_texture = ExtResource("3_ej1bv")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_pa6j6"]
+material = SubResource("StandardMaterial3D_rljl1")
+size = Vector3(3, 0.5, 1)
+
+[node name="TestLevel" type="Node3D" unique_id=184073505]
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=383300650]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1909956884]
+shape = SubResource("BoxShape3D_a02cp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/CollisionShape3D" unique_id=1553235300]
+mesh = SubResource("BoxMesh_go701")
+
+[node name="Table" type="StaticBody3D" parent="." unique_id=579551677]
+script = ExtResource("2_8x8nf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Table" unique_id=1191892472]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04953003, 0.23630369, -1.0593262)
+shape = SubResource("BoxShape3D_kycxd")
+
+[node name="Timer" type="Timer" parent="Table" unique_id=1781948709]
+autostart = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Table" unique_id=1652667431]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04953003, 0.23630369, -1.0593262)
+mesh = SubResource("BoxMesh_pa6j6")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="RefreshThreshold" type="Marker3D" parent="Table" unique_id=295720404]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29945025, -0.36716583)
+
+[node name="Gun" parent="." unique_id=250737451 groups=["Refreshable"] instance=ExtResource("4_cxxvu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.62293243, 0.5835218, -0.9127219)
+
+[node name="Gun2" parent="." unique_id=1917359982 groups=["Refreshable"] instance=ExtResource("4_cxxvu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3698223, 0.5835218, -0.9127219)
+
+[node name="Cube2" parent="." unique_id=1565089706 groups=["Refreshable"] instance=ExtResource("5_a5le3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3292436, 0.5642525, -0.98438454)
+
+[node name="Cube3" parent="." unique_id=201119664 groups=["Refreshable"] instance=ExtResource("5_a5le3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5756956, 0.5642525, -0.9996362)
+
+[node name="Target" parent="." unique_id=586648539 instance=ExtResource("6_ijb51")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.025, 1.2439772, -4.9818974)
+
+[node name="Bottle" parent="." unique_id=982774182 groups=["Refreshable"] instance=ExtResource("7_76fkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0.10815787, 0.49730653, -0.9643236)
+
+[node name="Potion" parent="." unique_id=97275592 groups=["Refreshable"] instance=ExtResource("8_jfium")]
+transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 1, -0.15015748, 0.5004066, -1.0072048)
+
+[node name="Mushroom" parent="." unique_id=1161600161 groups=["Refreshable"] instance=ExtResource("9_wenv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.035369698, 0.5763836, -1.2184482)
+
+[connection signal="timeout" from="Table/Timer" to="Table" method="_on_timer_timeout"]
