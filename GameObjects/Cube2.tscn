@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://8b07fmgymyqh"]
+[gd_scene format=3 uid="uid://8b07fmgymyqh"]
 
 [ext_resource type="PackedScene" uid="uid://71on3inleftl" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_nxx43"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="2_b7kqy"]
@@ -38,7 +38,7 @@ material = SubResource("StandardMaterial3D_77nno")
 flip_faces = true
 size = Vector3(0.11, 0.11, 0.11)
 
-[node name="Cube2" instance=ExtResource("1_nxx43")]
+[node name="Cube2" unique_id=1565089706 instance=ExtResource("1_nxx43")]
 continuous_cd = true
 release_mode = 0
 second_hand_grab = 1
@@ -46,21 +46,21 @@ second_hand_grab = 1
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("BoxShape3D_yp7dl")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1" unique_id=689700842]
 mesh = SubResource("BoxMesh_qp0iw")
 
-[node name="GrabPointHandLeft" parent="." index="2" instance=ExtResource("2_b7kqy")]
+[node name="GrabPointHandLeft" parent="." index="2" unique_id=988401245 instance=ExtResource("2_b7kqy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.042371895, 0.044062942, -0.09449728)
 hand_pose = SubResource("Resource_alprh")
 
-[node name="GrabPointHandRight" parent="." index="3" instance=ExtResource("5_8khbf")]
+[node name="GrabPointHandRight" parent="." index="3" unique_id=1684554665 instance=ExtResource("5_8khbf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03898389, 0.040434845, -0.10230592)
 hand_pose = SubResource("Resource_6carm")
 
-[node name="XRToolsHighlightVisible" type="Node3D" parent="." index="4"]
+[node name="XRToolsHighlightVisible" type="Node3D" parent="." index="4" unique_id=1312844227]
 visible = false
 script = ExtResource("7_clqou")
 metadata/_custom_type_script = "uid://brqwp76jji3fe"
 
-[node name="HighlightMesh" type="MeshInstance3D" parent="XRToolsHighlightVisible" index="0"]
+[node name="HighlightMesh" type="MeshInstance3D" parent="XRToolsHighlightVisible" index="0" unique_id=1742368737]
 mesh = SubResource("BoxMesh_bdhm2")

@@ -8,8 +8,14 @@ uniform float Rim: hint_range(0.0, 1.0, 0.001) = 0.5;
 uniform float RimTint: hint_range(0.0, 1.0, 0.001) = 0.5;
 uniform float Specular: hint_range(0.0, 1.0, 0.001) = 0.5;
 
+float fresnel(float amount, vec3 normal, vec3 view)
+{
+	return pow((1.0 - clamp(dot(normalize(normal), normalize(view)), 0.0, 1.0 )), amount);
+}
+
 void fragment() {
-	ALBEDO = vec3(0.1);
+	float basic_fresnel = fresnel(3.0, NORMAL, VIEW);
+	ALBEDO = vec3(0.1) + basic_fresnel;
 	ALPHA     = AlphaAmount;
 	METALLIC  = Metallic;
 	ROUGHNESS = Roughness;
