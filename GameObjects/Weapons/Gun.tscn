@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://cuf42fufnnrds" path="res://addons/godot-xr-tools/rumble/rumble_event.gd" id="10_rl54b"]
 [ext_resource type="Script" uid="uid://brqwp76jji3fe" path="res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd" id="11_al5tl"]
 [ext_resource type="Texture2D" uid="uid://tk5youtj51hd" path="res://GameAssets/Weapons/Textures/colormap.png" id="12_yb26l"]
+[ext_resource type="Material" uid="uid://k8tbmabv8ib2" path="res://Materials/Highlight.tres" id="14_2qmxg"]
 [ext_resource type="AudioStream" uid="uid://t6ohu78pa1ge" path="res://GameAssets/SFX/186950__readeonly__toy_cannon_shot.wav" id="14_xwea8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_idis7"]
@@ -73,13 +74,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_xwea8")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_al5tl"]
-cull_mode = 1
-shading_mode = 0
-albedo_color = Color(1, 1, 0.24313726, 1)
-grow = true
-grow_amount = 0.01
-
 [node name="Gun" unique_id=250737451 instance=ExtResource("1_ta275")]
 collision_priority = 0.9
 mass = 5.0
@@ -125,7 +119,7 @@ metadata/_custom_type_script = "uid://brqwp76jji3fe"
 [node name="MeshInstance3D" type="MeshInstance3D" parent="XRToolsHighlightVisible" index="0" unique_id=2124683538]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("ArrayMesh_4util")
-surface_material_override/0 = SubResource("StandardMaterial3D_al5tl")
+surface_material_override/0 = ExtResource("14_2qmxg")
 
 [node name="ShootSound" type="AudioStreamPlayer3D" parent="." index="8" unique_id=1730262521]
 stream = ExtResource("14_xwea8")

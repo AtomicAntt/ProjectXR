@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ekrgs4wcsu5f" path="res://GameObjects/Props/Bottle.tscn" id="7_76fkc"]
 [ext_resource type="PackedScene" uid="uid://cf8ik4xbe81gh" path="res://GameObjects/Props/Potion.tscn" id="8_jfium"]
 [ext_resource type="PackedScene" uid="uid://d4awg3m1fvmtr" path="res://GameObjects/Environment/Mushroom.tscn" id="9_wenv2"]
+[ext_resource type="PackedScene" uid="uid://ccririi5oouxq" path="res://GameObjects/Weapons/Sword.tscn" id="10_8x8nf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a02cp"]
 size = Vector3(5, 0.1, 5)
@@ -69,9 +70,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3698223, 0.5835218, -0.912
 [node name="Cube2" parent="." unique_id=1565089706 groups=["Refreshable"] instance=ExtResource("5_a5le3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3292436, 0.5642525, -0.98438454)
 
-[node name="Cube3" parent="." unique_id=201119664 groups=["Refreshable"] instance=ExtResource("5_a5le3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5756956, 0.5642525, -0.9996362)
-
 [node name="Target" parent="." unique_id=586648539 instance=ExtResource("6_ijb51")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.025, 1.2439772, -4.9818974)
 
@@ -83,5 +81,8 @@ transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 1, -0.15015748, 0.500406
 
 [node name="Mushroom" parent="." unique_id=1161600161 groups=["Refreshable"] instance=ExtResource("9_wenv2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.035369698, 0.5763836, -1.2184482)
+
+[node name="Sword" parent="." unique_id=1871641148 groups=["Refreshable"] instance=ExtResource("10_8x8nf")]
+transform = Transform3D(1, 0, 0, 0, 0.82739437, 0.56162137, 0, -0.56162137, 0.82739437, 0.5395817, 0.6137566, -0.8521328)
 
 [connection signal="timeout" from="Table/Timer" to="Table" method="_on_timer_timeout"]

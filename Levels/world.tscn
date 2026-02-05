@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dkpuultcnw1nk" path="res://Levels/StartScript.gd" id="1_x5oxt"]
 [ext_resource type="PackedScene" uid="uid://dysl4qvaovevq" path="res://Player/player.tscn" id="2_kycxd"]
 [ext_resource type="PackedScene" uid="uid://ck0lw7k56iym" path="res://Levels/TestLevel.tscn" id="3_pa6j6"]
-[ext_resource type="PackedScene" uid="uid://byciiwul6us7m" path="res://Levels/GrassLevel.tscn" id="4_4dvsh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ay5oo"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -31,5 +30,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.34063888)
 current = true
 
 [node name="TestLevel" parent="." unique_id=184073505 instance=ExtResource("3_pa6j6")]
-
-[node name="GrassLevel" parent="." unique_id=1473893278 instance=ExtResource("4_4dvsh")]
