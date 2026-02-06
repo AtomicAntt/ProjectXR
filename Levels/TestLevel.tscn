@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cf8ik4xbe81gh" path="res://GameObjects/Props/Potion.tscn" id="8_jfium"]
 [ext_resource type="PackedScene" uid="uid://d4awg3m1fvmtr" path="res://GameObjects/Environment/Mushroom.tscn" id="9_wenv2"]
 [ext_resource type="PackedScene" uid="uid://ccririi5oouxq" path="res://GameObjects/Weapons/Sword.tscn" id="10_8x8nf"]
+[ext_resource type="PackedScene" uid="uid://468xstcis34h" path="res://GameObjects/Weapons/Sword2.tscn" id="11_ej1bv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a02cp"]
 size = Vector3(5, 0.1, 5)
@@ -84,5 +85,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.035369698, 0.5763836, -1.2
 
 [node name="Sword" parent="." unique_id=1871641148 groups=["Refreshable"] instance=ExtResource("10_8x8nf")]
 transform = Transform3D(1, 0, 0, 0, 0.82739437, 0.56162137, 0, -0.56162137, 0.82739437, 0.5395817, 0.6137566, -0.8521328)
+
+[node name="Sword2" parent="." unique_id=625879772 instance=ExtResource("11_ej1bv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.74068666, 0.689114, -0.88970304)
 
 [connection signal="timeout" from="Table/Timer" to="Table" method="_on_timer_timeout"]
