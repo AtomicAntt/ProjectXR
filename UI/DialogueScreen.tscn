@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dwkf04m8m8u7x"]
+
+[node name="DialogueScreen" type="Node2D" unique_id=1599330894]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=213091998]
+offset_right = 300.0
+offset_bottom = 200.0
+color = Color(0.08468994, 0.08468991, 0.08469, 1)

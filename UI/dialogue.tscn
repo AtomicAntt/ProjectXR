@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://5cpapydug8y0"]
+
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="1_f8kjv"]
+[ext_resource type="PackedScene" uid="uid://dwkf04m8m8u7x" path="res://UI/DialogueScreen.tscn" id="2_347mh"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_347mh"]
+resource_local_to_scene = true
+size = Vector2(3, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6k0i6"]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m5l3s"]
+transparency = 1
+cull_mode = 2
+albedo_texture = SubResource("ViewportTexture_6k0i6")
+texture_filter = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7v0fb"]
+resource_local_to_scene = true
+size = Vector3(3, 2, 0.02)
+
+[node name="Dialogue" unique_id=511109773 instance=ExtResource("1_f8kjv")]
+scene = ExtResource("2_347mh")
+scene_properties_keys = PackedStringArray()
+
+[node name="Screen" parent="." index="1"]
+mesh = SubResource("QuadMesh_347mh")
+surface_material_override/0 = SubResource("StandardMaterial3D_m5l3s")
+
+[node name="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_7v0fb")
