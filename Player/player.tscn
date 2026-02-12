@@ -28,6 +28,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0718591, 0)
 [node name="LeftHand" type="XRController3D" parent="." unique_id=291603510]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
 tracker = &"left_hand"
+show_when_tracked = true
 
 [node name="FunctionPickup" parent="LeftHand" unique_id=988206081 instance=ExtResource("2_gwnis")]
 grab_distance = 0.1
@@ -44,6 +45,7 @@ show_target = true
 [node name="RightHand" type="XRController3D" parent="." unique_id=1415243163]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
 tracker = &"right_hand"
+show_when_tracked = true
 
 [node name="FunctionPickup" parent="RightHand" unique_id=1995802462 instance=ExtResource("2_gwnis")]
 grab_distance = 0.1
