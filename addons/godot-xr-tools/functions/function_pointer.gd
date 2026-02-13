@@ -15,7 +15,7 @@ extends Node3D
 
 
 ## Signal emitted when this object points at another object
-signal pointing_event(event)
+signal pointing_event(event: XRToolsPointerEvent)
 
 
 ## Enumeration of laser show modes

@@ -20,6 +20,12 @@ magnitude = 0.2
 duration_ms = 10
 metadata/_custom_type_script = "uid://cuf42fufnnrds"
 
+[sub_resource type="Resource" id="Resource_od3ui"]
+script = ExtResource("6_od3ui")
+magnitude = 0.2
+duration_ms = 10
+metadata/_custom_type_script = "uid://cuf42fufnnrds"
+
 [node name="Player" type="XROrigin3D" unique_id=1709512524]
 
 [node name="XRCamera3D" type="XRCamera3D" parent="." unique_id=1005326857 groups=["XRCamera3D"]]
@@ -70,7 +76,13 @@ script = ExtResource("5_vtle1")
 event = SubResource("Resource_vtle1")
 metadata/_custom_type_script = "uid://b1dtx7o3p7qgq"
 
+[node name="PointerHoverRumbler" type="Node" parent="HapticsManager" unique_id=719156472]
+script = ExtResource("5_vtle1")
+event = SubResource("Resource_od3ui")
+metadata/_custom_type_script = "uid://b1dtx7o3p7qgq"
+
 [connection signal="has_hover_entered" from="LeftHand/FunctionPickup" to="HapticsManager" method="_on_left_hand_hover_entered"]
 [connection signal="has_picked_up" from="LeftHand/FunctionPickup" to="HapticsManager" method="_on_left_hand_picked_up"]
+[connection signal="pointing_event" from="LeftHand/FunctionPointer" to="HapticsManager" method="_on_left_function_pointer_pointing_event"]
 [connection signal="has_hover_entered" from="RightHand/FunctionPickup" to="HapticsManager" method="_on_right_hand_hover_entered"]
 [connection signal="has_picked_up" from="RightHand/FunctionPickup" to="HapticsManager" method="_on_right_hand_picked_up"]

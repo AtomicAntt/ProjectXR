@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://ck0lw7k56iym" path="res://Levels/TestLevel.tscn" id="3_pa6j6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ay5oo"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
 [sub_resource type="Sky" id="Sky_v0p3n"]

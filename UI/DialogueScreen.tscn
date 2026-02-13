@@ -1,23 +1,24 @@
 [gd_scene format=3 uid="uid://dwkf04m8m8u7x"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uwiny"]
-bg_color = Color(0.13725491, 0.13725491, 0.13725491, 0.7647059)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-corner_detail = 16
+[ext_resource type="StyleBox" uid="uid://br27snnn7e5f6" path="res://UI/DialogueStyleBox.tres" id="1_m36lx"]
+
+[sub_resource type="Theme" id="Theme_uwiny"]
+Button/styles/normal = ExtResource("1_m36lx")
 
 [node name="DialogueScreen" type="Node2D" unique_id=1599330894]
 
-[node name="DialoguePanel" type="Panel" parent="." unique_id=559171330]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1646460885]
 offset_right = 1100.0
-offset_bottom = 164.0
+offset_bottom = 330.0
+theme_override_constants/separation = 50
+
+[node name="DialoguePanel" type="Panel" parent="VBoxContainer" unique_id=559171330]
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_uwiny")
+theme_override_styles/panel = ExtResource("1_m36lx")
 
-[node name="MarginContainer" type="MarginContainer" parent="DialoguePanel" unique_id=2048125601]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/DialoguePanel" unique_id=2048125601]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,8 +30,20 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="RichTextLabel" type="RichTextLabel" parent="DialoguePanel/MarginContainer" unique_id=149945080]
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/DialoguePanel/MarginContainer" unique_id=149945080]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 32
 text = "Hello! These are the words I am saying to you, and I need to say enough words to get to the next line!"
 metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=479326172]
+layout_mode = 2
+theme = SubResource("Theme_uwiny")
+theme_override_font_sizes/font_size = 32
+text = "Yes, I want to go to the next level!"
+
+[node name="Button2" type="Button" parent="VBoxContainer" unique_id=913822322]
+layout_mode = 2
+theme = SubResource("Theme_uwiny")
+theme_override_font_sizes/font_size = 32
+text = "Nevermind."

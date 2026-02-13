@@ -95,6 +95,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.74068666, 0.689114, -0.8897
 
 [node name="Dialogue" parent="." unique_id=511109773 instance=ExtResource("12_cxxvu")]
 transform = Transform3D(0.7472648, 0, -0.66452634, 0, 1, 0, 0.66452634, 0, 0.7472648, 1.8395143, 1.2544537, -1.6563725)
+viewport_size = Vector2(1100, 330)
 
 [node name="Goblet" parent="." unique_id=1302629922 groups=["Refreshable"] instance=ExtResource("13_a5le3")]
 transform = Transform3D(0.9999998, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0.28874, 0.5545891, -0.89976895)
