@@ -10,11 +10,11 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4iatu"]
 render_priority = 0
 shader = ExtResource("3_wtvtg")
-shader_parameter/coeff = Vector2(1.4661039e-09, 2.6102496e-09)
+shader_parameter/coeff = Vector2(-4e-44, -2e-44)
 shader_parameter/fill_amount = 0.02000000095
 shader_parameter/glass_thickness = 0.001
-shader_parameter/height = 0.126
-shader_parameter/width = 0.126
+shader_parameter/height = 0.1
+shader_parameter/width = 0.1
 shader_parameter/wave_intensity = 0.05
 shader_parameter/liquid_color = Color(1, 0.23137255, 0.17254902, 1)
 shader_parameter/glow_color = Color(1, 0.6, 0.5411765, 1)
@@ -23,17 +23,18 @@ shader_parameter/glow_color = Color(1, 0.6, 0.5411765, 1)
 render_priority = 0
 next_pass = SubResource("ShaderMaterial_4iatu")
 shader = ExtResource("4_uby10")
-shader_parameter/coeff = Vector2(1.4661039e-09, 2.6102496e-09)
+shader_parameter/coeff = Vector2(-4e-44, -2e-44)
 shader_parameter/vel = 0.0
 shader_parameter/fill_amount = 0.02000000095
-shader_parameter/height = 0.126
-shader_parameter/width = 0.126
+shader_parameter/height = 0.1
+shader_parameter/width = 0.1
 shader_parameter/glass_thickness = 0.001
 shader_parameter/wave_intensity = 0.05
 shader_parameter/liquid_color = Color(0.99999994, 0.22953573, 0.17418528, 1)
 shader_parameter/glow_color = Color(1, 0.60004175, 0.5395275, 1)
 
 [node name="Goblet" unique_id=1623565777 instance=ExtResource("1_isk2h")]
+transform = Transform3D(0.99978685, 0.020645738, 0, -0.020645738, 0.99978685, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("2_wtvtg")
 
 [node name="GobletMesh" parent="." index="0" unique_id=70949492]

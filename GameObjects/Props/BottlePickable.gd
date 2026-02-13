@@ -6,6 +6,8 @@ extends XRToolsPickable
 @export var fill_amount: float = 0.5
 @export var spill_speed: float = 0.3
 
+@export var min_fill_amount: float = 0.05
+
 ## The largest angle between gravity and the object's orientation before spilling.
 @export_range(0, 180) var angle_threshold: float = 90
 
@@ -25,6 +27,9 @@ func refresh() -> void:
 	
 func set_fill(amount: float) -> void:
 	$Bottle.set_fill(amount)
+
+func set_liquid_visible(set_visible: bool) -> void:
+	$Bottle.set_liquid_visible(set_visible)
 
 func action() -> void:
 	super.action()
@@ -60,7 +65,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		angle_between += 0.03
 	
-	if angle_between <= threshold or cap_mesh.visible or fill_amount <= 0:
+	if angle_between <= threshold or cap_mesh.visible or fill_amount <= min_fill_amount:
 		# no spill
 		within_threshold = true
 	else: 
@@ -76,3 +81,9 @@ func _physics_process(delta: float) -> void:
 			set_fill(fill_amount)
 	else:
 		$GPUParticles3D.amount_ratio = 0
+	
+	if fill_amount <= min_fill_amount:
+		set_liquid_visible(false)
+	else:
+		set_liquid_visible(true)
+		

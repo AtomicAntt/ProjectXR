@@ -22,7 +22,7 @@ metadata/_custom_type_script = "uid://cuf42fufnnrds"
 
 [node name="Player" type="XROrigin3D" unique_id=1709512524]
 
-[node name="XRCamera3D" type="XRCamera3D" parent="." unique_id=1005326857]
+[node name="XRCamera3D" type="XRCamera3D" parent="." unique_id=1005326857 groups=["XRCamera3D"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0718591, 0)
 
 [node name="LeftHand" type="XRController3D" parent="." unique_id=291603510]

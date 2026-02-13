@@ -71,16 +71,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.62293243, 0.5835218, -0.91
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3698223, 0.5835218, -0.9127219)
 
 [node name="Cube2" parent="." unique_id=1565089706 groups=["Refreshable"] instance=ExtResource("5_a5le3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3292436, 0.5642525, -0.98438454)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42433703, 0.5642525, -1.0423821)
 
 [node name="Target" parent="." unique_id=586648539 instance=ExtResource("6_ijb51")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.025, 1.2439772, -4.9818974)
 
 [node name="Bottle" parent="." unique_id=982774182 groups=["Refreshable"] instance=ExtResource("7_76fkc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0.10815787, 0.49730653, -0.9643236)
+min_fill_amount = 0.05
 
 [node name="Potion" parent="." unique_id=97275592 groups=["Refreshable"] instance=ExtResource("8_jfium")]
 transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 1, -0.15015748, 0.5004066, -1.0072048)
+min_fill_amount = 0.05
 
 [node name="Mushroom" parent="." unique_id=1161600161 groups=["Refreshable"] instance=ExtResource("9_wenv2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.035369698, 0.5763836, -1.2184482)
@@ -95,6 +97,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.74068666, 0.689114, -0.8897
 transform = Transform3D(0.7472648, 0, -0.66452634, 0, 1, 0, 0.66452634, 0, 0.7472648, 1.8395143, 1.2544537, -1.6563725)
 
 [node name="Goblet" parent="." unique_id=1302629922 groups=["Refreshable"] instance=ExtResource("13_a5le3")]
-transform = Transform3D(0.9999998, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0.19952571, 0.5545891, -0.89976895)
+transform = Transform3D(0.9999998, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0.28874, 0.5545891, -0.89976895)
 
 [connection signal="timeout" from="Table/Timer" to="Table" method="_on_timer_timeout"]

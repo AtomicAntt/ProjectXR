@@ -74,6 +74,7 @@ bottle_cap = ExtResource("3_wnesv")
 open_force = 3.0
 fill_amount = 0.5
 spill_speed = 1.0
+min_fill_amount = 0.05
 angle_threshold = 90.0
 second_hand_grab = 1
 

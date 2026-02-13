@@ -7,3 +7,6 @@ extends Node3D
 
 func set_fill(amount: float) -> void:
 	$Liquid.set_fill(amount)
+
+func set_liquid_visible(set_visible: bool) -> void:
+	$Liquid.visible = set_visible
