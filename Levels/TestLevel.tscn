@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ccririi5oouxq" path="res://GameObjects/Weapons/Sword.tscn" id="10_8x8nf"]
 [ext_resource type="PackedScene" uid="uid://468xstcis34h" path="res://GameObjects/Weapons/Sword2.tscn" id="11_ej1bv"]
 [ext_resource type="PackedScene" uid="uid://5cpapydug8y0" path="res://UI/dialogue.tscn" id="12_cxxvu"]
+[ext_resource type="PackedScene" uid="uid://dj1emqludvcff" path="res://GameObjects/Props/Goblet.tscn" id="13_a5le3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a02cp"]
 size = Vector3(5, 0.1, 5)
@@ -92,5 +93,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.74068666, 0.689114, -0.8897
 
 [node name="Dialogue" parent="." unique_id=511109773 instance=ExtResource("12_cxxvu")]
 transform = Transform3D(0.7472648, 0, -0.66452634, 0, 1, 0, 0.66452634, 0, 0.7472648, 1.8395143, 1.2544537, -1.6563725)
+
+[node name="Goblet" parent="." unique_id=1302629922 groups=["Refreshable"] instance=ExtResource("13_a5le3")]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0.19952571, 0.5545891, -0.89976895)
 
 [connection signal="timeout" from="Table/Timer" to="Table" method="_on_timer_timeout"]
