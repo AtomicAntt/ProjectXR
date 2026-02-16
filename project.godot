@@ -39,6 +39,7 @@ enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg")
 
 BottleCap="Pickable that can be snapped into a bottle."
 XRCamera3D="The XRCamera3D node on the player."
+DialogueChoice="A StaticBody3D 3D node that represents a dialogue choice button."
 
 [physics]
 
