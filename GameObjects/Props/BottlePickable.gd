@@ -28,8 +28,8 @@ func refresh() -> void:
 func set_fill(amount: float) -> void:
 	$Bottle.set_fill(amount)
 
-func set_liquid_visible(set_visible: bool) -> void:
-	$Bottle.set_liquid_visible(set_visible)
+func set_liquid_visible(value: bool) -> void:
+	$Bottle.set_liquid_visible(value)
 
 func action() -> void:
 	super.action()
@@ -82,8 +82,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		$GPUParticles3D.amount_ratio = 0
 	
-	if fill_amount <= min_fill_amount:
-		set_liquid_visible(false)
-	else:
-		set_liquid_visible(true)
+	if not Engine.is_editor_hint():
+		if fill_amount <= min_fill_amount:
+			set_liquid_visible(false)
+		else:
+			set_liquid_visible(true)
 		
