@@ -29,6 +29,7 @@ func load_level(level_name: String) -> void:
 
 func transition_level(level_name: String) -> void:
 	fade.fade_in()
+	await fade.fade_in_complete
 	load_level(level_name)
 	await get_tree().create_timer(1.0).timeout
 	fade.fade_out()
