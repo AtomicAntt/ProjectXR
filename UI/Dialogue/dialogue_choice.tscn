@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://r0y44k5yrk3v"]
 
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="1_wxjb5"]
-[ext_resource type="Script" uid="uid://qnl6qltlmw6v" path="res://UI/dialogue.gd" id="2_grngo"]
-[ext_resource type="PackedScene" uid="uid://bhl6oh0t46qrk" path="res://UI/DialogueChoiceScreen.tscn" id="3_wxjb5"]
+[ext_resource type="Script" uid="uid://qnl6qltlmw6v" path="res://UI/Dialogue/dialogue.gd" id="2_grngo"]
+[ext_resource type="PackedScene" uid="uid://bhl6oh0t46qrk" path="res://UI/Dialogue/DialogueChoiceScreen.tscn" id="3_wxjb5"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_wxjb5"]
 resource_local_to_scene = true
@@ -11,7 +11,7 @@ size = Vector2(2, 0.14)
 [sub_resource type="ViewportTexture" id="ViewportTexture_grngo"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wxjb5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o51ny"]
 transparency = 1
 cull_mode = 2
 albedo_texture = SubResource("ViewportTexture_grngo")
@@ -33,7 +33,7 @@ size = Vector2i(1000, 70)
 
 [node name="Screen" parent="." index="1"]
 mesh = SubResource("QuadMesh_wxjb5")
-surface_material_override/0 = SubResource("StandardMaterial3D_wxjb5")
+surface_material_override/0 = SubResource("StandardMaterial3D_o51ny")
 
 [node name="StaticBody3D" parent="." index="2" groups=["DialogueChoice"]]
 screen_size = Vector2(2, 0.14)

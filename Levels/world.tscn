@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d3jcn2ew83ufg"]
 
 [ext_resource type="Script" uid="uid://dkpuultcnw1nk" path="res://Levels/StartScript.gd" id="1_x5oxt"]
+[ext_resource type="Script" uid="uid://b16wr05brl3jt" path="res://Levels/SceneLoader.gd" id="2_4dvsh"]
 [ext_resource type="PackedScene" uid="uid://dysl4qvaovevq" path="res://Player/player.tscn" id="2_kycxd"]
 [ext_resource type="PackedScene" uid="uid://ck0lw7k56iym" path="res://Levels/TestLevel.tscn" id="3_pa6j6"]
 
@@ -17,6 +18,10 @@ tonemap_mode = 2
 
 [node name="World" type="Node3D" unique_id=1602794049]
 script = ExtResource("1_x5oxt")
+
+[node name="SceneLoader" type="Node" parent="." unique_id=1667518447 node_paths=PackedStringArray("level_instance")]
+script = ExtResource("2_4dvsh")
+level_instance = NodePath("../TestLevel")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=113096127]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)

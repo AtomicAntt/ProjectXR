@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://bhl6oh0t46qrk"]
 
-[ext_resource type="StyleBox" uid="uid://br27snnn7e5f6" path="res://UI/DialogueStyleBox.tres" id="1_i7jsu"]
+[ext_resource type="StyleBox" uid="uid://br27snnn7e5f6" path="res://UI/Dialogue/DialogueStyleBox.tres" id="1_i7jsu"]
+[ext_resource type="Script" uid="uid://bkpwea4mdivge" path="res://UI/Dialogue/DialogueButton.gd" id="1_n0cqn"]
 
 [sub_resource type="Theme" id="Theme_i7jsu"]
 Button/styles/normal = ExtResource("1_i7jsu")
 
 [node name="DialogueChoice" type="Node2D" unique_id=1599330894]
+script = ExtResource("1_n0cqn")
 
 [node name="Button" type="Button" parent="." unique_id=1851314082]
 offset_right = 1000.0
@@ -13,3 +15,5 @@ offset_bottom = 70.0
 theme = SubResource("Theme_i7jsu")
 theme_override_font_sizes/font_size = 32
 text = "Teleport me to the next level please!"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

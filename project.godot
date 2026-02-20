@@ -23,6 +23,7 @@ config/icon="res://icon.svg"
 
 XRToolsUserSettings="*uid://b4guyiqpqr76e"
 XRToolsRumbleManager="*uid://c6dct2tucvype"
+Global="*uid://df17el1urehi4"
 
 [display]
 
@@ -40,6 +41,7 @@ enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg")
 BottleCap="Pickable that can be snapped into a bottle."
 XRCamera3D="The XRCamera3D node on the player."
 DialogueChoice="A StaticBody3D 3D node that represents a dialogue choice button."
+Fade="MeshInstance3D, purpose is to make XR full screen effects."
 
 [physics]
 

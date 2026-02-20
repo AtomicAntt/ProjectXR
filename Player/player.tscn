@@ -1,13 +1,23 @@
 [gd_scene format=3 uid="uid://dysl4qvaovevq"]
 
+[ext_resource type="Shader" uid="uid://bo1xwelst8wme" path="res://addons/godot-xr-tools/effects/fade.gdshader" id="1_00tjw"]
 [ext_resource type="PackedScene" uid="uid://bpdj5njb8nhot" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_fullglove_hand.tscn" id="2_fhl08"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="2_gwnis"]
+[ext_resource type="Script" uid="uid://g1hsxte6q8r" path="res://UI/PlayerUI/Fade.gd" id="2_x3vf3"]
 [ext_resource type="Material" uid="uid://c1mchr3k7irl" path="res://Shaders/Materials/Hand.tres" id="3_vtle1"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="4_00tjw"]
 [ext_resource type="Script" uid="uid://covp6418gkimy" path="res://Player/haptics_manager.gd" id="4_fhl08"]
 [ext_resource type="PackedScene" uid="uid://d1tl07geqm5xq" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_fullglove_hand.tscn" id="4_od3ui"]
 [ext_resource type="Script" uid="uid://b1dtx7o3p7qgq" path="res://addons/godot-xr-tools/rumble/rumbler.gd" id="5_vtle1"]
 [ext_resource type="Script" uid="uid://cuf42fufnnrds" path="res://addons/godot-xr-tools/rumble/rumble_event.gd" id="6_od3ui"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x3vf3"]
+render_priority = 0
+shader = ExtResource("1_00tjw")
+shader_parameter/albedo = Color(0, 0, 0, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_od3ui"]
+size = Vector2(2, 2)
 
 [sub_resource type="Resource" id="Resource_fhl08"]
 script = ExtResource("6_od3ui")
@@ -30,6 +40,12 @@ metadata/_custom_type_script = "uid://cuf42fufnnrds"
 
 [node name="XRCamera3D" type="XRCamera3D" parent="." unique_id=1005326857 groups=["XRCamera3D"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0718591, 0)
+
+[node name="Fade" type="MeshInstance3D" parent="XRCamera3D" unique_id=645598595 groups=["Fade"]]
+material_override = SubResource("ShaderMaterial_x3vf3")
+mesh = SubResource("QuadMesh_od3ui")
+script = ExtResource("2_x3vf3")
+fade_material = SubResource("ShaderMaterial_x3vf3")
 
 [node name="LeftHand" type="XRController3D" parent="." unique_id=291603510]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)

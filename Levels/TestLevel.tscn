@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ccririi5oouxq" path="res://GameObjects/Weapons/Sword.tscn" id="10_8x8nf"]
 [ext_resource type="PackedScene" uid="uid://468xstcis34h" path="res://GameObjects/Weapons/Sword2.tscn" id="11_ej1bv"]
 [ext_resource type="PackedScene" uid="uid://dj1emqludvcff" path="res://GameObjects/Props/Goblet.tscn" id="13_a5le3"]
-[ext_resource type="PackedScene" uid="uid://hnejrxekr1ah" path="res://UI/dialogue_options.tscn" id="13_ijb51"]
+[ext_resource type="PackedScene" uid="uid://hnejrxekr1ah" path="res://UI/Dialogue/dialogue_options.tscn" id="13_ijb51"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a02cp"]
 size = Vector3(5, 0.1, 5)

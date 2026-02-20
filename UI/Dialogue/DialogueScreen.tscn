@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dwkf04m8m8u7x"]
 
-[ext_resource type="StyleBox" uid="uid://br27snnn7e5f6" path="res://UI/DialogueStyleBox.tres" id="1_m36lx"]
+[ext_resource type="StyleBox" uid="uid://br27snnn7e5f6" path="res://UI/Dialogue/DialogueStyleBox.tres" id="1_m36lx"]
 
 [node name="DialogueScreen" type="Node2D" unique_id=1599330894]
 

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://5cpapydug8y0"]
 
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="1_f8kjv"]
-[ext_resource type="Script" uid="uid://qnl6qltlmw6v" path="res://UI/dialogue.gd" id="2_6k0i6"]
-[ext_resource type="PackedScene" uid="uid://dwkf04m8m8u7x" path="res://UI/DialogueScreen.tscn" id="2_347mh"]
+[ext_resource type="Script" uid="uid://qnl6qltlmw6v" path="res://UI/Dialogue/dialogue.gd" id="2_6k0i6"]
+[ext_resource type="PackedScene" uid="uid://dwkf04m8m8u7x" path="res://UI/Dialogue/DialogueScreen.tscn" id="2_347mh"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_6k0i6"]
 resource_local_to_scene = true
