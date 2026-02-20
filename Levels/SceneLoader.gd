@@ -1,6 +1,6 @@
 extends Node
 
-@onready var world: Node3D = get_parent()
+@export var world: Node3D
 @export var level_instance: Node3D
 
 @onready var fade: Fade = get_tree().get_first_node_in_group("Fade")

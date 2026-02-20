@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bhl6oh0t46qrk"]
 
 [ext_resource type="StyleBox" uid="uid://br27snnn7e5f6" path="res://UI/Dialogue/DialogueStyleBox.tres" id="1_i7jsu"]
-[ext_resource type="Script" uid="uid://bkpwea4mdivge" path="res://UI/Dialogue/DialogueButton.gd" id="1_n0cqn"]
+[ext_resource type="Script" uid="uid://bkpwea4mdivge" path="res://UI/Dialogue/DialogueButton2D.gd" id="1_n0cqn"]
 
 [sub_resource type="Theme" id="Theme_i7jsu"]
 Button/styles/normal = ExtResource("1_i7jsu")

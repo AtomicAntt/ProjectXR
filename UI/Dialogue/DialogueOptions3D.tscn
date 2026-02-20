@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://hnejrxekr1ah"]
+
+[ext_resource type="PackedScene" uid="uid://5cpapydug8y0" path="res://UI/Dialogue/DialogueText3D.tscn" id="1_0xnjy"]
+[ext_resource type="PackedScene" uid="uid://r0y44k5yrk3v" path="res://UI/Dialogue/DialogueChoice3D.tscn" id="2_ycwyu"]
+
+[node name="DialogueOptions" type="Node3D" unique_id=880844808]
+
+[node name="Dialogue" parent="." unique_id=511109773 instance=ExtResource("1_0xnjy")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 1.3, 0)
+
+[node name="DialogueChoice" parent="." unique_id=1307560204 instance=ExtResource("2_ycwyu")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0.9, 0)
+scene_properties_keys = PackedStringArray("DialogueButton2D.gd")
+
+[node name="DialogueChoice2" parent="." unique_id=640458644 instance=ExtResource("2_ycwyu")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0.65, 0)
+scene_properties_keys = PackedStringArray("DialogueButton2D.gd")
