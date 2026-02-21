@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bin4d8ywgo1i0"]
+
+[ext_resource type="Script" uid="uid://c7j0f6qhljl8h" path="res://GameObjects/NPCs/NPC.gd" id="1_jlhxw"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kkron"]
+radius = 0.2
+height = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kkron"]
+radius = 0.2
+height = 1.0
+
+[node name="TestNpc" type="CharacterBody3D" unique_id=262217009 groups=["PointerInteractable"]]
+collision_layer = 5242881
+script = ExtResource("1_jlhxw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1121909692]
+mesh = SubResource("CapsuleMesh_kkron")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1074130352]
+shape = SubResource("CapsuleShape3D_kkron")

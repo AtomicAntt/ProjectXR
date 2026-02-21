@@ -35,7 +35,7 @@ size = Vector2i(1000, 70)
 mesh = SubResource("QuadMesh_m0n0u")
 surface_material_override/0 = SubResource("StandardMaterial3D_m0n0u")
 
-[node name="StaticBody3D" parent="." index="2" groups=["DialogueChoice"]]
+[node name="StaticBody3D" parent="." index="2" groups=["PointerInteractable"]]
 screen_size = Vector2(2, 0.14)
 viewport_size = Vector2(1000, 70)
 
