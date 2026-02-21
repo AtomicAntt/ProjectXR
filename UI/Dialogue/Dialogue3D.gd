@@ -1,4 +1,5 @@
 @tool
+class_name Dialogue3D
 extends XRToolsViewport2DIn3D
 
 ## Generic node for dialogue UI elements like the text and buttons

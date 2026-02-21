@@ -4,20 +4,20 @@
 [ext_resource type="Script" uid="uid://qnl6qltlmw6v" path="res://UI/Dialogue/Dialogue3D.gd" id="2_t63re"]
 [ext_resource type="PackedScene" uid="uid://dwkf04m8m8u7x" path="res://UI/Dialogue/DialogueText2D.tscn" id="3_g5jgg"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_l8g47"]
+[sub_resource type="QuadMesh" id="QuadMesh_umxwu"]
 resource_local_to_scene = true
 size = Vector2(2, 0.4)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_02pw5"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_t63re"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w2lwl"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g5jgg"]
 transparency = 1
 cull_mode = 2
-albedo_texture = SubResource("ViewportTexture_02pw5")
+albedo_texture = SubResource("ViewportTexture_t63re")
 texture_filter = 1
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_e50vm"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_w2lwl"]
 resource_local_to_scene = true
 size = Vector3(2, 0.4, 0.02)
 
@@ -32,12 +32,12 @@ scene_properties_keys = PackedStringArray()
 size = Vector2i(1000, 200)
 
 [node name="Screen" parent="." index="1"]
-mesh = SubResource("QuadMesh_l8g47")
-surface_material_override/0 = SubResource("StandardMaterial3D_w2lwl")
+mesh = SubResource("QuadMesh_umxwu")
+surface_material_override/0 = SubResource("StandardMaterial3D_g5jgg")
 
 [node name="StaticBody3D" parent="." index="2"]
 screen_size = Vector2(2, 0.4)
 viewport_size = Vector2(1000, 200)
 
 [node name="CollisionShape3D" parent="StaticBody3D" index="0"]
-shape = SubResource("BoxShape3D_e50vm")
+shape = SubResource("BoxShape3D_w2lwl")

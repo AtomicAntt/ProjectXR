@@ -1,0 +1,13 @@
+{
+	"001" : {
+		"name" : "Game System", 
+		"text": "Would you like to teleport to the next level?",
+		"options": [
+			["Yep, teleport me there!", "teleport", "GrassLevel"],
+			["No thanks, I want to stay here.", ""]
+		]
+	}
+	"002" : {
+		
+	}
+}
