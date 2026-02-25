@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://ccririi5oouxq" path="res://GameObjects/Weapons/Sword.tscn" id="10_8x8nf"]
 [ext_resource type="PackedScene" uid="uid://468xstcis34h" path="res://GameObjects/Weapons/Sword2.tscn" id="11_ej1bv"]
 [ext_resource type="PackedScene" uid="uid://dj1emqludvcff" path="res://GameObjects/Props/Goblet.tscn" id="13_a5le3"]
-[ext_resource type="PackedScene" uid="uid://hnejrxekr1ah" path="res://UI/Dialogue/DialogueContainer3D.tscn" id="13_ijb51"]
 [ext_resource type="PackedScene" uid="uid://bin4d8ywgo1i0" path="res://GameObjects/NPCs/TestNPC.tscn" id="14_ijb51"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a02cp"]
@@ -97,10 +96,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.74068666, 0.689114, -0.8897
 [node name="Goblet" parent="." unique_id=1302629922 groups=["Refreshable"] instance=ExtResource("13_a5le3")]
 transform = Transform3D(0.9999998, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0.28874, 0.5545891, -0.89976895)
 
-[node name="DialogueOptions" parent="." unique_id=880844808 instance=ExtResource("13_ijb51")]
-transform = Transform3D(0.99161035, 0, -0.12926295, 0, 1, 0, 0.12926295, 0, 0.99161035, 2.0794933, 0.06450051, -3.1605864)
-
 [node name="TestNpc" parent="." unique_id=262217009 instance=ExtResource("14_ijb51")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61077094, 0.54999995, -3.115126)
 
+[node name="DialogueMarker3D" parent="TestNpc" index="2" unique_id=1880908404]
+transform = Transform3D(0.9992379, 0, 0.0390331, 0, 1, 0, -0.0390331, 0, 0.9992379, 1.3993952, -0.464482, -0.31813693)
+
 [connection signal="timeout" from="Table/Timer" to="Table" method="_on_timer_timeout"]
+
+[editable path="TestNpc"]

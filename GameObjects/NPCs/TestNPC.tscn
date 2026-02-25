@@ -13,9 +13,12 @@ height = 1.0
 [node name="TestNpc" type="CharacterBody3D" unique_id=262217009 groups=["PointerInteractable"]]
 collision_layer = 5242881
 script = ExtResource("1_jlhxw")
+dialogue_directory = "res://UI/Data/GameSystemDialogue.json"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1121909692]
 mesh = SubResource("CapsuleMesh_kkron")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1074130352]
 shape = SubResource("CapsuleShape3D_kkron")
+
+[node name="DialogueMarker3D" type="Marker3D" parent="." unique_id=1880908404]

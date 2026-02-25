@@ -34,8 +34,8 @@ func _ready() -> void:
 	dialogue_text_2d.text_completed.connect(show_options)
 	#add_option("Yo, teleport me", {})
 	#add_option("JK", {})
-	parse_json_data("res://UI/Data/GameSystemDialogue.json")
-	write_text()
+	#parse_json_data("res://UI/Data/GameSystemDialogue.json")
+	#write_text()
 
 func set_text(new_text: String) -> void:
 	dialogue_text_2d.set_text(new_text)
@@ -89,6 +89,10 @@ func process_data(index: int) -> void:
 	for option: Dictionary in processing_data["options"]:
 		add_option(option["text"], option["functions"])
 	end = processing_data["end"]
+	
+	# We will now be ready for the next text to be loaded.
+	# This may be overidden by a goto function called by one of the options instantiated.
+	current_index += 1
 
 ## Call this either after a dialogue is continued (no dialogue choices given) or a dialogue choice is given and all the functions given are called.
 func load_next_text() -> void:
@@ -96,10 +100,5 @@ func load_next_text() -> void:
 		queue_free()
 		return
 	
-	# let us hope that any goto functions have changed this by the time this happens
 	process_data(current_index)
 	write_text()
-	
-	# We will now be ready for the next text to be loaded
-	current_index += 1
-	
