@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://b16wr05brl3jt" path="res://Levels/SceneLoader.gd" id="2_4dvsh"]
 [ext_resource type="PackedScene" uid="uid://dysl4qvaovevq" path="res://Player/player.tscn" id="2_kycxd"]
 [ext_resource type="PackedScene" uid="uid://ck0lw7k56iym" path="res://Levels/TestLevel.tscn" id="3_pa6j6"]
-[ext_resource type="Script" uid="uid://cfak1k3n50c4g" path="res://Levels/DialogueManager.gd" id="4_ks8n1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ay5oo"]
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -33,9 +32,6 @@ current = true
 [node name="TestLevel" parent="." unique_id=184073505 instance=ExtResource("3_pa6j6")]
 
 [node name="GameManager" type="Node" parent="." unique_id=244231677]
-
-[node name="DialogueManager" type="Node" parent="GameManager" unique_id=1073990675]
-script = ExtResource("4_ks8n1")
 
 [node name="SceneLoader" type="Node" parent="GameManager" unique_id=1667518447 node_paths=PackedStringArray("world", "level_instance")]
 script = ExtResource("2_4dvsh")
