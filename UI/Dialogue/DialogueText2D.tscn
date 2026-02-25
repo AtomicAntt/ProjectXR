@@ -3,7 +3,7 @@
 [ext_resource type="StyleBox" uid="uid://br27snnn7e5f6" path="res://UI/Dialogue/DialogueStyleBox.tres" id="1_m36lx"]
 [ext_resource type="Script" uid="uid://c6ci554qn4hgi" path="res://UI/Dialogue/dialogue_text_2d.gd" id="1_wmx7u"]
 
-[node name="DialogueScreen" type="Node2D" unique_id=1599330894]
+[node name="DialogueScreen" type="Node2D" unique_id=1599330894 groups=["DialogueText2D"]]
 script = ExtResource("1_wmx7u")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1646460885]

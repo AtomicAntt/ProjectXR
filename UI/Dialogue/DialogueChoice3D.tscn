@@ -11,7 +11,7 @@ size = Vector2(2, 0.14)
 [sub_resource type="ViewportTexture" id="ViewportTexture_un2m2"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m0n0u"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_elc5p"]
 transparency = 1
 cull_mode = 2
 albedo_texture = SubResource("ViewportTexture_un2m2")
@@ -21,7 +21,7 @@ texture_filter = 1
 resource_local_to_scene = true
 size = Vector3(2, 0.14, 0.02)
 
-[node name="DialogueChoice" unique_id=511109773 instance=ExtResource("1_m0n0u")]
+[node name="DialogueChoice" unique_id=511109773 groups=["DialogueChoice"] instance=ExtResource("1_m0n0u")]
 script = ExtResource("2_un2m2")
 screen_size = Vector2(2, 0.14)
 scene = ExtResource("3_elc5p")
@@ -34,7 +34,7 @@ size = Vector2i(1000, 70)
 
 [node name="Screen" parent="." index="1" unique_id=801107542]
 mesh = SubResource("QuadMesh_m0n0u")
-surface_material_override/0 = SubResource("StandardMaterial3D_m0n0u")
+surface_material_override/0 = SubResource("StandardMaterial3D_elc5p")
 
 [node name="StaticBody3D" parent="." index="2" unique_id=204688295 groups=["PointerInteractable"]]
 screen_size = Vector2(2, 0.14)

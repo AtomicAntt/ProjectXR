@@ -5,32 +5,28 @@
 		"text": "Would you like to teleport to the next level?",
 		"options": [
 			{
-				"response" : "Yep, teleport me there!",
-				"function" : "teleport",
-				"arguments" : ["GrassLevel"],
-				"goto" : "default"
+				"text" : "Yep, teleport me there!",
+				"functions" : {"teleport" : ["GrassLevel"]}
 			},
 			{
-				"response" : "No thanks, I want to stay here.",
-				"function" : "",
-				"arguments" : [],
-				"goto" : 2
+				"text" : "No thanks, I want to stay here.",
+				"functions" : {"goto" : [2]}
 			}
 		],
-		"goto" : "default"
+		"end": false
 	},
 	{
 		"id" : 1,
 		"name" : "Game System", 
 		"text": "Very well, I will send you to the next level!",
 		"options": [],
-		"goto" : "end"
+		"end" : true
 	},
 	{
 		"id" : 2,
 		"name" : "Game System", 
 		"text": "Very well, let me know if you change your mind.",
 		"options": [],
-		"goto" : "end"
+		"end" : true
 	},
 ]
