@@ -32,10 +32,6 @@ func _ready() -> void:
 	Global.goto_action.connect(goto)
 	Global.confirm_dialogue.connect(load_next_text)
 	dialogue_text_2d.text_completed.connect(show_options)
-	#add_option("Yo, teleport me", {})
-	#add_option("JK", {})
-	#parse_json_data("res://UI/Data/GameSystemDialogue.json")
-	#write_text()
 
 func set_text(new_text: String) -> void:
 	dialogue_text_2d.set_text(new_text)

@@ -19,14 +19,11 @@ func write_text() -> void:
 	text_label.visible_ratio = 0
 	tween = get_tree().create_tween()
 	tween.tween_property(text_label, "visible_ratio", 1, (get_text().length())/characters_per_second)
-	print(characters_per_second)
-	print(get_text().length()/characters_per_second)
 	tween.finished.connect(emit_text_completed)
 
 ## Call this function to skip dialogue to completion that is currently writing or move on to the next dialogue text if any exists. 
 ## Probably called when the user hits the trigger button on any of their controllers. Preferably, it would be the one not holding an item that can do an action.
 func proceed_dialogue() -> void:
-	print("proceeded dialogue")
 	if text_label.visible_ratio < 1:
 		tween.stop()
 		text_label.visible_ratio = 1
