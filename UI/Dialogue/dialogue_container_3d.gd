@@ -5,9 +5,17 @@ var dialogue_choice3D: PackedScene = preload("res://UI/Dialogue/DialogueChoice3D
 
 @onready var dialogue_text: Dialogue3D = $DialogueText
 @onready var dialogue_text_2d: DialogueText2D = dialogue_text.get_scene_instance()
+
 @export var text_offset: float = 0.4 # offset between the text and the first option
 @export var choice_offset: float = 0.25
 
+var dialogue_data: Dictionary
+
+func parse_json_data(json_directory: String):
+	var file := FileAccess.get_file_as_string(json_directory)
+	dialogue_data = JSON.parse_string(file)
+	
+	
 
 func _ready() -> void:
 	add_option("Yo, teleport me", "", [])

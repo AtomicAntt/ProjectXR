@@ -8,4 +8,5 @@ script = ExtResource("1_nwqtv")
 
 [node name="DialogueText" parent="." unique_id=511109773 instance=ExtResource("1_abr6p")]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 1.3, 0)
-scene_properties_keys = PackedStringArray("dialogue_text_2d.gd")
+scene_properties_keys = PackedStringArray("dialogue_text_2d.gd", "characters_per_second")
+characters_per_second = 35.0
