@@ -46,7 +46,7 @@ const _DIRTY_TRANSPARENCY	:= 0x0020	# Transparency needs update
 const _DIRTY_ALPHA_SCISSOR	:= 0x0040	# Alpha scissor needs update
 const _DIRTY_UNSHADED		:= 0x0080	# Shade mode needs update
 const _DIRTY_FILTERED		:= 0x0100	# Filter mode needs update
-const _DIRTY_SURFACE		:= 0x0200	# Surface material needs update
+const _DIRTY_SURFACE		:= 0x0200	# Surface material needs updates
 const _DIRTY_REDRAW			:= 0x0400	# Redraw required
 const _DIRTY_ALL			:= 0x07FF	# All dirty
 

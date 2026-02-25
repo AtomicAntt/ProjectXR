@@ -50,29 +50,39 @@ func get_text() -> String:
 func goto(index: int) -> void:
 	current_index = index
 
+# Adds the actual 3D option UI button and initialize properties for the 2D UI button within it.
+# Initially, these options will be invisible and you must call show_options() to display them.
+# This is because dialogue text must be completed before the player can choose an option.
 func add_option(text: String, functions: Dictionary) -> void:
 	var dialogue_choice3D_instance: Dialogue3D = dialogue_choice3D.instantiate()
 	add_child(dialogue_choice3D_instance)
-	dialogue_choice3D_instance.global_position = dialogue_text.global_position - Vector3(0, ((get_child_count()-2)*choice_offset) + text_offset, 0)
+	dialogue_choice3D_instance.global_position = dialogue_text.global_position - Vector3(0, ((get_tree().get_node_count_in_group("DialogueChoice")-1)*choice_offset) + text_offset, 0)
 	
 	var dialogue_choice2D: DialogueButton2D = dialogue_choice3D_instance.get_scene_instance()
 	dialogue_choice2D.set_text(text)
 	dialogue_choice2D.set_functions(functions)
-	dialogue_choice2D.visible = false
+	
+	dialogue_choice3D_instance.visible = false
+	dialogue_choice3D_instance.enabled = false
 
+# This function is part of the cleanup and should be called before processing new data from the JSON parsed data.
 func remove_options() -> void:
 	for node in get_children():
 		if node.is_in_group("DialogueChoice"):
+			node.remove_from_group("DialogueChoice") # This is to prevent an issue relating to adding new dialogues under these dialogues about to be removed.
 			node.queue_free()
 
-# After all the text is completed, you can select an option
+# This function should be called after all the text is completed so you can select an option.
 func show_options() -> void:
 	for node in get_children():
 		if node.is_in_group("DialogueChoice"):
-			node.visible = true
+			var dialogue_choice: Dialogue3D = node
+			dialogue_choice.visible = true
+			dialogue_choice.enabled = true
 
-## Adds the text to the dialogue, adds the options, and tracks if dialogue would end.
+## Adds the text to the dialogue, adds the options, and tracks if dialogue would end once interacted with.
 func process_data(index: int) -> void:
+	remove_options()
 	var processing_data: Dictionary = dialogue_data[index]
 	
 	set_text(processing_data["text"])
@@ -80,13 +90,16 @@ func process_data(index: int) -> void:
 		add_option(option["text"], option["functions"])
 	end = processing_data["end"]
 
-# Call this either after a dialogue is continued (no dialogue choices given) or a dialogue choice is given and all the functions given are called.
+## Call this either after a dialogue is continued (no dialogue choices given) or a dialogue choice is given and all the functions given are called.
 func load_next_text() -> void:
-	remove_options()
-	
 	if end:
 		queue_free()
+		return
 	
 	# let us hope that any goto functions have changed this by the time this happens
 	process_data(current_index)
+	write_text()
+	
+	# We will now be ready for the next text to be loaded
+	current_index += 1
 	

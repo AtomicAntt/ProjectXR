@@ -11,7 +11,7 @@ size = Vector2(2, 0.14)
 [sub_resource type="ViewportTexture" id="ViewportTexture_un2m2"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_elc5p"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m0n0u"]
 transparency = 1
 cull_mode = 2
 albedo_texture = SubResource("ViewportTexture_un2m2")
@@ -34,7 +34,7 @@ size = Vector2i(1000, 70)
 
 [node name="Screen" parent="." index="1" unique_id=801107542]
 mesh = SubResource("QuadMesh_m0n0u")
-surface_material_override/0 = SubResource("StandardMaterial3D_elc5p")
+surface_material_override/0 = SubResource("StandardMaterial3D_m0n0u")
 
 [node name="StaticBody3D" parent="." index="2" unique_id=204688295 groups=["PointerInteractable"]]
 screen_size = Vector2(2, 0.14)

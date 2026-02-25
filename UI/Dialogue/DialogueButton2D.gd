@@ -8,7 +8,7 @@ var functions_called: Dictionary
 
 func _on_button_pressed() -> void:
 	#Global.switch_scene(scene_name)
-	print("button pressed")
+	#print("button pressed")
 	call_functions()
 	Global.emit_confirm_dialogue()
 

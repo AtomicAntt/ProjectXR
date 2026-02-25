@@ -26,8 +26,9 @@ script = ExtResource("2_t63re")
 screen_size = Vector2(2, 0.4)
 scene = ExtResource("3_g5jgg")
 viewport_size = Vector2(1000, 200)
+update_mode = 2
 scene_properties_keys = PackedStringArray("dialogue_text_2d.gd", "characters_per_second")
-characters_per_second = 35.0
+characters_per_second = 1.0
 
 [node name="Viewport" parent="." index="0" unique_id=1581313723]
 size = Vector2i(1000, 200)

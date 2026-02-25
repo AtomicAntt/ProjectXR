@@ -6,11 +6,11 @@
 		"options": [
 			{
 				"text" : "Yep, teleport me there!",
-				"functions" : {"teleport" : ["GrassLevel"]}
+				"functions" : {"teleport" : "GrassLevel"}
 			},
 			{
 				"text" : "No thanks, I want to stay here.",
-				"functions" : {"goto" : [2]}
+				"functions" : {"goto" : 2}
 			}
 		],
 		"end": false
