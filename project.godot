@@ -45,6 +45,7 @@ Fade="MeshInstance3D, purpose is to make XR full screen effects."
 PointerInteractable="Interactables that can be interacted with if pressed. Used to activate haptic feedback when encountering a PhysicsBody3D with this group."
 DialogueText2D=""
 DialogueContainer=""
+Enemy=""
 
 [physics]
 

@@ -1,0 +1,32 @@
+[
+	{
+		"id" : 0,
+		"name" : "Game System", 
+		"text": "Would you like to teleport you back?",
+		"options": [
+			{
+				"text" : "Yep, teleport me back!",
+				"functions" : {"teleport" : "TestLevel"}
+			},
+			{
+				"text" : "No thanks, I want to stay here.",
+				"functions" : {"goto" : 2}
+			}
+		],
+		"end": false
+	},
+	{
+		"id" : 1,
+		"name" : "Game System", 
+		"text": "Very well, I will send you to back to the test level!",
+		"options": [],
+		"end" : true
+	},
+	{
+		"id" : 2,
+		"name" : "Game System", 
+		"text": "Very well, let me know if you change your mind.",
+		"options": [],
+		"end" : true
+	},
+]

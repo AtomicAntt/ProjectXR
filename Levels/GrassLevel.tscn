@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ckrafxi6603wp" path="res://GameAssets/Environment/Grass.glb" id="1_k4h6b"]
 [ext_resource type="Shader" uid="uid://wcxu5ygbrouf" path="res://Shaders/Environment/Grass.tres" id="2_jvpgi"]
+[ext_resource type="PackedScene" uid="uid://bin4d8ywgo1i0" path="res://GameObjects/NPCs/TestNPC.tscn" id="3_waf8l"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_k4h6b"]
 size = Vector2(5, 5)
@@ -72,4 +73,12 @@ material_override = SubResource("ShaderMaterial_waf8l")
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_jvpgi")
 
+[node name="TestNpc" parent="." unique_id=262217009 instance=ExtResource("3_waf8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2342968, 0.64398813, -3.1431417)
+dialogue_directory = "res://UI/Data/GameSystemDialogue2.json"
+
+[node name="DialogueMarker3D" parent="TestNpc" index="2" unique_id=1880908404]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5967181, 0, 0)
+
 [editable path="GrassGLB"]
+[editable path="TestNpc"]
