@@ -11,7 +11,7 @@ extends XRToolsPickable
 ## The largest angle between gravity and the object's orientation before spilling.
 @export_range(0, 180) var angle_threshold: float = 90
 
-@onready var cap_mesh: MeshInstance3D = $Cap
+#@onready var cap_mesh: MeshInstance3D = $Cap
 @onready var open_sound: AudioStreamPlayer3D = $BottleOpen
 
 @onready var gravity_direction: Vector3 = Vector3.DOWN
@@ -19,9 +19,14 @@ extends XRToolsPickable
 
 func _ready() -> void:
 	set_fill(fill_amount)
+	
+	if not Engine.is_editor_hint():
+		$Cap.top_level = true
 
 func refresh() -> void:
-	cap_mesh.visible = true
+	#cap_mesh.visible = true
+	$SnapZone.pick_up_object($Cap)
+	$SnapZone.enabled = true
 	fill_amount = 0.5
 	set_fill(fill_amount)
 	
@@ -31,23 +36,31 @@ func set_fill(amount: float) -> void:
 func set_liquid_visible(value: bool) -> void:
 	$Bottle.set_liquid_visible(value)
 
+func is_open() -> bool:
+	return not $SnapZone.has_snapped_object()
+
 func action() -> void:
 	super.action()
 	
-	# No cap = bottle is opened already
-	if not cap_mesh.visible:
+	if is_open():
 		return
+		
+	#$Cap.let_go($SnapZone, Vector3.ZERO, Vector3.ZERO)
+	$SnapZone.drop_object()
+	$SnapZone.enabled = false
+	$Cap.apply_impulse($Cap.global_transform.basis.y * open_force, $Cap.global_position - $Cap.global_transform.basis.y)
+	open_sound.play()
 	
-	var cap_instance: BottleCap = bottle_cap.instantiate()
-	if cap_instance:
-		cap_instance.set_as_top_level(true)
-		cap_instance.set_mesh($Cap.mesh)
-		cap_instance.set_material($Cap.material_override)
-		add_child(cap_instance)
-		cap_instance.global_transform = cap_mesh.global_transform
-		cap_instance.apply_impulse(cap_mesh.global_transform.basis.y * open_force, cap_mesh.global_position - cap_mesh.global_transform.basis.y)
-		cap_mesh.visible = false
-		open_sound.play()
+	#var cap_instance: BottleCap = bottle_cap.instantiate()
+	#if cap_instance:
+		#cap_instance.set_as_top_level(true)
+		#cap_instance.set_mesh($Cap.mesh)
+		#cap_instance.set_material($Cap.material_override)
+		#add_child(cap_instance)
+		#cap_instance.global_transform = cap_mesh.global_transform
+		#cap_instance.apply_impulse(cap_mesh.global_transform.basis.y * open_force, cap_mesh.global_position - cap_mesh.global_transform.basis.y)
+		#cap_mesh.visible = false
+		#open_sound.play()
 
 # if within, then liquid will not spill.
 var within_threshold: bool = true
@@ -65,7 +78,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		angle_between += 0.03
 	
-	if angle_between <= threshold or cap_mesh.visible or fill_amount <= min_fill_amount:
+	if angle_between <= threshold or not is_open() or fill_amount <= min_fill_amount:
 		# no spill
 		within_threshold = true
 	else: 
@@ -88,3 +101,15 @@ func _physics_process(delta: float) -> void:
 		else:
 			set_liquid_visible(true)
 		
+		# Only let the player grab cap if player holds this bottle and cap is in the snapzone
+		#if (is_picked_up() and not is_open()):
+			## You can only grab the bottle if it is closed bottle
+			#$Cap.enabled = true
+		#elif not is_picked_up():
+			#$Cap.enabled = false
+		#elif is_open():
+			#$Cap.enabled = true
+		#else:
+			#$Cap.enabled = false
+			
+	

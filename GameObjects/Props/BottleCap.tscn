@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://besw3dspbhtck"]
+[gd_scene format=4 uid="uid://besw3dspbhtck"]
 
 [ext_resource type="Script" uid="uid://ba8aomrgknhys" path="res://GameObjects/Props/BottleCapPickable.gd" id="1_ln6ut"]
 
@@ -39,19 +39,19 @@ shadow_mesh = SubResource("ArrayMesh_5tpqg")
 height = 0.019119024
 radius = 0.016113281
 
-[node name="BottleCap" type="RigidBody3D" groups=["BottleCap"]]
+[node name="BottleCap" type="RigidBody3D" unique_id=935338451 groups=["BottleCap"]]
 top_level = true
 collision_layer = 4
-collision_mask = 7
+collision_mask = 65543
 script = ExtResource("1_ln6ut")
 ranged_grab_method = 0
 second_hand_grab = 1
 metadata/_custom_type_script = "uid://c5kechbnb2oxx"
 
-[node name="Cap" type="MeshInstance3D" parent="."]
+[node name="Cap" type="MeshInstance3D" parent="." unique_id=898383980]
 mesh = SubResource("ArrayMesh_60db1")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=363497761]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.009617209, 0)
 shape = SubResource("CylinderShape3D_ln6ut")
