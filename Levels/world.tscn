@@ -30,6 +30,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.34063888)
 current = true
 
 [node name="TestLevel" parent="." unique_id=184073505 instance=ExtResource("3_pa6j6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00057959557, 0.0019916296, -0.00040191412)
 
 [node name="GameManager" type="Node" parent="." unique_id=244231677]
 

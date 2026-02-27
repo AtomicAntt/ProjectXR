@@ -96,6 +96,18 @@ surface_material_override/0 = SubResource("StandardMaterial3D_emto3")
 transform = Transform3D(-1.2697025e-08, 5.083149e-16, 0.29047412, -0.2119581, 0.1986177, -9.26498e-09, -0.19861767, -0.21195811, -8.681851e-09, 0, 0.02014111, 0.016250417)
 shape = SubResource("ConcavePolygonShape3D_emto3")
 
+[node name="DebugLabel" type="Label3D" parent="." index="7" unique_id=418382816]
+transform = Transform3D(1, 0, 0, 0, 0.80339986, 0.5954399, 0, -0.5954399, 0.80339986, 0, 0.03500241, 0.036952868)
+text = "lv: "
+font_size = 16
+outline_size = 8
+
+[node name="DebugLabel2" type="Label3D" parent="." index="8" unique_id=383314647]
+transform = Transform3D(1, 0, 0, 0, 0.80339986, 0.5954399, 0, -0.5954399, 0.80339986, 0, -0.03427533, 0.088298075)
+text = "av:"
+font_size = 16
+outline_size = 8
+
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 
 [editable path="Sword"]

@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://bl1b3tjoajwtw"]
 
+[ext_resource type="Script" uid="uid://dr1x1jtfldt7g" path="res://GameObjects/Enemies/enemy.gd" id="1_v7x7o"]
+
 [sub_resource type="SphereMesh" id="SphereMesh_ascej"]
 radius = 0.1
 height = 0.2
@@ -8,6 +10,7 @@ height = 0.2
 radius = 0.1
 
 [node name="Enemy" type="CharacterBody3D" unique_id=125756557 groups=["Enemy"]]
+script = ExtResource("1_v7x7o")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1929277626]
 mesh = SubResource("SphereMesh_ascej")
