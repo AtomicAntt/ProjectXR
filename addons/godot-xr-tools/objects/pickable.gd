@@ -146,13 +146,17 @@ func _exit_tree():
 
 
 # Test if this object can be picked up
-func can_pick_up(by: Node3D) -> bool:
+func can_pick_up(by: Node3D) -> bool:	
 	# Refuse if not enabled
 	if not enabled:
 		return false
+		
+	#if (by.global_position.distance_to(self.global_position) > custom_distance) && custom_distance != -1:
+		#return false
 
 	# Allow if not held by anything
 	if not is_picked_up():
+		print("looks like you can grab the " + self.name)
 		return true
 
 	# Fail if second hand grabbing isn't allowed
@@ -162,6 +166,7 @@ func can_pick_up(by: Node3D) -> bool:
 	# Fail if either pickup isn't by a hand
 	if not _grab_driver.primary.pickup or not by is XRToolsFunctionPickup:
 		return false
+	
 
 	# Allow second hand grab
 	return true

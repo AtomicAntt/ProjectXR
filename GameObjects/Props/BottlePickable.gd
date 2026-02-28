@@ -45,7 +45,6 @@ func action() -> void:
 	if is_open():
 		return
 		
-	#$Cap.let_go($SnapZone, Vector3.ZERO, Vector3.ZERO)
 	$SnapZone.drop_object()
 	$SnapZone.enabled = false
 	$Cap.apply_impulse($Cap.global_transform.basis.y * open_force, $Cap.global_position - $Cap.global_transform.basis.y)
@@ -111,5 +110,8 @@ func _physics_process(delta: float) -> void:
 			#$Cap.enabled = true
 		#else:
 			#$Cap.enabled = false
-			
-	
+		
+		#if is_picked_up() or is_open():
+			#$Cap.enabled = true
+		#else:
+			#$Cap.enabled = false

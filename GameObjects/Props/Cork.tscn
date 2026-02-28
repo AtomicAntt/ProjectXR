@@ -49,11 +49,11 @@ second_hand_grab = 1
 metadata/_custom_type_script = "uid://c5kechbnb2oxx"
 
 [node name="Cap" type="MeshInstance3D" parent="." unique_id=1772873493]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1138258e-05, 0.023745134, -0.0007564719)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1138258e-05, -0.027274277, -0.0007564719)
 mesh = SubResource("ArrayMesh_exy5m")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_lttvg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=568388942]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1138258e-05, 0.023745134, -0.0007564719)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1138258e-05, -0.027274277, -0.0007564719)
 shape = SubResource("ConvexPolygonShape3D_lttvg")

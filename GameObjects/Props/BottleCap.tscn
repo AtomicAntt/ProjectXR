@@ -49,9 +49,10 @@ second_hand_grab = 1
 metadata/_custom_type_script = "uid://c5kechbnb2oxx"
 
 [node name="Cap" type="MeshInstance3D" parent="." unique_id=898383980]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.018990546, 0)
 mesh = SubResource("ArrayMesh_60db1")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=363497761]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.009617209, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.009373337, 0)
 shape = SubResource("CylinderShape3D_ln6ut")

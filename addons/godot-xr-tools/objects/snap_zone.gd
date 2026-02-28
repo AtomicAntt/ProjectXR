@@ -50,6 +50,9 @@ enum SnapMode {
 ## Initial object in snap zone
 @export var initial_object : NodePath
 
+## CUSTOM VARIABLE: The function_pickup hand must be within this distance to be able to be picked up. If value is -1, then the default pick up distance is used
+@export var custom_distance: float = -1
+
 
 # Public fields
 var closest_object : Node3D = null
@@ -114,6 +117,9 @@ func _process(_delta):
 func can_pick_up(by: Node3D) -> bool:
 	# Refuse if not enabled
 	if not enabled:
+		return false
+	
+	if (by.global_position.distance_to(self.global_position) > custom_distance) && custom_distance != -1:
 		return false
 
 	# Refuse if no object is held

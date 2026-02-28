@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://besw3dspbhtck" path="res://GameObjects/Props/BottleCap.tscn" id="3_rjrcd"]
 [ext_resource type="AudioStream" uid="uid://bqdgqlgcahvas" path="res://GameAssets/SFX/510278__tripjazz__bottle-opening.wav" id="4_l1357"]
 [ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="6_o3cvd"]
+[ext_resource type="Script" uid="uid://brqwp76jji3fe" path="res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd" id="7_oegyh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wpp67"]
 radius = 0.03857422
@@ -71,10 +72,15 @@ process_material = SubResource("ParticleProcessMaterial_rjrcd")
 draw_pass_1 = SubResource("SphereMesh_rjrcd")
 
 [node name="Cap" parent="." index="4" unique_id=935338451 instance=ExtResource("3_rjrcd")]
-transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24539135, 0)
+transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2669333, 0)
 top_level = false
 
 [node name="SnapZone" parent="." index="5" unique_id=1624564644 instance=ExtResource("6_o3cvd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24616763, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2669333, 0)
 snap_require = "BottleCap"
 initial_object = NodePath("../Cap")
+custom_distance = 0.05
+
+[node name="XRToolsHighlightVisible" type="Node3D" parent="." index="6" unique_id=1686427641]
+script = ExtResource("7_oegyh")
+metadata/_custom_type_script = "uid://brqwp76jji3fe"
