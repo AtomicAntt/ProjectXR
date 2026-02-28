@@ -25,10 +25,9 @@ script = ExtResource("7_ie5da")
 closed_pose = ExtResource("7_emto3")
 metadata/_custom_type_script = "uid://mn7lvln8uls8"
 
-[sub_resource type="Resource" id="Resource_yb26l"]
+[sub_resource type="Resource" id="Resource_emto3"]
 script = ExtResource("11_q28k2")
-magnitude = 0.7
-duration_ms = 100
+duration_ms = 150
 metadata/_custom_type_script = "uid://cuf42fufnnrds"
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_pyaes"]
@@ -74,9 +73,9 @@ hand_pose = SubResource("Resource_ab3tn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012028933, 0.046602942, -0.08815414)
 hand_pose = SubResource("Resource_idis7")
 
-[node name="Shoot" type="Node" parent="." index="4" unique_id=1692159660]
+[node name="ImpactRumbler" type="Node" parent="." index="4" unique_id=1692159660]
 script = ExtResource("10_n765s")
-event = SubResource("Resource_yb26l")
+event = SubResource("Resource_emto3")
 metadata/_custom_type_script = "uid://b1dtx7o3p7qgq"
 
 [node name="XRToolsHighlightVisible" type="Node3D" parent="." index="5" unique_id=294023965]
