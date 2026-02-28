@@ -98,7 +98,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61077094, 0.54999995, -3.11
 transform = Transform3D(0.9992379, 0, 0.0390331, 0, 1, 0, -0.0390331, 0, 0.9992379, 1.3993952, -0.464482, -0.31813693)
 
 [node name="Enemy" parent="." unique_id=125756557 instance=ExtResource("14_76fkc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7177299, 0.94506, -0.28901207)
+transform = Transform3D(-0.99999994, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.99999994, 0.94321525, 0.94506, -0.2601629)
 
 [connection signal="timeout" from="Table/Timer" to="Table" method="_on_timer_timeout"]
 
