@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://b5qmlrfi48dr5"]
+
+[ext_resource type="Texture2D" uid="uid://c7gkcaf557ybm" path="res://GameAssets/Textures/Floor.svg" id="1_78aev"]
+[ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="4_5irrg"]
+[ext_resource type="PackedScene" uid="uid://ccririi5oouxq" path="res://GameObjects/Weapons/Sword.tscn" id="10_frp5h"]
+[ext_resource type="PackedScene" uid="uid://468xstcis34h" path="res://GameObjects/Weapons/Sword2.tscn" id="11_b8chn"]
+[ext_resource type="PackedScene" uid="uid://bin4d8ywgo1i0" path="res://GameObjects/NPCs/TestNPC.tscn" id="12_vgrak"]
+[ext_resource type="PackedScene" uid="uid://bl1b3tjoajwtw" path="res://GameObjects/Enemies/Enemy.tscn" id="13_sm5jm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a02cp"]
+size = Vector3(5, 0.1, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vqnaq"]
+albedo_texture = ExtResource("1_78aev")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_go701"]
+material = SubResource("StandardMaterial3D_vqnaq")
+size = Vector3(5, 0.1, 5)
+
+[node name="CombatLevel" type="Node3D" unique_id=184073505]
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=383300650]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1909956884]
+shape = SubResource("BoxShape3D_a02cp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/CollisionShape3D" unique_id=1553235300]
+mesh = SubResource("BoxMesh_go701")
+
+[node name="TestNpc" parent="." unique_id=262217009 instance=ExtResource("12_vgrak")]
+transform = Transform3D(0.82134837, 0, 0.5704269, 0, 1, 0, -0.5704269, 0, 0.82134837, -1.971234, 0.54999995, -1.224031)
+
+[node name="MeshInstance3D" parent="TestNpc" index="0" unique_id=1121909692]
+transform = Transform3D(1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 1.0000001, 0.17772067, 0, -0.25589728)
+
+[node name="CollisionShape3D" parent="TestNpc" index="1" unique_id=1074130352]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17772067, 0, -0.25589728)
+
+[node name="DialogueMarker3D" parent="TestNpc" index="2" unique_id=1880908404]
+transform = Transform3D(0.99923825, 0, 0.039033264, 0, 1, 0, -0.039033264, 0, 0.99923825, 0.8688215, -0.464482, -0.00823164)
+
+[node name="Enemy" parent="." unique_id=125756557 instance=ExtResource("13_sm5jm")]
+transform = Transform3D(-4.371138e-08, 0, -0.9999998, 0, 1, 0, 0.9999998, 0, -4.371138e-08, 0.05531159, 0.7687671, -0.9056334)
+
+[node name="SnapZone" parent="." unique_id=1958594865 instance=ExtResource("4_5irrg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.606303, 0.69849324, -0.3111624)
+initial_object = NodePath("../Sword2")
+
+[node name="SnapZone2" parent="." unique_id=1532067654 instance=ExtResource("4_5irrg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.606303, 0.69849324, 0.1705957)
+initial_object = NodePath("../Sword")
+
+[node name="Sword2" parent="." unique_id=250737451 instance=ExtResource("11_b8chn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5494073, 0.6593205, -0.20137566)
+
+[node name="Sword" parent="." unique_id=653402982 instance=ExtResource("10_frp5h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.606303, 0.69849324, 0.1705957)
+
+[editable path="TestNpc"]

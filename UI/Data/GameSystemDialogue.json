@@ -2,11 +2,19 @@
 	{
 		"id" : 0,
 		"name" : "Game System", 
-		"text": "Would you like to teleport to the next level?",
+		"text": "Where would you like to go?",
 		"options": [
 			{
-				"text" : "Yep, teleport me there!",
+				"text" : "Take me to the combat level.",
+				"functions" : {"teleport" : "CombatLevel"}
+			},
+			{
+				"text" : "Take me to the grass level.",
 				"functions" : {"teleport" : "GrassLevel"}
+			},
+			{
+				"text" : "Take me to the test level.",
+				"functions" : {"teleport" : "TestLevel"}
 			},
 			{
 				"text" : "No thanks, I want to stay here.",
@@ -18,7 +26,7 @@
 	{
 		"id" : 1,
 		"name" : "Game System", 
-		"text": "Very well, I will send you to the next level!",
+		"text": "Very well, I will send you there now!",
 		"options": [],
 		"end" : true
 	},

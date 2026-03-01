@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b7m8vo5ip6wg6"]
+
+[ext_resource type="PackedScene" uid="uid://b5d1rvlvx05cp" path="res://GameAssets/Enemies/Slime.glb" id="1_kj4mu"]
+[ext_resource type="Shader" uid="uid://covdtv4sngqeq" path="res://Shaders/Enemy/hit_flash.gdshader" id="2_g5hj1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jthom"]
+render_priority = 0
+shader = ExtResource("2_g5hj1")
+shader_parameter/flash = 0.0
+shader_parameter/custom_color = Color(1, 1, 1, 1)
+
+[node name="Slime" unique_id=1501147508 instance=ExtResource("1_kj4mu")]
+
+[node name="Sphere" parent="." index="0" unique_id=412562946]
+material_overlay = SubResource("ShaderMaterial_jthom")

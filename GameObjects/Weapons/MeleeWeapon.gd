@@ -5,6 +5,7 @@ extends XRToolsPickable
 func _on_hitbox_body_entered(body: Node3D) -> void:
 	if is_picked_up() and body.is_in_group("Enemy"):
 		if _grab_driver.primary.controller:
+			var enemy: Enemy = body
 			var xr_controller: XRController3D = _grab_driver.primary.controller
 			var xr_linear_velocity: Vector3 = xr_controller.get_pose().linear_velocity
 			var xr_angular_velocity: Vector3 = xr_controller.get_pose().angular_velocity
@@ -18,3 +19,4 @@ func _on_hitbox_body_entered(body: Node3D) -> void:
 				var rumbler: XRToolsRumbleEvent = $ImpactRumbler.event
 				rumbler.magnitude = clampf(((xr_angular_magnitude/2) + (xr_linear_magnitude/2))/25, 0.0, 1.0)
 				$ImpactRumbler.rumble_hand(_grab_driver.primary.controller)
+				enemy.hurt(0)
