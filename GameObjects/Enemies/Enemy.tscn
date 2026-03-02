@@ -15,7 +15,6 @@ script = ExtResource("1_v7x7o")
 shape = SubResource("ConvexPolygonShape3D_pmcfi")
 
 [node name="RecoveryTimer" type="Timer" parent="." unique_id=217044411]
-wait_time = 5.0
 one_shot = true
 
 [connection signal="timeout" from="RecoveryTimer" to="." method="_on_recovery_timer_timeout"]

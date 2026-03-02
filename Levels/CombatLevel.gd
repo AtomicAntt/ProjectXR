@@ -46,12 +46,15 @@ func check_waiting() -> void:
 ## This function will set enemies to their spawn points. It should be called at the start of an enemy's turn so they can be ready to attack.
 ## It should also be called if there are more than one enemy during a player's turn so that one may be selected.
 func set_enemy_positions() -> void:
+	# Ensure that there are not more enemies than enemy spawn points or this code breaks.
 	for i in range(get_tree().get_node_count_in_group("Enemy")):
 		var enemy: Enemy = get_tree().get_nodes_in_group("Enemy")[i]
 		var enemy_spawn: Marker3D = enemy_spawn_points.get_children()[i]
 		enemy.global_transform = enemy_spawn.global_transform
 		
 		# Do later: Change this into a function they have as set_visible() in case they are tweening a shader or else this could cause unknown issues
-		enemy.visible = true
+		#enemy.visible = true
+		
+		enemy.reappear()
 		
 		print("enemy now visible after setting position")

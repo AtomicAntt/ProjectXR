@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bl1b3tjoajwtw" path="res://GameObjects/Enemies/Enemy.tscn" id="13_sm5jm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a02cp"]
-size = Vector3(5, 0.1, 15)
+size = Vector3(10, 0.1, 20)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vqnaq"]
 albedo_texture = ExtResource("1_78aev")
@@ -16,7 +16,7 @@ uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_go701"]
 material = SubResource("StandardMaterial3D_vqnaq")
-size = Vector3(5, 0.1, 15)
+size = Vector3(10, 0.1, 20)
 
 [node name="CombatLevel" type="Node3D" unique_id=184073505]
 script = ExtResource("1_qdkhl")
@@ -42,7 +42,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24015284, 0, -0.21253812)
 transform = Transform3D(0.99923956, 0, 0.039033264, 0, 1, 0, -0.039033264, 0, 0.99923956, -0.10222101, -0.017357528, 1.027748)
 
 [node name="Enemy" parent="." unique_id=125756557 instance=ExtResource("13_sm5jm")]
-transform = Transform3D(-4.371138e-08, 0, -0.9999998, 0, 1, 0, 0.9999998, 0, -4.371138e-08, 0.05531159, 1.1319402, -1.169354)
+transform = Transform3D(-4.371138e-08, 0, -0.9999998, 0, 1, 0, 0.9999998, 0, -4.371138e-08, 0.05531159, 1.3574728, -1.1733527)
 
 [node name="SnapZone" parent="." unique_id=1958594865 instance=ExtResource("4_5irrg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49598718, 1.1398624, -0.38637754)

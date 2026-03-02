@@ -11,10 +11,13 @@ enum States {
 }
 var state: States = States.IDLE
 
-@onready var mesh_material: ShaderMaterial = $Slime/Sphere.material_overlay
+@onready var flash_material: ShaderMaterial = $Slime/Sphere.material_overlay
+@onready var dither_material: ShaderMaterial = $Slime/Sphere.material_override
 
 @export var health: float = 100
-@export var friction_speed: float = 10.0
+@export var friction_speed: float = 5.0
+
+var disappear_tween: Tween
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -40,7 +43,10 @@ func apply_friction(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, friction_speed * delta)
 
 func set_hit_flash(value: float) -> void:
-		mesh_material.set_shader_parameter("flash", value)
+	flash_material.set_shader_parameter("flash", value)
+
+func set_dither_alpha(value: float) -> void:
+	dither_material.set_shader_parameter("color_alpha", value)
 	
 func set_hurt() -> void:
 	state = States.HURT
@@ -59,7 +65,7 @@ func is_waiting() -> bool:
 func hurt(damage_taken: float, new_velocity: Vector3 = Vector3.ZERO) -> void:
 	if state != States.DEAD:
 		health -= damage_taken
-		mesh_material.set_shader_parameter("flash", 1.0)
+		flash_material.set_shader_parameter("flash", 1.0)
 		var tween: Tween = create_tween()
 		tween.tween_method(set_hit_flash, 1.0, 0.0, 0.5)
 		
@@ -72,11 +78,22 @@ func hurt(damage_taken: float, new_velocity: Vector3 = Vector3.ZERO) -> void:
 func death() -> void:
 	state = States.DEAD
 
-func _on_recovery_timer_timeout() -> void:
-	# Play fade/disappear shader later
+func reappear() -> void:
+	visible = true
+	disappear_tween = create_tween()
+	disappear_tween.tween_method(set_dither_alpha, 0.0, 1.0, 0.3)
+
+# After getting hurt, recover by disappearing until its time to spawn back on either the player's turn or an enemy's turn
+func recover() -> void:
+	disappear_tween = create_tween()
+	disappear_tween.tween_method(set_dither_alpha, 1.0, 0.0, 0.3)
+	await disappear_tween.finished
 	visible = false
 	
 	# If the enemy was recovers during a player's turn, transition to the enemy turn.
 	# If the enemy was recovers during the enemy's turn, set state to waiting.
 	# Well, lets just hope that whoever receives the enemy recovered signal applies the above logic.
 	Global.emit_enemy_recovered()
+
+func _on_recovery_timer_timeout() -> void:
+	recover()
