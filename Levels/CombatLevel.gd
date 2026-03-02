@@ -51,6 +51,8 @@ func set_enemy_positions() -> void:
 		var enemy: Enemy = get_tree().get_nodes_in_group("Enemy")[i]
 		var enemy_spawn: Marker3D = enemy_spawn_points.get_children()[i]
 		enemy.global_transform = enemy_spawn.global_transform
+		enemy.velocity = Vector3.ZERO
+		enemy.set_idle()
 		
 		# Do later: Change this into a function they have as set_visible() in case they are tweening a shader or else this could cause unknown issues
 		#enemy.visible = true

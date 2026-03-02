@@ -52,6 +52,9 @@ func set_hurt() -> void:
 	state = States.HURT
 	$RecoveryTimer.start()
 
+func set_idle() -> void:
+	state = States.IDLE
+
 func set_waiting() -> void:
 	state = States.WAITING
 	# Play fade/disappear shader later
