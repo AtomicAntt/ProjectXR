@@ -14,4 +14,10 @@ script = ExtResource("1_v7x7o")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1201552868]
 shape = SubResource("ConvexPolygonShape3D_pmcfi")
 
+[node name="RecoveryTimer" type="Timer" parent="." unique_id=217044411]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="RecoveryTimer" to="." method="_on_recovery_timer_timeout"]
+
 [editable path="Slime"]
