@@ -5,6 +5,9 @@ signal transition_scene(scene_name: String)
 signal goto_action(index: int)
 signal confirm_dialogue
 
+signal enemy_waiting
+signal enemy_recovered
+
 ## Emits a signal which the SceneLoader may listen to
 func switch_scene(scene_name: String) -> void:
 	emit_signal("transition_scene", scene_name)
@@ -15,3 +18,11 @@ func goto(index: int) -> void:
 
 func emit_confirm_dialogue() -> void:
 	emit_signal("confirm_dialogue")
+
+## Signal is emitted by an enemy during an enemy's turn if they are set to waiting after being countered or otherwise stopped attacking.
+func emit_enemy_waiting() -> void:
+	emit_signal("enemy_waiting")
+
+## Signal is emitted whenever they are hit. This can be either when the player hits them on the player turn or when an enemy gets countered.
+func emit_enemy_recovered() -> void:
+	emit_signal("enemy_recovered")

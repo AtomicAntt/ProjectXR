@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b5qmlrfi48dr5"]
 
 [ext_resource type="Texture2D" uid="uid://c7gkcaf557ybm" path="res://GameAssets/Textures/Floor.svg" id="1_78aev"]
+[ext_resource type="Script" uid="uid://b5ud585xyqmbs" path="res://Levels/CombatLevel.gd" id="1_qdkhl"]
 [ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="4_5irrg"]
 [ext_resource type="PackedScene" uid="uid://468xstcis34h" path="res://GameObjects/Weapons/Sword2.tscn" id="11_b8chn"]
 [ext_resource type="PackedScene" uid="uid://bin4d8ywgo1i0" path="res://GameObjects/NPCs/TestNPC.tscn" id="12_vgrak"]
@@ -18,6 +19,7 @@ material = SubResource("StandardMaterial3D_vqnaq")
 size = Vector3(5, 0.1, 15)
 
 [node name="CombatLevel" type="Node3D" unique_id=184073505]
+script = ExtResource("1_qdkhl")
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=383300650]
 
@@ -28,16 +30,16 @@ shape = SubResource("BoxShape3D_a02cp")
 mesh = SubResource("BoxMesh_go701")
 
 [node name="TestNpc" parent="." unique_id=262217009 instance=ExtResource("12_vgrak")]
-transform = Transform3D(0.82134837, 0, 0.5704269, 0, 1, 0, -0.5704269, 0, 0.82134837, 1.094164, 0.54999995, -3.1072521)
+transform = Transform3D(0.82134837, 0, 0.5704269, 0, 1, 0, -0.5704269, 0, 0.82134837, 3.0134563, 0.54999995, -3.1072521)
 
 [node name="MeshInstance3D" parent="TestNpc" index="0" unique_id=1121909692]
 transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0.24015284, 0, -0.21253812)
 
 [node name="CollisionShape3D" parent="TestNpc" index="1" unique_id=1074130352]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17772067, 0, -0.25589728)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24015284, 0, -0.21253812)
 
 [node name="DialogueMarker3D" parent="TestNpc" index="2" unique_id=1880908404]
-transform = Transform3D(0.9992392, 0, 0.039033294, 0, 1, 0, -0.039033294, 0, 0.9992392, 1.153707, -0.464482, 0.79397285)
+transform = Transform3D(0.99923956, 0, 0.039033264, 0, 1, 0, -0.039033264, 0, 0.99923956, -0.10222101, -0.017357528, 1.027748)
 
 [node name="Enemy" parent="." unique_id=125756557 instance=ExtResource("13_sm5jm")]
 transform = Transform3D(-4.371138e-08, 0, -0.9999998, 0, 1, 0, 0.9999998, 0, -4.371138e-08, 0.05531159, 1.1319402, -1.169354)
@@ -48,5 +50,20 @@ initial_object = NodePath("../Sword2")
 
 [node name="Sword2" parent="." unique_id=250737451 instance=ExtResource("11_b8chn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55288285, 1.1006896, -0.27659082)
+
+[node name="EnemySpawnPoints" type="Node" parent="." unique_id=1331027477]
+
+[node name="EnemySpawn" type="Marker3D" parent="EnemySpawnPoints" unique_id=166254504]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 0, 0, -4.996877)
+
+[node name="EnemySpawn2" type="Marker3D" parent="EnemySpawnPoints" unique_id=1754566386]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.5423315, 0, -4.564038)
+
+[node name="EnemySpawn3" type="Marker3D" parent="EnemySpawnPoints" unique_id=1108368834]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.5447631, 0, -4.564038)
+
+[node name="TurnLabel" type="Label3D" parent="." unique_id=521874711]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6199932, -5.9467354)
+text = "PLAYER TURN"
 
 [editable path="TestNpc"]

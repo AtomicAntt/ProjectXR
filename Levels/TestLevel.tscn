@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://d4awg3m1fvmtr" path="res://GameObjects/Environment/Mushroom.tscn" id="9_wenv2"]
 [ext_resource type="PackedScene" uid="uid://ccririi5oouxq" path="res://GameObjects/Weapons/Sword.tscn" id="10_8x8nf"]
 [ext_resource type="PackedScene" uid="uid://468xstcis34h" path="res://GameObjects/Weapons/Sword2.tscn" id="11_ej1bv"]
-[ext_resource type="PackedScene" uid="uid://bl1b3tjoajwtw" path="res://GameObjects/Enemies/Enemy.tscn" id="14_76fkc"]
 [ext_resource type="PackedScene" uid="uid://bin4d8ywgo1i0" path="res://GameObjects/NPCs/TestNPC.tscn" id="14_ijb51"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a02cp"]
@@ -96,9 +95,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61077094, 0.54999995, -3.11
 
 [node name="DialogueMarker3D" parent="TestNpc" index="2" unique_id=1880908404]
 transform = Transform3D(0.9992379, 0, 0.0390331, 0, 1, 0, -0.0390331, 0, 0.9992379, 1.3993952, -0.464482, -0.31813693)
-
-[node name="Enemy" parent="." unique_id=125756557 instance=ExtResource("14_76fkc")]
-transform = Transform3D(-0.99999994, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.99999994, 0.94321525, 0.9335216, -0.24970995)
 
 [connection signal="timeout" from="Table/Timer" to="Table" method="_on_timer_timeout"]
 

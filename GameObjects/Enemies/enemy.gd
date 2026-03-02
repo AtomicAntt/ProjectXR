@@ -7,7 +7,7 @@ enum States {
 	ATTACKING, ## Enemy is in this state when they are in the process of attacking.
 	DEAD, ## Enemy is in this state when they die, and will soon despawn.
 	HURT, ## Enemy is in this state when they are hit. Physics is enabled to show impact.
-	WAITING ## Enemy is in this state after they get hit -> hurt OR if they are finished attacking. If all enemies are waiting, transition to player turn.
+	WAITING ## During an enemy turn, enemies will be in this state after they get hit -> hurt OR if they are finished attacking. If all enemies are waiting, transition to player turn.
 }
 var state: States = States.IDLE
 
@@ -48,8 +48,13 @@ func set_hurt() -> void:
 
 func set_waiting() -> void:
 	state = States.WAITING
-	# Play transparency shader later
+	# Play fade/disappear shader later
 	visible = false
+	Global.emit_enemy_waiting()
+	
+
+func is_waiting() -> bool:
+	return state == States.WAITING
 
 func hurt(damage_taken: float, new_velocity: Vector3 = Vector3.ZERO) -> void:
 	if state != States.DEAD:
@@ -68,4 +73,10 @@ func death() -> void:
 	state = States.DEAD
 
 func _on_recovery_timer_timeout() -> void:
-	set_waiting()
+	# Play fade/disappear shader later
+	visible = false
+	
+	# If the enemy was recovers during a player's turn, transition to the enemy turn.
+	# If the enemy was recovers during the enemy's turn, set state to waiting.
+	# Well, lets just hope that whoever receives the enemy recovered signal applies the above logic.
+	Global.emit_enemy_recovered()
