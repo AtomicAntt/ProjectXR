@@ -8,7 +8,7 @@ points = PackedVector3Array(0.18429965, 0.063349284, -3.607571e-05, 0.1830729, 0
 
 [node name="Slime" type="CharacterBody3D" unique_id=125756557 groups=["Enemy"]]
 script = ExtResource("1_0x1s4")
-time_to_enemy = 1.5
+time_to_enemy = 1.2
 
 [node name="Slime" parent="." unique_id=1647046844 instance=ExtResource("3_pmcfi")]
 

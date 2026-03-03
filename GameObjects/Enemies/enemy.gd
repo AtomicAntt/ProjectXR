@@ -65,10 +65,19 @@ func set_hurt() -> void:
 func set_idle() -> void:
 	state = States.IDLE
 
+## This function should be called by the CombatLevel whenever on_enemy_recovered() occurs during the enemy's turn.
+## Player hits enemy -> hurt state + recovery timer starts -> recovery timer ends -> recover() emits global signal
+## -> on_enemy_recovered() called -> if it is enemy turn, this gets called.
 func set_waiting() -> void:
 	state = States.WAITING
-	# Play fade/disappear shader later
-	visible = false
+	
+	# If deemed uneeded, remove this:
+	#disappear_tween = create_tween()
+	#disappear_tween.tween_method(set_dither_alpha, 1.0, 0.0, 0.3)
+	#await disappear_tween.finished
+	#visible = false
+	
+	# This is required to let the CombatLevel check if all enemies are waiting. If they are, then it can become the player's turn.
 	Global.emit_enemy_waiting()
 
 ## This function is likely called by a combat level script. Use it on enemies that are is_idle() at the start of an enemy turn.
@@ -122,7 +131,7 @@ func recover() -> void:
 	# If the enemy was recovers during a player's turn, transition to the enemy turn.
 	# If the enemy was recovers during the enemy's turn, set state to waiting.
 	# Well, lets just hope that whoever receives the enemy recovered signal applies the above logic.
-	Global.emit_enemy_recovered()
+	Global.emit_enemy_recovered(self)
 
 func _on_recovery_timer_timeout() -> void:
 	recover()

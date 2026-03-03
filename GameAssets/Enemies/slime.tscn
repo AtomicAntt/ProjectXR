@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://qpynexbxljrn" path="res://GameAssets/Enemies/Slime_Sphere Base Color.png" id="3_jthom"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g5hj1"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_jthom")
 shader_parameter/color = Color(1, 1, 1, 1)
@@ -13,6 +14,7 @@ shader_parameter/color_alpha = 1.0
 shader_parameter/base_texture = ExtResource("3_jthom")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vqh2v"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_g5hj1")
 shader_parameter/flash = 0.0
