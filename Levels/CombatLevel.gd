@@ -26,13 +26,14 @@ func set_enemy_turn() -> void:
 	if game_state != GameStates.ENEMY:
 		game_state = GameStates.ENEMY
 		$TurnLabel.text = "ENEMY TURN"
+		$EnemyChargeTimer.start()
 		set_enemy_positions()
 
 # If all enemies are waiting during an enemy turn, this function should get called.
 func set_player_turn() -> void:
 	game_state = GameStates.PLAYER
 	$TurnLabel.text = "PLAYER TURN"
-	
+	$EnemyChargeTimer.stop()
 
 ## This function will check if all enemies are waiting during an enemy turn. If they are, then it will finally be the player's turn.
 func check_waiting() -> void:
@@ -60,3 +61,15 @@ func set_enemy_positions() -> void:
 		enemy.reappear()
 		
 		print("enemy now visible after setting position")
+
+
+func _on_enemy_charge_timer_timeout() -> void:
+	if game_state == GameStates.ENEMY:
+		var enemies_idle: Array[Enemy] = []
+		for enemy: Enemy in get_tree().get_nodes_in_group("Enemy"):
+			if enemy.is_idle():
+				enemies_idle.append(enemy)
+		if enemies_idle.size() > 0:
+			var random_enemy: Enemy = enemies_idle.pick_random()
+			if is_instance_valid(random_enemy):
+				random_enemy.set_charging()

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="4_5irrg"]
 [ext_resource type="PackedScene" uid="uid://468xstcis34h" path="res://GameObjects/Weapons/Sword2.tscn" id="11_b8chn"]
 [ext_resource type="PackedScene" uid="uid://bin4d8ywgo1i0" path="res://GameObjects/NPCs/TestNPC.tscn" id="12_vgrak"]
-[ext_resource type="PackedScene" uid="uid://bl1b3tjoajwtw" path="res://GameObjects/Enemies/Enemy.tscn" id="13_sm5jm"]
+[ext_resource type="PackedScene" uid="uid://bl1b3tjoajwtw" path="res://GameObjects/Enemies/Slime.tscn" id="13_sm5jm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a02cp"]
 size = Vector3(10, 0.1, 20)
@@ -66,5 +66,9 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.54
 [node name="TurnLabel" type="Label3D" parent="." unique_id=521874711]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6199932, -5.9467354)
 text = "PLAYER TURN"
+
+[node name="EnemyChargeTimer" type="Timer" parent="." unique_id=1928265980]
+
+[connection signal="timeout" from="EnemyChargeTimer" to="." method="_on_enemy_charge_timer_timeout"]
 
 [editable path="TestNpc"]

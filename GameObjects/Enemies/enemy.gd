@@ -11,8 +11,8 @@ enum States {
 }
 var state: States = States.IDLE
 
-@onready var flash_material: ShaderMaterial = $Slime/Sphere.material_overlay
-@onready var dither_material: ShaderMaterial = $Slime/Sphere.material_override
+@export var flash_material: ShaderMaterial
+@export var dither_material: ShaderMaterial
 
 @export var health: float = 100
 @export var friction_speed: float = 5.0
@@ -25,13 +25,20 @@ func _physics_process(delta: float) -> void:
 	match state:
 		States.IDLE:
 			# We do not want physics to be applied to an idle enemy.
-			pass
+			$StateLabel.text = "IDLE"
 		States.HURT: # HURT is a state that is completely cinematic, just to show an attack has done impact. Thus, physics shall be enabled.
 			apply_gravity(delta)
 			apply_friction(delta)
 			move_and_slide()
+			$StateLabel.text = "HURT"
 		States.WAITING:
-			pass
+			$StateLabel.text = "WAITING"
+		States.CHARGING:
+			$StateLabel.text = "CHARGING"
+		States.ATTACKING:
+			$StateLabel.text = "ATTACKING"
+		States.DEAD:
+			$StateLabel.text = "DEAD"
 
 func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
@@ -60,10 +67,26 @@ func set_waiting() -> void:
 	# Play fade/disappear shader later
 	visible = false
 	Global.emit_enemy_waiting()
-	
+
+## This function is likely called by a combat level script. Use it on enemies that are is_idle() at the start of an enemy turn.
+## It starts the ChargeTimer, which when ended, will set the enemy to the attacking state so that they can launch their attack.
+func set_charging() -> void:
+	state = States.CHARGING
+	$ChargeTimer.start()
+
+## Once a charge is complete (ChargeTimer is completed), this function should be called. It will send the enemy into an attacking state.
+## Enemies in attacking state can be attacked by the player, and the purpose is so that they don't get taken into a charging state.
+## Conditions like hitting the player, getting hit, hitting the floor, or a timer should set them back into idle/hurt/waiting mode to be used again.
+## How this condition gets set is likely to be done by the class inheriting from this class.
+func set_attacking() -> void:
+	state = States.ATTACKING
 
 func is_waiting() -> bool:
 	return state == States.WAITING
+
+## Probably used to find out if an enemy can be turned charging during an enemy turn.
+func is_idle() -> bool:
+	return state == States.IDLE
 
 func hurt(damage_taken: float, new_velocity: Vector3 = Vector3.ZERO) -> void:
 	if state != States.DEAD:
@@ -100,3 +123,6 @@ func recover() -> void:
 
 func _on_recovery_timer_timeout() -> void:
 	recover()
+
+func _on_charge_timer_timeout() -> void:
+	set_attacking()
