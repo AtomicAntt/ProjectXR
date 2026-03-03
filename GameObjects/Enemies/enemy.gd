@@ -11,8 +11,8 @@ enum States {
 }
 var state: States = States.IDLE
 
-@export var flash_material: ShaderMaterial
-@export var dither_material: ShaderMaterial
+@onready var flash_material: ShaderMaterial = $Slime/Sphere.material_overlay
+@onready var dither_material: ShaderMaterial = $Slime/Sphere.material_override
 
 @export var health: float = 100
 @export var friction_speed: float = 5.0
@@ -36,6 +36,9 @@ func _physics_process(delta: float) -> void:
 		States.CHARGING:
 			$StateLabel.text = "CHARGING"
 		States.ATTACKING:
+			apply_gravity(delta)
+			apply_friction(delta)
+			move_and_slide()
 			$StateLabel.text = "ATTACKING"
 		States.DEAD:
 			$StateLabel.text = "DEAD"

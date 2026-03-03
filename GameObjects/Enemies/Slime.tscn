@@ -8,6 +8,7 @@ points = PackedVector3Array(0.18429965, 0.063349284, -3.607571e-05, 0.1830729, 0
 
 [node name="Slime" type="CharacterBody3D" unique_id=125756557 groups=["Enemy"]]
 script = ExtResource("1_0x1s4")
+time_to_enemy = 1.5
 
 [node name="Slime" parent="." unique_id=1647046844 instance=ExtResource("3_pmcfi")]
 
@@ -19,6 +20,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="ChargeTimer" type="Timer" parent="." unique_id=1208866330]
+wait_time = 2.0
 one_shot = true
 
 [node name="StateLabel" type="Label3D" parent="." unique_id=937806928]
@@ -26,7 +28,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0
 text = "IDLE"
 
 [node name="SlimeAttackTimer" type="Timer" parent="." unique_id=1014261007]
-wait_time = 3.0
+wait_time = 8.0
 one_shot = true
 
 [connection signal="timeout" from="RecoveryTimer" to="." method="_on_recovery_timer_timeout"]
