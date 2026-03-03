@@ -13,6 +13,9 @@ extends Enemy
 func set_attacking() -> void:
 	super.set_attacking()
 	velocity = calculate_velocity()
+	
+	$SlimeAttackTimer.wait_time = time_to_enemy + 1
+	$SlimeAttackTimer.start()
 
 func calculate_velocity() -> Vector3:
 	var horizontal_position: Vector3 = Vector3(global_position.x, 0, global_position.z)
@@ -27,4 +30,7 @@ func calculate_velocity() -> Vector3:
 	var horizontal_velocity: Vector3 = horizontal_position.direction_to(player_horizontal_position) * horizontal_speed
 	
 	return Vector3(horizontal_velocity.x, vertical_velocity, horizontal_velocity.z)
-	
+
+func _on_attack_timer_timeout() -> void:
+	if state == States.ATTACKING:
+		recover()

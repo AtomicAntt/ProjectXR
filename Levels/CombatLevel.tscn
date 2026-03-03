@@ -44,10 +44,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24015284, 0, -0.21253812)
 transform = Transform3D(0.99923956, 0, 0.039033264, 0, 1, 0, -0.039033264, 0, 0.99923956, -0.10222101, -0.017357528, 1.027748)
 
 [node name="Enemy" parent="." unique_id=125756557 instance=ExtResource("13_sm5jm")]
-transform = Transform3D(-4.371138e-08, 0, -0.9999998, 0, 1, 0, 0.9999998, 0, -4.371138e-08, 0, 0, -4.996877)
+transform = Transform3D(-4.371138e-08, 0, -0.9999998, 0, 1, 0, 0.9999998, 0, -4.371138e-08, 0, 0, -6.994322)
 
 [node name="Enemy2" parent="." unique_id=114941337 instance=ExtResource("13_sm5jm")]
-transform = Transform3D(-4.371138e-08, 0, -0.9999998, 0, 1, 0, 0.9999998, 0, -4.371138e-08, -1.5423315, 0, -4.564038)
+transform = Transform3D(-4.371138e-08, 0, -0.9999998, 0, 1, 0, 0.9999998, 0, -4.371138e-08, -1.5423315, 0, -6.5614824)
 
 [node name="SnapZone" parent="." unique_id=1958594865 instance=ExtResource("4_5irrg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49598718, 1.1398624, -0.38637754)
@@ -59,19 +59,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55288285, 1.1006896, -0.276
 [node name="EnemySpawnPoints" type="Node" parent="." unique_id=1331027477]
 
 [node name="EnemySpawn" type="Marker3D" parent="EnemySpawnPoints" unique_id=166254504]
-transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 0, 0, -4.996877)
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 0, 0, -6.994322)
 
 [node name="EnemySpawn2" type="Marker3D" parent="EnemySpawnPoints" unique_id=1754566386]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.5423315, 0, -4.564038)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.5423315, 0, -6.5614824)
 
 [node name="EnemySpawn3" type="Marker3D" parent="EnemySpawnPoints" unique_id=1108368834]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.5447631, 0, -4.564038)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.5447631, 0, -6.5614824)
 
 [node name="TurnLabel" type="Label3D" parent="." unique_id=521874711]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6199932, -5.9467354)
+transform = Transform3D(0.9999047, 0.013805116, 0, -0.013805116, 0.9999047, 0, 0, 0, 1, 0, 2.164134, -8.3505125)
 text = "PLAYER TURN"
+font_size = 64
 
 [node name="EnemyChargeTimer" type="Timer" parent="." unique_id=1928265980]
+wait_time = 2.0
 
 [node name="SelectedEnemyMarker" type="Marker3D" parent="." unique_id=2118233930]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05531159, 1.3574728, -1.1733527)
