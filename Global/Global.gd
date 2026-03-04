@@ -8,6 +8,8 @@ signal confirm_dialogue
 signal enemy_waiting
 signal enemy_recovered(enemy_node: Enemy)
 
+signal enemy_selected(enemy_selection: EnemySelection, enemy_node: Enemy)
+
 ## Emits a signal which the SceneLoader may listen to
 func switch_scene(scene_name: String) -> void:
 	emit_signal("transition_scene", scene_name)
@@ -26,3 +28,7 @@ func emit_enemy_waiting() -> void:
 ## Signal is emitted whenever they are hit. This can be either when the player hits them on the player turn or when an enemy gets countered.
 func emit_enemy_recovered(enemy_node: Enemy) -> void:
 	emit_signal("enemy_recovered", enemy_node)
+
+## Signal emitted whenever an EnemySelection is selected during the player's turn. CombatLevel must listen in and take care of things.
+func emit_enemy_selected(enemy_selection: EnemySelection, enemy_node: Enemy) -> void:
+	emit_signal("enemy_selected", enemy_selection, enemy_node)

@@ -22,6 +22,10 @@ func pointer_event(event: XRToolsPointerEvent) -> void:
 		hover()
 	elif event.event_type == event.Type.EXITED:
 		exit_hover()
+	
+	if enabled and event.event_type == event.Type.PRESSED:
+		if has_valid_enemy():
+			Global.emit_enemy_selected(self, return_valid_enemy())
 
 func enable() -> void:
 	enabled = true
@@ -66,6 +70,7 @@ func find_closest_enemy() -> Enemy:
 	var closest_enemy: Enemy = null
 	for enemy: Enemy in get_tree().get_nodes_in_group("Enemy"):
 		if global_position.distance_squared_to(enemy.global_position) < closest_distance:
+			closest_distance = global_position.distance_squared_to(enemy.global_position)
 			closest_enemy = enemy
 	
 	return closest_enemy
@@ -76,6 +81,10 @@ func return_valid_enemy() -> Enemy:
 		return closest_enemy
 	else:
 		return null
+
+## Called by CombatLevel so that they can figure out which EnemySpawn Marker3D to put the enemy back at when another is selected and needs to swap.
+func get_spawn_point() -> Marker3D:
+	return get_parent()
 
 func has_valid_enemy() -> bool:
 	return is_instance_valid(return_valid_enemy())

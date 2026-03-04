@@ -10,9 +10,19 @@ enum GameStates {
 
 @onready var enemy_spawn_points: Node = $EnemySpawnPoints
 
+## Current enemy that is selected.
+var enemy_selected: Enemy = null
+
+## EnemySelection of the enemy selected, which has access to their spawn point.
+var selected_enemy_selection: EnemySelection = null
+
+## The speed of enemies when they are selected and tweened to positions.
+var select_speed: float = 0.5
+
 func _ready() -> void:
 	Global.enemy_recovered.connect(on_enemy_recovered)
 	Global.enemy_waiting.connect(check_waiting)
+	Global.enemy_selected.connect(select_enemy)
 	
 	match game_state:
 		GameStates.PLAYER:
@@ -45,9 +55,7 @@ func set_player_turn() -> void:
 	$TurnLabel.text = "PLAYER TURN"
 	$EnemyChargeTimer.stop() # Stopping this so that enemies are no longer picked to start charging.
 	set_enemy_positions()
-	
-	for enemy_selection: EnemySelection in get_tree().get_nodes_in_group("EnemySelection"):
-		enemy_selection.enable()
+
 
 # This function will check if all enemies are waiting during an enemy turn. If they are, then it will finally be the player's turn.
 func check_waiting() -> void:
@@ -75,13 +83,38 @@ func set_enemy_positions() -> void:
 		enemy.velocity = Vector3.ZERO
 		enemy.set_idle()
 		
+		if game_state == GameStates.PLAYER:
+			var enemy_selection: EnemySelection = enemy_spawn.get_node("EnemySelection")
+			enemy_selection.enable()
 		# Do later: Change this into a function they have as set_visible() in case they are tweening a shader or else this could cause unknown issues
 		#enemy.visible = true
 		
 		enemy.reappear()
-		
-		print("enemy now visible after setting position")
 
+func is_all_idle() -> bool:
+	var all_idle: bool = true
+	for enemy: Enemy in get_tree().get_nodes_in_group("Enemy"):
+		if not enemy.is_idle():
+			all_idle = false
+	
+	return all_idle
+
+## Whenever an EnemySelection is pressed, it emits a signal from Global which this class listens to.
+## If all enemies are idle (and thus, not in the process of getting hurt -> enemy turn), they may be tweenened.
+## If there exists an enemy selected already, the enemies will swap.
+func select_enemy(new_enemy_selection: EnemySelection, new_enemy_selected: Enemy) -> void:
+	if is_all_idle():
+		var tween = create_tween()
+		if is_instance_valid(enemy_selected):
+			selected_enemy_selection.enable() # Make it so you can once again select the enemy.
+			tween.tween_property(enemy_selected, "global_position", selected_enemy_selection.get_spawn_point().global_position, select_speed)
+			enemy_selected = null
+			selected_enemy_selection = null
+		
+		enemy_selected = new_enemy_selected
+		selected_enemy_selection = new_enemy_selection
+		selected_enemy_selection.disable() # Make it so you can not select the EnemySelection that is already selected.
+		tween.tween_property(new_enemy_selected, "global_position", $SelectedEnemyMarker.global_position, select_speed)
 
 func _on_enemy_charge_timer_timeout() -> void:
 	if game_state == GameStates.ENEMY:
