@@ -6,4 +6,4 @@ func _on_trigger_button_pressed(name: String) -> void:
 		get_tree().call_group("DialogueText2D", "proceed_dialogue")
 	
 func _process(_delta: float) -> void:
-	$RightHand/FPSLabel.text = str(Engine.get_frames_per_second())
+	$LeftHand/FPSLabel.text = str(Engine.get_frames_per_second())
