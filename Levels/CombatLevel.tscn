@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c7gkcaf557ybm" path="res://GameAssets/Textures/Floor.svg" id="1_78aev"]
 [ext_resource type="Script" uid="uid://b5ud585xyqmbs" path="res://Levels/CombatLevel.gd" id="1_qdkhl"]
 [ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="4_5irrg"]
+[ext_resource type="PackedScene" uid="uid://dkv2xpe00dqr4" path="res://GameObjects/Enemies/enemy_selection.tscn" id="7_we1if"]
 [ext_resource type="PackedScene" uid="uid://468xstcis34h" path="res://GameObjects/Weapons/Sword2.tscn" id="11_b8chn"]
 [ext_resource type="PackedScene" uid="uid://bin4d8ywgo1i0" path="res://GameObjects/NPCs/TestNPC.tscn" id="12_vgrak"]
 [ext_resource type="PackedScene" uid="uid://bl1b3tjoajwtw" path="res://GameObjects/Enemies/Slime.tscn" id="13_sm5jm"]
@@ -61,11 +62,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55288285, 1.1006896, -0.276
 [node name="EnemySpawn" type="Marker3D" parent="EnemySpawnPoints" unique_id=166254504]
 transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 0, 0, -6.994322)
 
+[node name="EnemySelection" parent="EnemySpawnPoints/EnemySpawn" unique_id=887970415 instance=ExtResource("7_we1if")]
+
 [node name="EnemySpawn2" type="Marker3D" parent="EnemySpawnPoints" unique_id=1754566386]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.5423315, 0, -6.5614824)
 
+[node name="EnemySelection" parent="EnemySpawnPoints/EnemySpawn2" unique_id=1928434104 instance=ExtResource("7_we1if")]
+
 [node name="EnemySpawn3" type="Marker3D" parent="EnemySpawnPoints" unique_id=1108368834]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.5447631, 0, -6.5614824)
+
+[node name="EnemySelection" parent="EnemySpawnPoints/EnemySpawn3" unique_id=1898886186 instance=ExtResource("7_we1if")]
 
 [node name="TurnLabel" type="Label3D" parent="." unique_id=521874711]
 transform = Transform3D(0.9999047, 0.013805116, 0, -0.013805116, 0.9999047, 0, 0, 0, 1, 0, 2.164134, -8.3505125)

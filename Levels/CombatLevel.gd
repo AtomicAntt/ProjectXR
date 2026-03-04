@@ -35,6 +35,9 @@ func set_enemy_turn() -> void:
 	$TurnLabel.text = "ENEMY TURN"
 	$EnemyChargeTimer.start() # After this end, it should pick a random enemy that's idle to start charging.
 	set_enemy_positions()
+	
+	for enemy_selection: EnemySelection in get_tree().get_nodes_in_group("EnemySelection"):
+		enemy_selection.disable()
 
 # If all enemies are waiting during an enemy turn, this function should get called by check_waiting() whenever an enemy gets set to waiting.
 func set_player_turn() -> void:
@@ -42,6 +45,9 @@ func set_player_turn() -> void:
 	$TurnLabel.text = "PLAYER TURN"
 	$EnemyChargeTimer.stop() # Stopping this so that enemies are no longer picked to start charging.
 	set_enemy_positions()
+	
+	for enemy_selection: EnemySelection in get_tree().get_nodes_in_group("EnemySelection"):
+		enemy_selection.enable()
 
 # This function will check if all enemies are waiting during an enemy turn. If they are, then it will finally be the player's turn.
 func check_waiting() -> void:

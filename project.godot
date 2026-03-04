@@ -46,6 +46,7 @@ PointerInteractable="Interactables that can be interacted with if pressed. Used 
 DialogueText2D=""
 DialogueContainer=""
 Enemy=""
+EnemySelection=""
 
 [physics]
 
