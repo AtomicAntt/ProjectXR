@@ -42,12 +42,12 @@ func disable() -> void:
 func hover() -> void:
 	tween = create_tween()
 	tween.tween_method(set_border_width, get_border_width(), initial_border_width, 0.2)
-	tween.tween_method(set_cylinder_alpha, get_cylinder_alpha(), initial_alpha, 0.2)
+	tween.tween_method(set_cylinder_alpha, get_cylinder_alpha(), initial_alpha, 0.05)
 
 func exit_hover() -> void:
 	tween = create_tween()
 	tween.tween_method(set_border_width, get_border_width(), 0, 0.2)
-	tween.tween_method(set_cylinder_alpha, get_cylinder_alpha(), 0.0, 0.2)
+	tween.tween_method(set_cylinder_alpha, get_cylinder_alpha(), 0.0, 0.05)
 
 func set_border_width(width_value: float) -> void:
 	shader_material.set_shader_parameter("border_width", width_value)
