@@ -50,6 +50,9 @@ transform = Transform3D(-4.371138e-08, 0, -0.9999998, 0, 1, 0, 0.9999998, 0, -4.
 [node name="Enemy2" parent="." unique_id=114941337 instance=ExtResource("13_sm5jm")]
 transform = Transform3D(-4.371138e-08, 0, -0.9999998, 0, 1, 0, 0.9999998, 0, -4.371138e-08, -1.5423315, 0, -6.5614824)
 
+[node name="Enemy3" parent="." unique_id=2120718346 instance=ExtResource("13_sm5jm")]
+transform = Transform3D(-4.371138e-08, 0, -0.9999998, 0, 1, 0, 0.9999998, 0, -4.371138e-08, 1.5447631, 0, -6.5614824)
+
 [node name="SnapZone" parent="." unique_id=1958594865 instance=ExtResource("4_5irrg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49598718, 1.1398624, -0.38637754)
 initial_object = NodePath("../Sword2")

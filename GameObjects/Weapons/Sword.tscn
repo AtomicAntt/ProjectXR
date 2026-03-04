@@ -97,12 +97,14 @@ shape = SubResource("ConcavePolygonShape3D_emto3")
 
 [node name="DebugLabel" type="Label3D" parent="." index="7" unique_id=418382816]
 transform = Transform3D(1, 0, 0, 0, 0.80339986, 0.5954399, 0, -0.5954399, 0.80339986, 0, 0.03500241, 0.036952868)
+visible = false
 text = "lv: "
 font_size = 16
 outline_size = 8
 
 [node name="DebugLabel2" type="Label3D" parent="." index="8" unique_id=383314647]
 transform = Transform3D(1, 0, 0, 0, 0.80339986, 0.5954399, 0, -0.5954399, 0.80339986, 0, -0.03427533, 0.088298075)
+visible = false
 text = "av:"
 font_size = 16
 outline_size = 8

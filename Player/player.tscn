@@ -77,6 +77,11 @@ show_laser = 2
 laser_length = 1
 show_target = true
 
+[node name="FPSLabel" type="Label3D" parent="LeftHand" unique_id=21294240]
+transform = Transform3D(-0.23631255, 0.016144207, -0.9715429, 0.9716771, 0.0039262823, -0.23627988, 1.9922194e-10, -0.99986184, -0.016614787, -0.039186597, -0.060799837, 0.24566197)
+text = "-1"
+font_size = 16
+
 [node name="RightHand" type="XRController3D" parent="." unique_id=1415243163]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
 tracker = &"right_hand"
