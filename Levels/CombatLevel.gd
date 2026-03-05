@@ -106,8 +106,9 @@ func select_enemy(new_enemy_selection: EnemySelection, new_enemy_selected: Enemy
 	if is_all_idle():
 		var tween = create_tween()
 		if is_instance_valid(enemy_selected):
+			var swap_tween = create_tween()
 			selected_enemy_selection.enable() # Make it so you can once again select the enemy.
-			tween.tween_property(enemy_selected, "global_position", selected_enemy_selection.get_spawn_point().global_position, select_speed)
+			swap_tween.tween_property(enemy_selected, "global_position", selected_enemy_selection.get_spawn_point().global_position, select_speed)
 			enemy_selected = null
 			selected_enemy_selection = null
 		

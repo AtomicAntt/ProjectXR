@@ -11,9 +11,10 @@ size = Vector2(2, 0.4)
 [sub_resource type="ViewportTexture" id="ViewportTexture_t63re"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_umxwu"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g5jgg"]
 transparency = 1
 cull_mode = 2
+shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_t63re")
 texture_filter = 1
 
@@ -27,15 +28,15 @@ screen_size = Vector2(2, 0.4)
 scene = ExtResource("3_g5jgg")
 viewport_size = Vector2(1000, 200)
 update_mode = 2
-scene_properties_keys = PackedStringArray("dialogue_text_2d.gd", "characters_per_second")
-characters_per_second = 1.0
+unshaded = true
+scene_properties_keys = PackedStringArray("dialogue_text_2d.gd")
 
 [node name="Viewport" parent="." index="0" unique_id=1581313723]
 size = Vector2i(1000, 200)
 
 [node name="Screen" parent="." index="1" unique_id=801107542]
 mesh = SubResource("QuadMesh_umxwu")
-surface_material_override/0 = SubResource("StandardMaterial3D_umxwu")
+surface_material_override/0 = SubResource("StandardMaterial3D_g5jgg")
 
 [node name="StaticBody3D" parent="." index="2" unique_id=204688295]
 screen_size = Vector2(2, 0.4)
