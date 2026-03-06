@@ -4,15 +4,20 @@
 [ext_resource type="Script" uid="uid://df4ky2w7oabhd" path="res://UI/Combat/item_slot.gd" id="2_alnh7"]
 [ext_resource type="Shader" uid="uid://bkug56iyrfvqd" path="res://Shaders/UI/Bubble.gdshader" id="2_lowfa"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_lowfa"]
+[sub_resource type="Curve" id="Curve_alnh7"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.23292468, 2), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_2q5p0"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.26795095, 1), -2.9349434, -2.9349434, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_alnh7"]
 resource_local_to_scene = true
 radius = 0.1
 
-[sub_resource type="SphereMesh" id="SphereMesh_alnh7"]
-radius = 0.1
-height = 0.2
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2q5p0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_alnh7"]
 render_priority = 0
 shader = ExtResource("2_lowfa")
 shader_parameter/_shield_color = Color(0, 0, 1, 1)
@@ -22,31 +27,36 @@ shader_parameter/_rotation = Vector3(0.1, 0, 0)
 shader_parameter/_shield_size = 0.0
 shader_parameter/_shield_pulse_frequency = 1.0
 shader_parameter/_shield_pulse_density = 1.0
-shader_parameter/_shield_pulse_amplitude = 1.0
-shader_parameter/_shield_pulse_blend = 1.0
+shader_parameter/_shield_pulse_amplitude = 10.0
+shader_parameter/_shield_pulse_blend = 2.0
 shader_parameter/_shield_pulse_radius = 1.0
-shader_parameter/_impact_origin = Vector3(1, 0, 0)
+shader_parameter/_impact_origin = Vector3(-0.04590609, -0.07913134, 0.04038395)
 shader_parameter/_impact_frequency = 5.0
 shader_parameter/_impact_density = 5.0
-shader_parameter/_impact_amplitude = 6.0
+shader_parameter/_impact_amplitude = 20.0
 shader_parameter/_impact_blend = 0.0
-shader_parameter/_impact_radius = 1.1
+shader_parameter/_impact_radius = 0.2
 shader_parameter/_impact_anim = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_alnh7"]
+radius = 0.1
+height = 0.2
 
 [node name="ItemSlot" unique_id=806122675 instance=ExtResource("1_ijgbj")]
 script = ExtResource("2_alnh7")
-mAnimCurve = null
-mImpactCurve = null
-mAnimTime = 1.0
+mAnimCurve = SubResource("Curve_alnh7")
+mImpactCurve = SubResource("Curve_2q5p0")
+mAnimTime = 0.35
 slot_radius = 0.1
 snap_mode = 1
 
 [node name="CollisionShape3D" parent="." index="0"]
-shape = SubResource("SphereShape3D_lowfa")
+shape = SubResource("SphereShape3D_alnh7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="2" unique_id=972511200]
+material_override = SubResource("ShaderMaterial_alnh7")
 mesh = SubResource("SphereMesh_alnh7")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("ShaderMaterial_2q5p0")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

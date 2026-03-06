@@ -19,6 +19,10 @@ uv1_triplanar = true
 material = SubResource("StandardMaterial3D_vqnaq")
 size = Vector3(10, 0.1, 20)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_we1if"]
+resource_local_to_scene = true
+radius = 0.1
+
 [node name="CombatLevel" type="Node3D" unique_id=184073505]
 script = ExtResource("1_qdkhl")
 game_state = 1
@@ -86,8 +90,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05531159, 1.3574728, -1.173
 
 [node name="ItemSlot" parent="." unique_id=806122675 instance=ExtResource("7_wpwb8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55288285, 1.1006896, -0.27659082)
-initial_object = NodePath("../Sword2")
+
+[node name="CollisionShape3D" parent="ItemSlot" index="0"]
+shape = SubResource("SphereShape3D_we1if")
 
 [connection signal="timeout" from="EnemyChargeTimer" to="." method="_on_enemy_charge_timer_timeout"]
 
 [editable path="TestNpc"]
+[editable path="ItemSlot"]
