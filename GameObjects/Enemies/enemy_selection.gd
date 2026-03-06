@@ -4,7 +4,7 @@ extends StaticBody3D
 var enabled: bool = false
 
 ## Distance the enemy has to be to this EnemySelection to be considered the selected enemy.
-@export var distance_threhsold: float = 0.1
+@export var distance_threhsold: float = 0.3
 var tween: Tween
 
 @onready var shader_material: ShaderMaterial = $SelectionCircle.material_override

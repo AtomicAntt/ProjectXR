@@ -19,6 +19,10 @@ run/main_scene="uid://d3jcn2ew83ufg"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+general/3d_panning_strength=1.0
+
 [autoload]
 
 XRToolsUserSettings="*uid://b4guyiqpqr76e"

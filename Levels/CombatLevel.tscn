@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://c7gkcaf557ybm" path="res://GameAssets/Textures/Floor.svg" id="1_78aev"]
 [ext_resource type="Script" uid="uid://b5ud585xyqmbs" path="res://Levels/CombatLevel.gd" id="1_qdkhl"]
-[ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="4_5irrg"]
 [ext_resource type="PackedScene" uid="uid://dkv2xpe00dqr4" path="res://GameObjects/Enemies/enemy_selection.tscn" id="7_we1if"]
+[ext_resource type="PackedScene" uid="uid://wsix2xqa88pt" path="res://UI/Combat/ItemSlot.tscn" id="7_wpwb8"]
 [ext_resource type="PackedScene" uid="uid://468xstcis34h" path="res://GameObjects/Weapons/Sword2.tscn" id="11_b8chn"]
 [ext_resource type="PackedScene" uid="uid://bin4d8ywgo1i0" path="res://GameObjects/NPCs/TestNPC.tscn" id="12_vgrak"]
 [ext_resource type="PackedScene" uid="uid://bl1b3tjoajwtw" path="res://GameObjects/Enemies/Slime.tscn" id="13_sm5jm"]
@@ -53,10 +53,6 @@ transform = Transform3D(-4.371138e-08, 0, -0.9999998, 0, 1, 0, 0.9999998, 0, -4.
 [node name="Enemy3" parent="." unique_id=2120718346 instance=ExtResource("13_sm5jm")]
 transform = Transform3D(-4.371138e-08, 0, -0.9999998, 0, 1, 0, 0.9999998, 0, -4.371138e-08, 1.5447631, 0, -6.5614824)
 
-[node name="SnapZone" parent="." unique_id=1958594865 instance=ExtResource("4_5irrg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49598718, 1.1398624, -0.38637754)
-initial_object = NodePath("../Sword2")
-
 [node name="Sword2" parent="." unique_id=250737451 instance=ExtResource("11_b8chn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55288285, 1.1006896, -0.27659082)
 
@@ -87,6 +83,10 @@ wait_time = 2.0
 
 [node name="SelectedEnemyMarker" type="Marker3D" parent="." unique_id=2118233930]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05531159, 1.3574728, -1.1733527)
+
+[node name="ItemSlot" parent="." unique_id=806122675 instance=ExtResource("7_wpwb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55288285, 1.1006896, -0.27659082)
+initial_object = NodePath("../Sword2")
 
 [connection signal="timeout" from="EnemyChargeTimer" to="." method="_on_enemy_charge_timer_timeout"]
 

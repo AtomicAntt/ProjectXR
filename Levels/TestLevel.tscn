@@ -70,10 +70,10 @@ transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 1, -0.15015748, 0.500406
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.035369698, 0.5763836, -1.2184482)
 
 [node name="Sword" parent="." unique_id=1871641148 groups=["Refreshable"] instance=ExtResource("10_8x8nf")]
-transform = Transform3D(1, 0, 0, 0, 0.82739437, 0.56162137, 0, -0.56162137, 0.82739437, -0.41636282, 0.6137566, -0.8521328)
+transform = Transform3D(1, 0, 0, 0, 0.82739437, 0.56162137, 0, -0.56162137, 0.82739437, -0.4117669, 0.6137566, -0.8521328)
 
 [node name="Sword2" parent="." unique_id=625879772 groups=["Refreshable"] instance=ExtResource("11_ej1bv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4022535, 0.689114, -0.88970304)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38631606, 0.689114, -0.88970304)
 
 [node name="TestNpc" parent="." unique_id=262217009 instance=ExtResource("14_ijb51")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61077094, 0.54999995, -3.115126)

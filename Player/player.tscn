@@ -54,6 +54,7 @@ script = ExtResource("1_apopc")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="." unique_id=1005326857 groups=["XRCamera3D"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0718591, 0)
+doppler_tracking = 1
 
 [node name="Fade" type="MeshInstance3D" parent="XRCamera3D" unique_id=645598595 groups=["Fade"]]
 material_override = SubResource("ShaderMaterial_x3vf3")

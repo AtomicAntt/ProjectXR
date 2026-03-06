@@ -4,6 +4,7 @@
 [ext_resource type="Shader" uid="uid://d3xxqdwk3kxgq" path="res://Shaders/Enemy/selection_circle.gdshader" id="2_ttsii"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wpwb8"]
+height = 5.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6q22q"]
 resource_local_to_scene = true
@@ -32,7 +33,7 @@ collision_mask = 0
 script = ExtResource("1_4h6ri")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2100869297]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 1, 0)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 2.444087, 0)
 shape = SubResource("CylinderShape3D_wpwb8")
 
 [node name="SelectionCircle" type="MeshInstance3D" parent="." unique_id=1697177297]
