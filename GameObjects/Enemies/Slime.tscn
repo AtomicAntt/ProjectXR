@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://bl1b3tjoajwtw"]
 
 [ext_resource type="Script" uid="uid://dk8qougt0hu0r" path="res://GameObjects/Enemies/SlimeBehavior.gd" id="1_0x1s4"]
+[ext_resource type="PackedScene" uid="uid://cstseootxqdkk" path="res://UI/Combat/HealthBar3D.tscn" id="2_u8bqb"]
 [ext_resource type="Shader" uid="uid://c3alk70mfjsko" path="res://Shaders/Enemy/dither_transparency.gdshader" id="3_38hmg"]
 [ext_resource type="PackedScene" uid="uid://b7m8vo5ip6wg6" path="res://GameAssets/Enemies/slime.tscn" id="3_pmcfi"]
 [ext_resource type="Texture2D" uid="uid://qpynexbxljrn" path="res://GameAssets/Enemies/Slime_Sphere Base Color.png" id="4_u8bqb"]
 [ext_resource type="Shader" uid="uid://covdtv4sngqeq" path="res://Shaders/Enemy/hit_flash.gdshader" id="5_eco4i"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_38hmg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eco4i"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_38hmg")
@@ -14,7 +15,7 @@ shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/color_alpha = 1.0
 shader_parameter/base_texture = ExtResource("4_u8bqb")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u8bqb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ife3x"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("5_eco4i")
@@ -28,11 +29,22 @@ points = PackedVector3Array(0.18429965, 0.063349284, -3.607571e-05, 0.1830729, 0
 script = ExtResource("1_0x1s4")
 time_to_enemy = 1.5
 
+[node name="HealthBar3D" parent="." unique_id=1759546328 instance=ExtResource("2_u8bqb")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.4845471, 0)
+collision_layer = 5242881
+update_mode = 1
+throttle_fps = 30.0
+input_keyboard = true
+input_gamepad = false
+transparent = 1
+unshaded = true
+scene_properties_keys = PackedStringArray("health_bar_2d.gd")
+
 [node name="Slime" parent="." unique_id=1647046844 instance=ExtResource("3_pmcfi")]
 
 [node name="Sphere" parent="Slime" index="0" unique_id=412562946]
-material_override = SubResource("ShaderMaterial_38hmg")
-material_overlay = SubResource("ShaderMaterial_u8bqb")
+material_override = SubResource("ShaderMaterial_eco4i")
+material_overlay = SubResource("ShaderMaterial_ife3x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1201552868]
 shape = SubResource("ConvexPolygonShape3D_pmcfi")

@@ -13,6 +13,7 @@ var state: States = States.IDLE
 
 @onready var flash_material: ShaderMaterial = $Slime/Sphere.material_overlay
 @onready var dither_material: ShaderMaterial = $Slime/Sphere.material_override
+@onready var health_bar_3d: HealthBar3D = $HealthBar3D
 
 @export var health: float = 100
 @export var friction_speed: float = 5.0
@@ -103,6 +104,7 @@ func is_idle() -> bool:
 func hurt(damage_taken: float, new_velocity: Vector3 = Vector3.ZERO) -> void:
 	if state != States.DEAD:
 		health -= damage_taken
+		health_bar_3d.set_value(health)
 		flash_material.set_shader_parameter("flash", 1.0)
 		var tween: Tween = create_tween()
 		tween.tween_method(set_hit_flash, 1.0, 0.0, 0.5)
@@ -110,11 +112,14 @@ func hurt(damage_taken: float, new_velocity: Vector3 = Vector3.ZERO) -> void:
 		velocity = new_velocity
 		set_hurt()
 		
-		if health <= 0:
-			death()
+		#if health <= 0:
+			#death()
 
-func death() -> void:
-	state = States.DEAD
+#func death() -> void:
+	#state = States.DEAD
+
+func is_dead() -> bool:
+	return state == States.DEAD
 
 func reappear() -> void:
 	visible = true
@@ -127,6 +132,11 @@ func recover() -> void:
 	disappear_tween.tween_method(set_dither_alpha, 1.0, 0.0, 0.3)
 	await disappear_tween.finished
 	visible = false
+	
+	if health <= 0:
+		# Only once they recover, they realize they are dead, actually.
+		state = States.DEAD
+		queue_free()
 	
 	# If the enemy was recovers during a player's turn, transition to the enemy turn.
 	# If the enemy was recovers during the enemy's turn, set state to waiting.

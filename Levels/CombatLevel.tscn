@@ -59,6 +59,7 @@ transform = Transform3D(-4.371138e-08, 0, -0.9999998, 0, 1, 0, 0.9999998, 0, -4.
 
 [node name="Sword2" parent="." unique_id=250737451 instance=ExtResource("11_b8chn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55288285, 1.1006896, -0.27659082)
+damage = 60.0
 
 [node name="EnemySpawnPoints" type="Node" parent="." unique_id=1331027477]
 

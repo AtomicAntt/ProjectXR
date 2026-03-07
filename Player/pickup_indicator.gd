@@ -48,7 +48,6 @@ func generate_points_cubic(p3: Vector3) -> void:
 	var p0: Vector3 = global_position
 	
 	# This is the y direction of the hand faces * magnitude of 0.1
-	# Remember that -z is the forward direction.
 	
 	var offset: Vector3 = get_parent().transform.basis.y * 0.1
 	var p1: Vector3 = p0 + offset

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://blrlknbbooywg"]
+
+[ext_resource type="Script" uid="uid://bhr4gwg1lrmhe" path="res://UI/Combat/health_bar_2d.gd" id="1_bsd0w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mrh4b"]
+bg_color = Color(0.13816993, 0.13816993, 0.13816993, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dldeg"]
+bg_color = Color(1, 0.20557544, 0.21528912, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.13816993, 0.13816993, 0.13816993, 0.12100001)
+
+[sub_resource type="Theme" id="Theme_gn0vw"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_mrh4b")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_dldeg")
+
+[node name="HealthBar" type="Node2D" unique_id=1829665303]
+script = ExtResource("1_bsd0w")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1277271857]
+offset_right = 800.0
+offset_bottom = 60.0
+theme = SubResource("Theme_gn0vw")
+value = 100.0

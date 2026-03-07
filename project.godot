@@ -51,6 +51,7 @@ DialogueText2D=""
 DialogueContainer=""
 Enemy=""
 EnemySelection=""
+PlayerWeapon=""
 
 [physics]
 

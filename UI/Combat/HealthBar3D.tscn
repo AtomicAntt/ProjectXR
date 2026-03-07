@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cstseootxqdkk"]
+
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="1_5y8rw"]
+[ext_resource type="PackedScene" uid="uid://blrlknbbooywg" path="res://UI/Combat/HealthBar2D.tscn" id="2_2s3kq"]
+[ext_resource type="Script" uid="uid://dvanqkdy58h2q" path="res://UI/Combat/health_bar_3d.gd" id="2_wskgl"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_2s3kq"]
+resource_local_to_scene = true
+size = Vector2(1.5, 0.113)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wskgl"]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tjktv"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_wskgl")
+texture_filter = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_okya1"]
+resource_local_to_scene = true
+size = Vector3(1.5, 0.113, 0.02)
+
+[node name="HealthBar3D" unique_id=1759546328 instance=ExtResource("1_5y8rw")]
+script = ExtResource("2_wskgl")
+screen_size = Vector2(1.5, 0.113)
+enabled = false
+scene = ExtResource("2_2s3kq")
+viewport_size = Vector2(800, 60)
+
+[node name="Viewport" parent="." index="0" unique_id=1581313723]
+size = Vector2i(800, 60)
+
+[node name="Screen" parent="." index="1" unique_id=801107542]
+mesh = SubResource("QuadMesh_2s3kq")
+surface_material_override/0 = SubResource("StandardMaterial3D_tjktv")
+
+[node name="StaticBody3D" parent="." index="2" unique_id=204688295]
+screen_size = Vector2(1.5, 0.113)
+viewport_size = Vector2(800, 60)
+
+[node name="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=828758063]
+shape = SubResource("BoxShape3D_okya1")

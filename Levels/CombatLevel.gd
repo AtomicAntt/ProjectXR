@@ -35,9 +35,22 @@ func _ready() -> void:
 # After an enemy gets hurt and thats recovering, once their recovery timer ends, this gets called.
 func on_enemy_recovered(enemy_node: Enemy) -> void:
 	if game_state == GameStates.PLAYER:
-		set_enemy_turn()
+		if enemies_survived():
+			set_enemy_turn()
+		else:
+			print("Looks like you won this fight!")
 	elif game_state == GameStates.ENEMY:
-		enemy_node.set_waiting()
+		if not enemy_node.is_dead():
+			enemy_node.set_waiting()
+		elif not enemies_survived():
+			print("Looks like you won this fight! You defeated them all in the countering stage.")
+
+func enemies_survived() -> bool:
+	var all_alive: bool = false
+	for enemy: Enemy in get_tree().get_nodes_in_group("Enemy"):
+		if not enemy.is_dead():
+			all_alive = true
+	return all_alive
 
 # Should be called whenever an enemy recovers after being attacked. Only call this during a player's turn.
 func set_enemy_turn() -> void:
@@ -105,6 +118,8 @@ func is_all_idle() -> bool:
 func select_enemy(new_enemy_selection: EnemySelection, new_enemy_selected: Enemy) -> void:
 	if is_all_idle():
 		var tween = create_tween()
+		
+		# If there is already an enemy selected, send them back to their spawn point's position.
 		if is_instance_valid(enemy_selected):
 			var swap_tween = create_tween()
 			selected_enemy_selection.enable() # Make it so you can once again select the enemy.
@@ -112,6 +127,7 @@ func select_enemy(new_enemy_selection: EnemySelection, new_enemy_selected: Enemy
 			enemy_selected = null
 			selected_enemy_selection = null
 		
+		# Send the selected enemy to the selected enemy marker position.
 		enemy_selected = new_enemy_selected
 		selected_enemy_selection = new_enemy_selection
 		selected_enemy_selection.disable() # Make it so you can not select the EnemySelection that is already selected.

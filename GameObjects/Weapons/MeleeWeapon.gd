@@ -2,6 +2,8 @@
 class_name MeleeWeapon
 extends XRToolsPickable
 
+@export var damage: float = 60
+
 func _on_hitbox_body_entered(body: Node3D) -> void:
 	if is_picked_up() and body.is_in_group("Enemy"):
 		if _grab_driver.primary.controller:
@@ -19,4 +21,4 @@ func _on_hitbox_body_entered(body: Node3D) -> void:
 				var rumbler: XRToolsRumbleEvent = $ImpactRumbler.event
 				rumbler.magnitude = clampf(((xr_angular_magnitude/2) + (xr_linear_magnitude/2))/25, 0.0, 1.0)
 				$ImpactRumbler.rumble_hand(_grab_driver.primary.controller)
-				enemy.hurt(0, (XRServer.get_reference_frame()*xr_linear_velocity).normalized() * xr_linear_magnitude)
+				enemy.hurt(damage, (XRServer.get_reference_frame()*xr_linear_velocity).normalized() * xr_linear_magnitude)
