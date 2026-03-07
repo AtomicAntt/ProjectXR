@@ -5,6 +5,7 @@ extends Enemy
 
 ## The time, in seconds, for this enemy to reach the player after attacking them
 @export var time_to_enemy: float
+@export var yoffset: float = -1.0
 
 #func _physics_process(_delta: float) -> void:
 	#if state != States.DEAD and state != States.HURT:
@@ -22,7 +23,7 @@ func calculate_velocity() -> Vector3:
 	var player_horizontal_position: Vector3 = Vector3(xr_camera.global_position.x, 0, xr_camera.global_position.z)
 	var horizontal_distance: float = horizontal_position.distance_to(player_horizontal_position)
 	
-	var vertical_distance: float = xr_camera.global_position.y - global_position.y
+	var vertical_distance: float = xr_camera.global_position.y - global_position.y + yoffset
 	
 	var horizontal_speed: float = horizontal_distance/time_to_enemy
 	var vertical_velocity: float = (vertical_distance - ((0.5) * (-gravity) * pow(time_to_enemy, 2)))/time_to_enemy

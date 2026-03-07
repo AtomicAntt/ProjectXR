@@ -30,7 +30,7 @@ shader_parameter/_shield_pulse_density = 1.0
 shader_parameter/_shield_pulse_amplitude = 10.0
 shader_parameter/_shield_pulse_blend = 2.0
 shader_parameter/_shield_pulse_radius = 1.0
-shader_parameter/_impact_origin = Vector3(-0.04590609, -0.07913134, 0.04038395)
+shader_parameter/_impact_origin = Vector3(1, 0, 0)
 shader_parameter/_impact_frequency = 5.0
 shader_parameter/_impact_density = 5.0
 shader_parameter/_impact_amplitude = 20.0
@@ -60,3 +60,4 @@ skeleton = NodePath("../..")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

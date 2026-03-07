@@ -56,6 +56,7 @@ data = PackedVector3Array(-0.0757, 0.2296, 0, -0.085999995, 0.22369999, -0.049, 
 collision_priority = 0.9
 continuous_cd = true
 script = ExtResource("2_emto3")
+ranged_grab_method = 2
 second_hand_grab = 1
 
 [node name="CollisionShape3D" parent="." index="0"]

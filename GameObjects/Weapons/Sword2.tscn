@@ -58,6 +58,7 @@ continuous_cd = true
 contact_monitor = true
 max_contacts_reported = 640
 script = ExtResource("2_w8707")
+ranged_grab_method = 2
 second_hand_grab = 1
 
 [node name="CollisionShape3D" parent="." index="0"]

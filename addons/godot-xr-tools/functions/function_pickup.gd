@@ -23,6 +23,12 @@ signal has_dropped
 ## CUSTOM SIGNAL: Signal emitted when something can be picked up
 signal has_hover_entered
 
+## CUSTOM SIGNAL: Signal emitted when something can no longer be picked up.
+signal has_hover_exited
+
+## CUSTOM SIGNAL: Signal emitted when something can be picked up from ranged distance.
+signal has_hover_entered_ranged(what)
+
 # Default pickup collision mask of 3:pickable and 19:handle
 const DEFAULT_GRAB_MASK := 0b0000_0000_0000_0100_0000_0000_0000_0100
 
@@ -314,12 +320,20 @@ func _on_ranged_exited(target: Node3D) -> void:
 func _update_closest_object() -> void:
 	# Find the closest object we can pickup
 	var new_closest_obj: Node3D = null
+	
+	# Custom logic: Track if the new closest object is obtained via ranged grab
+	# Purpose is to update the pickupindicator if that is the case.
+	var is_ranged: bool = false
+	
 	if not picked_up_object:
 		# Find the closest in grab area
 		new_closest_obj = _get_closest_grab()
 		if not new_closest_obj and ranged_enable:
 			# Find closest in ranged area
 			new_closest_obj = _get_closest_ranged()
+			
+			# Custom logic
+			is_ranged = true
 
 	# Skip if no change
 	if closest_object == new_closest_obj:
@@ -329,11 +343,22 @@ func _update_closest_object() -> void:
 	if is_instance_valid(closest_object):
 		closest_object.request_highlight(self, false)
 
+	# Custom logic: Check to see if the closest object is a swap from one object to another, so that hover_exit signals are emitted.
+	# Also check if the new object that it is closest to is null, which also counts as hover_exit.
+	if is_instance_valid(closest_object) or new_closest_obj == null:
+		emit_signal("has_hover_exited")
+	
 	# add highlight to new object
 	closest_object = new_closest_obj
 	if is_instance_valid(closest_object):
 		closest_object.request_highlight(self, true)
+		
+		# Custom signal emitted after hovering
 		emit_signal("has_hover_entered")
+		# Custom signal emitted if an object is picked up using ranged grab. It will also pass on the object itself.
+		if is_ranged:
+			emit_signal("has_hover_entered_ranged", closest_object)
+	
 
 # Find the pickable object closest to our hand's grab location
 func _get_closest_grab() -> Node3D:
