@@ -84,6 +84,8 @@ func _physics_process(delta: float) -> void:
 			# We already have something, so don't drag anything.
 			stop_item_dragging()
 			
+			# Also, for the purpose of possibly hiding this item slot during enemy turns, let picked up objects share visiblity
+			picked_up_object.visible = visible
 	
 	if mAnimate:
 		if mElapsedTime < mAnimTime:
@@ -102,6 +104,14 @@ func stop_item_dragging() -> void:
 	item_dragging = null
 	if is_instance_valid(drag_tween):
 		drag_tween.stop()
+
+## This function's purpose is to grab any items being dragged when it becomes the enemy's turn.
+func instant_grab() -> void:
+	if not is_instance_valid(item_dragging):
+		retrieve_valid_object()
+	else:
+		pick_up_object(item_dragging)
+		stop_item_dragging()
 
 func _on_return_item_timeout() -> void:
 	item_dragging = retrieve_valid_object()

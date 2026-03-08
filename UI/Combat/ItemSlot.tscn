@@ -49,7 +49,7 @@ mAnimCurve = SubResource("Curve_alnh7")
 mImpactCurve = SubResource("Curve_2q5p0")
 mAnimTime = 0.35
 slot_radius = 0.1
-drag_time = null
+drag_time = 0.5
 snap_mode = 1
 
 [node name="CollisionShape3D" parent="." index="0"]

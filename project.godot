@@ -54,6 +54,7 @@ EnemySelection=""
 PlayerWeapon=""
 ItemSlot=""
 Item="XRToolsPickable that can go into an item slot. It's used during combat likely."
+WeaponItemSlot="Only purpose is to be excluded from being removed during enemy turns."
 
 [physics]
 

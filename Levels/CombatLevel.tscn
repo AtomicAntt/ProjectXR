@@ -162,9 +162,8 @@ wait_time = 2.0
 [node name="SelectedEnemyMarker" type="Marker3D" parent="." unique_id=2118233930]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05531159, 1.3574728, -1.1733527)
 
-[node name="WeaponItemSlot" parent="." unique_id=806122675 instance=ExtResource("7_wpwb8")]
+[node name="WeaponItemSlot" parent="." unique_id=806122675 groups=["WeaponItemSlot"] instance=ExtResource("7_wpwb8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55288285, 1.1006896, -0.27659082)
-drag_speed = 2.0
 snap_require = "PlayerWeapon"
 initial_object = NodePath("../Sword2")
 
@@ -176,7 +175,6 @@ material_override = SubResource("ShaderMaterial_f5f6k")
 
 [node name="ItemSlot" parent="." unique_id=1771587066 instance=ExtResource("7_wpwb8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6528809, 1.1006896, -0.27659082)
-drag_speed = 2.0
 snap_require = "Item"
 initial_object = NodePath("../Potion")
 
@@ -188,7 +186,6 @@ material_override = SubResource("ShaderMaterial_78aev")
 
 [node name="ItemSlot2" parent="." unique_id=1528699832 instance=ExtResource("7_wpwb8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6528809, 1.1006896, 0.054225177)
-drag_speed = 2.0
 snap_require = "Item"
 initial_object = NodePath("../Bottle")
 

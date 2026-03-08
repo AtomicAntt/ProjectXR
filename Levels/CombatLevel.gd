@@ -58,6 +58,7 @@ func set_enemy_turn() -> void:
 	$TurnLabel.text = "ENEMY TURN"
 	$EnemyChargeTimer.start() # After this end, it should pick a random enemy that's idle to start charging.
 	set_enemy_positions()
+	disable_item_slots()
 	
 	for enemy_selection: EnemySelection in get_tree().get_nodes_in_group("EnemySelection"):
 		enemy_selection.disable()
@@ -68,6 +69,7 @@ func set_player_turn() -> void:
 	$TurnLabel.text = "PLAYER TURN"
 	$EnemyChargeTimer.stop() # Stopping this so that enemies are no longer picked to start charging.
 	set_enemy_positions()
+	enable_item_slots()
 
 
 # This function will check if all enemies are waiting during an enemy turn. If they are, then it will finally be the player's turn.
@@ -132,6 +134,19 @@ func select_enemy(new_enemy_selection: EnemySelection, new_enemy_selected: Enemy
 		selected_enemy_selection = new_enemy_selection
 		selected_enemy_selection.disable() # Make it so you can not select the EnemySelection that is already selected.
 		tween.tween_property(new_enemy_selected, "global_position", $SelectedEnemyMarker.global_position, select_speed)
+
+func disable_item_slots() -> void:
+	for item_slot: ItemSlot in get_tree().get_nodes_in_group("ItemSlot"):
+		if not item_slot.is_in_group("WeaponItemSlot"):
+			item_slot.instant_grab()
+			item_slot.enabled = false
+			item_slot.visible = false # Item slot picked up items will share visibility, no worries
+
+func enable_item_slots() -> void:
+	for item_slot: ItemSlot in get_tree().get_nodes_in_group("ItemSlot"):
+		if not item_slot.is_in_group("WeaponItemSlot"):
+			item_slot.enabled = true
+			item_slot.visible = true # Item slot picked up items will share visibility, no worries
 
 func _on_enemy_charge_timer_timeout() -> void:
 	if game_state == GameStates.ENEMY:
