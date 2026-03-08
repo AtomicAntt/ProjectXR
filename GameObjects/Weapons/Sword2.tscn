@@ -52,16 +52,17 @@ script = ExtResource("9_1wnr1")
 duration_ms = 150
 metadata/_custom_type_script = "uid://cuf42fufnnrds"
 
-[node name="Sword2" unique_id=250737451 instance=ExtResource("1_jloij")]
+[node name="Sword2" unique_id=250737451 groups=["PlayerWeapon"] instance=ExtResource("1_jloij")]
 collision_priority = 0.9
 continuous_cd = true
 contact_monitor = true
 max_contacts_reported = 640
 script = ExtResource("2_w8707")
+damage = 60.0
 ranged_grab_method = 2
 second_hand_grab = 1
 
-[node name="CollisionShape3D" parent="." index="0"]
+[node name="CollisionShape3D" parent="." index="0" unique_id=1426569409]
 transform = Transform3D(-5.3163028e-08, -1.0086472e-08, 1, -0.729697, 0.68377066, -3.1896068e-08, -0.68377066, -0.729697, -4.371139e-08, 0, 0.042690955, -0.034900464)
 shape = SubResource("ConvexPolygonShape3D_w8707")
 

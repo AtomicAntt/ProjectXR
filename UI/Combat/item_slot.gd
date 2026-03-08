@@ -18,6 +18,14 @@ var mAnimate = false
 ## Radius of the shader, manually set this to the mesh's radius.
 @export var slot_radius: float = 0.1
 
+## Current item that is getting dragged.
+## This should be set whenever a ReturnItemTimer ends and an item can be dragged.
+## Set this back to null if an item is already grabbed, obviously.
+var item_dragging: XRToolsPickable = null
+var drag_tween: Tween
+#@export var drag_speed: float = 2.0
+
+
 func set_impact_origin(pos: Vector3) -> void:
 	#print("impact origin is set at" + str(pos))
 	
@@ -41,25 +49,59 @@ func tool_hit_random() -> void:
 
 @export_tool_button("Start") var start_emit = tool_hit_random
 
+## Returns an item that is in the Snap Require group out there in the world.
+## Purpose is so that you can get the item back or into this slot when possible.
+## Call this after a ReturnItemTimer ends so that an item can get dragged.
+func retrieve_valid_object() -> Node3D:
+	for item: XRToolsPickable in get_tree().get_nodes_in_group(snap_require):
+		if not is_item_dragged(item) and not item.is_picked_up():
+			return item
+	return null
+
+## Checks if any other item slot is already dragging the specific item given as an argument.
+## Purpose is that when the return item timer runs out, we want to start dragging the item closer to this item slot
+## but we don't want to fight with other item slots.
+func is_item_dragged(item: XRToolsPickable) -> bool:
+	for item_slot: ItemSlot in get_tree().get_nodes_in_group("ItemSlot"):
+		if item_slot.item_dragging == item:
+			return true
+	return false
+
 func _physics_process(delta: float) -> void:
-	#if not Engine.is_editor_hint():
+	if not Engine.is_editor_hint():
+		if not is_instance_valid(picked_up_object) and $ReturnItemTimer.is_stopped() and not is_instance_valid(item_dragging):
+			# If we don't have anything picked up, we start the return item timer (if not already) so that it will see if it can start dragging.
+			# Additionally, we aren't already dragging an item.
+			$ReturnItemTimer.start()
+		elif not is_instance_valid(picked_up_object) and is_instance_valid(item_dragging):
+			if item_dragging.is_picked_up(): # Extra shield of protection
+				# If we haven't picked up anything yet, and there's an item to drag that isn't already picked up.
+				#item_dragging.global_position.move_toward(global_position, drag_speed * delta)
+			#else:
+				item_dragging = null
+				if is_instance_valid(drag_tween):
+					drag_tween.stop()
+		elif is_instance_valid(picked_up_object):
+			# We already have something, so don't drag anything.
+			item_dragging = null
+			if is_instance_valid(drag_tween):
+				drag_tween.stop()
+			
+	
 	if mAnimate:
 		if mElapsedTime < mAnimTime:
 			var normalize_time: float = mElapsedTime / mAnimTime
 			mMaterial.set_shader_parameter("_impact_blend", mAnimCurve.sample(normalize_time))
 			mMaterial.set_shader_parameter("_impact_anim", mImpactCurve.sample(normalize_time))
-			#mMaterial.set_shader_parameter("_shield_intensity", normalize_time*2)
 			mElapsedTime += delta
 		else:
 			mMaterial.set_shader_parameter("_impact_blend", 0.0)
 			mMaterial.set_shader_parameter("_impact_anim", 0.0)
-			#mMaterial.set_shader_parameter("_shield_intensity", 2.0)
 			
 			mElapsedTime = 0.0
 			mAnimate = false
-		
-		#var impact_blend = mMaterial.get_shader_parameter("_impact_blend")
-		#var impact_anim = mMaterial.get_shader_parameter("_impact_anim")
-		#var current_origin = mMaterial.get_shader_parameter("_impact_origin")
-		
-		#print("Impact_Blend value: " + str(impact_blend) + ", Impact_Anim value: " + str(impact_anim) + ", At: " + str(current_origin))
+
+func _on_return_item_timeout() -> void:
+	item_dragging = retrieve_valid_object()
+	drag_tween = create_tween()
+	drag_tween.tween_property(item_dragging, "global_position", global_position, 1.0)

@@ -2,8 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://c7gkcaf557ybm" path="res://GameAssets/Textures/Floor.svg" id="1_78aev"]
 [ext_resource type="Script" uid="uid://b5ud585xyqmbs" path="res://Levels/CombatLevel.gd" id="1_qdkhl"]
+[ext_resource type="Shader" uid="uid://bkug56iyrfvqd" path="res://Shaders/UI/Bubble.gdshader" id="7_6q22q"]
 [ext_resource type="PackedScene" uid="uid://dkv2xpe00dqr4" path="res://GameObjects/Enemies/enemy_selection.tscn" id="7_we1if"]
 [ext_resource type="PackedScene" uid="uid://wsix2xqa88pt" path="res://UI/Combat/ItemSlot.tscn" id="7_wpwb8"]
+[ext_resource type="PackedScene" uid="uid://cf8ik4xbe81gh" path="res://GameObjects/Props/Potion.tscn" id="9_afrcm"]
+[ext_resource type="PackedScene" uid="uid://ekrgs4wcsu5f" path="res://GameObjects/Props/Bottle.tscn" id="10_f5f6k"]
 [ext_resource type="PackedScene" uid="uid://468xstcis34h" path="res://GameObjects/Weapons/Sword2.tscn" id="11_b8chn"]
 [ext_resource type="PackedScene" uid="uid://bin4d8ywgo1i0" path="res://GameObjects/NPCs/TestNPC.tscn" id="12_vgrak"]
 [ext_resource type="PackedScene" uid="uid://bl1b3tjoajwtw" path="res://GameObjects/Enemies/Slime.tscn" id="13_sm5jm"]
@@ -19,9 +22,83 @@ uv1_triplanar = true
 material = SubResource("StandardMaterial3D_vqnaq")
 size = Vector3(10, 0.1, 20)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_we1if"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_afrcm"]
 resource_local_to_scene = true
 radius = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f5f6k"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("7_6q22q")
+shader_parameter/_shield_color = Color(0, 0, 1, 1)
+shader_parameter/_shield_color_brightness = 10.0
+shader_parameter/_shield_intensity = 2.0
+shader_parameter/_rotation = Vector3(0.1, 0, 0)
+shader_parameter/_shield_size = 0.0
+shader_parameter/_shield_pulse_frequency = 1.0
+shader_parameter/_shield_pulse_density = 1.0
+shader_parameter/_shield_pulse_amplitude = 10.0
+shader_parameter/_shield_pulse_blend = 2.0
+shader_parameter/_shield_pulse_radius = 1.0
+shader_parameter/_impact_origin = Vector3(1, 0, 0)
+shader_parameter/_impact_frequency = 5.0
+shader_parameter/_impact_density = 5.0
+shader_parameter/_impact_amplitude = 20.0
+shader_parameter/_impact_blend = 0.0
+shader_parameter/_impact_radius = 0.2
+shader_parameter/_impact_anim = 0.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0bdts"]
+resource_local_to_scene = true
+radius = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_78aev"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("7_6q22q")
+shader_parameter/_shield_color = Color(0, 0, 1, 1)
+shader_parameter/_shield_color_brightness = 10.0
+shader_parameter/_shield_intensity = 2.0
+shader_parameter/_rotation = Vector3(0.1, 0, 0)
+shader_parameter/_shield_size = 0.0
+shader_parameter/_shield_pulse_frequency = 1.0
+shader_parameter/_shield_pulse_density = 1.0
+shader_parameter/_shield_pulse_amplitude = 10.0
+shader_parameter/_shield_pulse_blend = 2.0
+shader_parameter/_shield_pulse_radius = 1.0
+shader_parameter/_impact_origin = Vector3(1, 0, 0)
+shader_parameter/_impact_frequency = 5.0
+shader_parameter/_impact_density = 5.0
+shader_parameter/_impact_amplitude = 20.0
+shader_parameter/_impact_blend = 0.0
+shader_parameter/_impact_radius = 0.2
+shader_parameter/_impact_anim = 0.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8f1lg"]
+resource_local_to_scene = true
+radius = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1rpy5"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("7_6q22q")
+shader_parameter/_shield_color = Color(0, 0, 1, 1)
+shader_parameter/_shield_color_brightness = 10.0
+shader_parameter/_shield_intensity = 2.0
+shader_parameter/_rotation = Vector3(0.1, 0, 0)
+shader_parameter/_shield_size = 0.0
+shader_parameter/_shield_pulse_frequency = 1.0
+shader_parameter/_shield_pulse_density = 1.0
+shader_parameter/_shield_pulse_amplitude = 10.0
+shader_parameter/_shield_pulse_blend = 2.0
+shader_parameter/_shield_pulse_radius = 1.0
+shader_parameter/_impact_origin = Vector3(1, 0, 0)
+shader_parameter/_impact_frequency = 5.0
+shader_parameter/_impact_density = 5.0
+shader_parameter/_impact_amplitude = 20.0
+shader_parameter/_impact_blend = 0.0
+shader_parameter/_impact_radius = 0.2
+shader_parameter/_impact_anim = 0.0
 
 [node name="CombatLevel" type="Node3D" unique_id=184073505]
 script = ExtResource("1_qdkhl")
@@ -57,10 +134,6 @@ transform = Transform3D(-4.371138e-08, 0, -0.9999998, 0, 1, 0, 0.9999998, 0, -4.
 [node name="Enemy3" parent="." unique_id=2120718346 instance=ExtResource("13_sm5jm")]
 transform = Transform3D(-4.371138e-08, 0, -0.9999998, 0, 1, 0, 0.9999998, 0, -4.371138e-08, 1.5447631, 0, -6.5614824)
 
-[node name="Sword2" parent="." unique_id=250737451 instance=ExtResource("11_b8chn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55288285, 1.1006896, -0.27659082)
-damage = 60.0
-
 [node name="EnemySpawnPoints" type="Node" parent="." unique_id=1331027477]
 
 [node name="EnemySpawn" type="Marker3D" parent="EnemySpawnPoints" unique_id=166254504]
@@ -89,13 +162,54 @@ wait_time = 2.0
 [node name="SelectedEnemyMarker" type="Marker3D" parent="." unique_id=2118233930]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05531159, 1.3574728, -1.1733527)
 
-[node name="ItemSlot" parent="." unique_id=806122675 instance=ExtResource("7_wpwb8")]
+[node name="WeaponItemSlot" parent="." unique_id=806122675 instance=ExtResource("7_wpwb8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55288285, 1.1006896, -0.27659082)
+drag_speed = 2.0
+snap_require = "PlayerWeapon"
+initial_object = NodePath("../Sword2")
+
+[node name="CollisionShape3D" parent="WeaponItemSlot" index="0"]
+shape = SubResource("SphereShape3D_afrcm")
+
+[node name="MeshInstance3D" parent="WeaponItemSlot" index="2" unique_id=972511200]
+material_override = SubResource("ShaderMaterial_f5f6k")
+
+[node name="ItemSlot" parent="." unique_id=1771587066 instance=ExtResource("7_wpwb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6528809, 1.1006896, -0.27659082)
+drag_speed = 2.0
+snap_require = "Item"
+initial_object = NodePath("../Potion")
 
 [node name="CollisionShape3D" parent="ItemSlot" index="0"]
-shape = SubResource("SphereShape3D_we1if")
+shape = SubResource("SphereShape3D_0bdts")
+
+[node name="MeshInstance3D" parent="ItemSlot" index="2" unique_id=972511200]
+material_override = SubResource("ShaderMaterial_78aev")
+
+[node name="ItemSlot2" parent="." unique_id=1528699832 instance=ExtResource("7_wpwb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6528809, 1.1006896, 0.054225177)
+drag_speed = 2.0
+snap_require = "Item"
+initial_object = NodePath("../Bottle")
+
+[node name="CollisionShape3D" parent="ItemSlot2" index="0"]
+shape = SubResource("SphereShape3D_8f1lg")
+
+[node name="MeshInstance3D" parent="ItemSlot2" index="2" unique_id=972511200]
+material_override = SubResource("ShaderMaterial_1rpy5")
+
+[node name="Sword2" parent="." unique_id=250737451 instance=ExtResource("11_b8chn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55288285, 1.1006896, -0.27659082)
+
+[node name="Potion" parent="." unique_id=97275592 instance=ExtResource("9_afrcm")]
+transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 1, -0.6528809, 1.1006896, -0.27659082)
+
+[node name="Bottle" parent="." unique_id=982774182 instance=ExtResource("10_f5f6k")]
+transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 1, -0.6528809, 1.1006896, 0.054225177)
 
 [connection signal="timeout" from="EnemyChargeTimer" to="." method="_on_enemy_charge_timer_timeout"]
 
 [editable path="TestNpc"]
+[editable path="WeaponItemSlot"]
 [editable path="ItemSlot"]
+[editable path="ItemSlot2"]

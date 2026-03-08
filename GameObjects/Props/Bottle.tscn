@@ -41,7 +41,7 @@ material = SubResource("StandardMaterial3D_rjrcd")
 radius = 0.01
 height = 0.02
 
-[node name="Bottle" unique_id=982774182 instance=ExtResource("1_rpe3v")]
+[node name="Bottle" unique_id=982774182 groups=["Item"] instance=ExtResource("1_rpe3v")]
 transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 top_level = true
 script = ExtResource("2_kplt7")
@@ -53,7 +53,7 @@ min_fill_amount = 0.05
 angle_threshold = 90.0
 second_hand_grab = 1
 
-[node name="CollisionShape3D" parent="." index="0"]
+[node name="CollisionShape3D" parent="." index="0" unique_id=1426569409]
 transform = Transform3D(0.9999936, 0, 0, 0, 0.9999936, 0, 0, 0, 1, 0, 0.11785295, 0)
 shape = SubResource("CapsuleShape3D_wpp67")
 

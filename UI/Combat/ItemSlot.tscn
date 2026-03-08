@@ -18,6 +18,7 @@ resource_local_to_scene = true
 radius = 0.1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_alnh7"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_lowfa")
 shader_parameter/_shield_color = Color(0, 0, 1, 1)
@@ -42,12 +43,13 @@ shader_parameter/_impact_anim = 0.0
 radius = 0.1
 height = 0.2
 
-[node name="ItemSlot" unique_id=806122675 instance=ExtResource("1_ijgbj")]
+[node name="ItemSlot" unique_id=806122675 groups=["ItemSlot"] instance=ExtResource("1_ijgbj")]
 script = ExtResource("2_alnh7")
 mAnimCurve = SubResource("Curve_alnh7")
 mImpactCurve = SubResource("Curve_2q5p0")
 mAnimTime = 0.35
 slot_radius = 0.1
+drag_speed = null
 snap_mode = 1
 
 [node name="CollisionShape3D" parent="." index="0"]
@@ -58,6 +60,11 @@ material_override = SubResource("ShaderMaterial_alnh7")
 mesh = SubResource("SphereMesh_alnh7")
 skeleton = NodePath("../..")
 
+[node name="ReturnItemTimer" type="Timer" parent="." index="3" unique_id=1484138994]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="timeout" from="ReturnItemTimer" to="." method="_on_return_item_timeout"]

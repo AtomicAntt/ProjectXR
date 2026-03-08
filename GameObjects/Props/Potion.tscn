@@ -33,7 +33,7 @@ material = SubResource("StandardMaterial3D_rjrcd")
 radius = 0.01
 height = 0.02
 
-[node name="Potion" unique_id=97275592 instance=ExtResource("1_o7frl")]
+[node name="Potion" unique_id=97275592 groups=["Item"] instance=ExtResource("1_o7frl")]
 transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("2_skq8k")
 bottle_cap = ExtResource("3_33yk0")
@@ -44,7 +44,7 @@ min_fill_amount = 0.05
 angle_threshold = 90.0
 second_hand_grab = 1
 
-[node name="CollisionShape3D" parent="." index="0"]
+[node name="CollisionShape3D" parent="." index="0" unique_id=1426569409]
 transform = Transform3D(0.999994, 0, 0, 0, 0.9999936, 0, 0, 0, 1, 0.0032375625, 0.06639766, 0)
 shape = SubResource("SphereShape3D_skq8k")
 

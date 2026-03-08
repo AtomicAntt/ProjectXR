@@ -1,11 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://71on3inleftl"]
+[gd_scene format=3 uid="uid://71on3inleftl"]
 
 [ext_resource type="Script" uid="uid://c5kechbnb2oxx" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1"]
 
-[node name="PickableObject" type="RigidBody3D"]
+[node name="PickableObject" type="RigidBody3D" unique_id=1430911432]
 collision_layer = 4
 collision_mask = 196615
 freeze_mode = 1
 script = ExtResource("1")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1426569409]

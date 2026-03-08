@@ -52,6 +52,8 @@ DialogueContainer=""
 Enemy=""
 EnemySelection=""
 PlayerWeapon=""
+ItemSlot=""
+Item="XRToolsPickable that can go into an item slot. It's used during combat likely."
 
 [physics]
 
