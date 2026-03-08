@@ -23,7 +23,8 @@ var mAnimate = false
 ## Set this back to null if an item is already grabbed, obviously.
 var item_dragging: XRToolsPickable = null
 var drag_tween: Tween
-#@export var drag_speed: float = 2.0
+@export var drag_time: float = 0.5
+#@export var drag_speed: float = 50.0
 
 
 func set_impact_origin(pos: Vector3) -> void:
@@ -52,9 +53,9 @@ func tool_hit_random() -> void:
 ## Returns an item that is in the Snap Require group out there in the world.
 ## Purpose is so that you can get the item back or into this slot when possible.
 ## Call this after a ReturnItemTimer ends so that an item can get dragged.
-func retrieve_valid_object() -> Node3D:
+func retrieve_valid_object() -> XRToolsPickable:
 	for item: XRToolsPickable in get_tree().get_nodes_in_group(snap_require):
-		if not is_item_dragged(item) and not item.is_picked_up():
+		if not is_item_dragged(item) and not item.is_picked_up() and is_instance_valid(item):
 			return item
 	return null
 
@@ -75,17 +76,13 @@ func _physics_process(delta: float) -> void:
 			$ReturnItemTimer.start()
 		elif not is_instance_valid(picked_up_object) and is_instance_valid(item_dragging):
 			if item_dragging.is_picked_up(): # Extra shield of protection
-				# If we haven't picked up anything yet, and there's an item to drag that isn't already picked up.
+				## If we haven't picked up anything yet, and there's an item to drag that isn't already picked up.
 				#item_dragging.global_position.move_toward(global_position, drag_speed * delta)
 			#else:
-				item_dragging = null
-				if is_instance_valid(drag_tween):
-					drag_tween.stop()
+				stop_item_dragging()
 		elif is_instance_valid(picked_up_object):
 			# We already have something, so don't drag anything.
-			item_dragging = null
-			if is_instance_valid(drag_tween):
-				drag_tween.stop()
+			stop_item_dragging()
 			
 	
 	if mAnimate:
@@ -101,7 +98,15 @@ func _physics_process(delta: float) -> void:
 			mElapsedTime = 0.0
 			mAnimate = false
 
+func stop_item_dragging() -> void:
+	item_dragging = null
+	if is_instance_valid(drag_tween):
+		drag_tween.stop()
+
 func _on_return_item_timeout() -> void:
 	item_dragging = retrieve_valid_object()
-	drag_tween = create_tween()
-	drag_tween.tween_property(item_dragging, "global_position", global_position, 1.0)
+	if is_instance_valid(item_dragging):
+		drag_tween = create_tween()
+		drag_tween.tween_property(item_dragging, "global_position", global_position, drag_time)
+		drag_tween.parallel().tween_property(item_dragging, "global_rotation", Vector3.ZERO, drag_time)
+		

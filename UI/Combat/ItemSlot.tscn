@@ -49,7 +49,7 @@ mAnimCurve = SubResource("Curve_alnh7")
 mImpactCurve = SubResource("Curve_2q5p0")
 mAnimTime = 0.35
 slot_radius = 0.1
-drag_speed = null
+drag_time = null
 snap_mode = 1
 
 [node name="CollisionShape3D" parent="." index="0"]
@@ -61,7 +61,7 @@ mesh = SubResource("SphereMesh_alnh7")
 skeleton = NodePath("../..")
 
 [node name="ReturnItemTimer" type="Timer" parent="." index="3" unique_id=1484138994]
-wait_time = 2.0
+wait_time = 4.0
 one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
