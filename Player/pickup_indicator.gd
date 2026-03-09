@@ -70,3 +70,5 @@ func _physics_process(_delta: float) -> void:
 	if generating_points and is_instance_valid(destination_object):
 		var destination_position = destination_object.global_position
 		generate_points_cubic(destination_position)
+	else:
+		stop()

@@ -55,6 +55,9 @@ PlayerWeapon=""
 ItemSlot=""
 Item="XRToolsPickable that can go into an item slot. It's used during combat likely."
 WeaponItemSlot="Only purpose is to be excluded from being removed during enemy turns."
+EnemyAttack="If this body collides with the player, the player should get hurt."
+PlayerHitbox="Area3D for a player. Purpose is to hurt the player if an attack collides with this."
+Vignette=""
 
 [physics]
 

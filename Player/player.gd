@@ -1,4 +1,16 @@
+class_name Player
 extends XROrigin3D
+
+var lives: int = 5
+var max_lives: int = lives
+
+func _ready() -> void:
+	$RightHand/LivesLeft.text = str(lives) + " HP"
+
+func hurt(damage: int = 1) -> void:
+	lives -= damage
+	$RightHand/LivesLeft.text = str(lives) + " HP"
+	$XRCamera3D/HurtVignette.play_effect()
 
 @warning_ignore("shadowed_variable_base_class")
 func _on_trigger_button_pressed(name: String) -> void:
@@ -23,3 +35,7 @@ func _on_left_function_pickup_has_hover_exited() -> void:
 func _on_right_function_pickup_has_hover_exited() -> void:
 	$RightHand/PickupIndicator.visible = false
 	$RightHand/PickupIndicator.stop()
+
+func _on_player_hitbox_body_entered(body: Node3D) -> void:
+	if body.is_in_group("EnemyAttack"):
+		hurt()
