@@ -59,6 +59,7 @@ func set_enemy_turn() -> void:
 	$EnemyChargeTimer.start() # After this end, it should pick a random enemy that's idle to start charging.
 	set_enemy_positions()
 	disable_item_slots()
+	lock_weapon_grips()
 	
 	for enemy_selection: EnemySelection in get_tree().get_nodes_in_group("EnemySelection"):
 		enemy_selection.disable()
@@ -70,7 +71,7 @@ func set_player_turn() -> void:
 	$EnemyChargeTimer.stop() # Stopping this so that enemies are no longer picked to start charging.
 	set_enemy_positions()
 	enable_item_slots()
-
+	unlock_weapon_grips()
 
 # This function will check if all enemies are waiting during an enemy turn. If they are, then it will finally be the player's turn.
 func check_waiting() -> void:
@@ -147,6 +148,16 @@ func enable_item_slots() -> void:
 		if not item_slot.is_in_group("WeaponItemSlot"):
 			item_slot.enabled = true
 			item_slot.visible = true # Item slot picked up items will share visibility, no worries
+
+## Purpose: Make the game more comfortable without keeping the player holding the grip button to swing their weapons. (Ex.: On enemy turns)
+func lock_weapon_grips() -> void:
+	for pickable: XRToolsPickable in get_tree().get_nodes_in_group("PlayerWeapon"):
+		pickable.press_to_hold = false
+
+## Purpose: Unlock weapon grips so that players can drop them again after locking them in lock_weapon_grips(). (Ex.: On player turns)
+func unlock_weapon_grips() -> void:
+	for pickable: XRToolsPickable in get_tree().get_nodes_in_group("PlayerWeapon"):
+		pickable.press_to_hold = true
 
 func _on_enemy_charge_timer_timeout() -> void:
 	if game_state == GameStates.ENEMY:
