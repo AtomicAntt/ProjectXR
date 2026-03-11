@@ -76,7 +76,7 @@ func _physics_process(delta: float) -> void:
 			$ReturnItemTimer.start()
 		elif not is_instance_valid(picked_up_object) and is_instance_valid(item_dragging):
 			if item_dragging.is_picked_up(): # Extra shield of protection
-				## If we haven't picked up anything yet, and there's an item to drag that isn't already picked up.
+				# If we haven't picked up anything yet, and there's an item to drag that isn't already picked up.
 				#item_dragging.global_position.move_toward(global_position, drag_speed * delta)
 			#else:
 				stop_item_dragging()
@@ -86,7 +86,9 @@ func _physics_process(delta: float) -> void:
 			
 			# Also, for the purpose of possibly hiding this item slot during enemy turns, let picked up objects share visiblity
 			picked_up_object.visible = visible
-	
+		elif not retrieve_valid_object():
+			$ReturnItemTimer.stop()
+		
 	if mAnimate:
 		if mElapsedTime < mAnimTime:
 			var normalize_time: float = mElapsedTime / mAnimTime
@@ -104,6 +106,7 @@ func stop_item_dragging() -> void:
 	item_dragging = null
 	if is_instance_valid(drag_tween):
 		drag_tween.stop()
+	$ReturnItemTimer.stop()
 
 ## This function's purpose is to grab any items being dragged when it becomes the enemy's turn.
 func instant_grab() -> void:
