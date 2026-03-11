@@ -202,6 +202,7 @@ transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 1, -0.6528809, 1.1006896
 
 [node name="Bottle" parent="." unique_id=982774182 instance=ExtResource("10_f5f6k")]
 transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 1, -0.6528809, 1.1006896, 0.054225177)
+heal_amount = 1
 
 [connection signal="timeout" from="EnemyChargeTimer" to="." method="_on_enemy_charge_timer_timeout"]
 

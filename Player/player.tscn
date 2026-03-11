@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d1tl07geqm5xq" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_fullglove_hand.tscn" id="4_od3ui"]
 [ext_resource type="Script" uid="uid://cobbpacijv48h" path="res://UI/PlayerUI/Vignette.gd" id="5_dkpta"]
 [ext_resource type="Script" uid="uid://b1dtx7o3p7qgq" path="res://addons/godot-xr-tools/rumble/rumbler.gd" id="5_vtle1"]
+[ext_resource type="Shader" uid="uid://btmchmqdbblcu" path="res://addons/godot-xr-tools/effects/vignette.gdshader" id="6_dkpta"]
 [ext_resource type="Script" uid="uid://cuf42fufnnrds" path="res://addons/godot-xr-tools/rumble/rumble_event.gd" id="6_od3ui"]
 [ext_resource type="Script" uid="uid://co8phra3pwyhg" path="res://Player/pickup_indicator.gd" id="8_p5o4e"]
 
@@ -35,6 +36,13 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AACAPwAAAAAAAAAAvhR7P8LFR74AAAAAXoNsPxbvw74AAAAAMdtUP9o5Dr8AAAAA8wQ1P/MENb8AAAAA2jkOPzHbVL8AAAAAFe/DPl6DbL8AAAAAxMVHPr4Ue78AAAAALr07swAAgL8AAAAAwsVHvr4Ue78AAAAAFO/Dvl+DbL8AAAAA2TkOvzLbVL8AAAAA8wQ1v/MENb8AAAAAMttUv9k5Dr8AAAAAXoNsvxfvw74AAAAAvxR7v8HFR74AAAAAAACAvy69uzMAAAAAvxR7v73FRz4AAAAAXoNsvxXvwz4AAAAAMNtUv9s5Dj8AAAAA9AQ1v/IENT8AAAAA3TkOvy/bVD8AAAAAGu/Dvl6DbD8AAAAAxsVHvr4Uez8AAAAALt5MMgAAgD8AAAAAyMVHPr4Uez8AAAAAG+/DPl2DbD8AAAAA1zkOPzPbVD8AAAAA8gQ1P/UENT8AAAAAMdtUP9s5Dj8AAAAAX4NsPxXvwz4AAAAAvxR7P7zFRz4AAAAAAAAAQAAAAAAAAAAAvhT7P8LFx74AAAAAXoPsPxbvQ78AAAAAMdvUP9o5jr8AAAAA8wS1P/MEtb8AAAAA2jmOPzHb1L8AAAAAFe9DP16D7L8AAAAAxMXHPr4U+78AAAAALr27swAAAMAAAAAAwsXHvr4U+78AAAAAFO9Dv1+D7L8AAAAA2TmOvzLb1L8AAAAA8wS1v/MEtb8AAAAAMtvUv9k5jr8AAAAAXoPsvxfvQ78AAAAAvxT7v8HFx74AAAAAAAAAwC69OzQAAAAAvxT7v73Fxz4AAAAAXoPsvxXvQz8AAAAAMNvUv9s5jj8AAAAA9AS1v/IEtT8AAAAA3TmOvy/b1D8AAAAAGu9Dv16D7D8AAAAAxsXHvr4U+z8AAAAALt7MMgAAAEAAAAAAyMXHPr4U+z8AAAAAG+9DP12D7D8AAAAA1zmOPzPb1D8AAAAA8gS1P/UEtT8AAAAAMdvUP9s5jj8AAAAAX4PsPxXvQz8AAAAAvxT7P7zFxz4AAAAA")
 }]
 custom_aabb = AABB(-1, -1, -1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dkpta"]
+render_priority = 99
+shader = ExtResource("6_dkpta")
+shader_parameter/color = Color(0.22097066, 0.4195009, 0, 1)
+shader_parameter/radius = 0.3
+shader_parameter/fade = 0.6
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5htga"]
 radius = 0.107421875
@@ -69,7 +77,7 @@ magnitude = 0.2
 duration_ms = 10
 metadata/_custom_type_script = "uid://cuf42fufnnrds"
 
-[node name="Player" type="XROrigin3D" unique_id=1709512524]
+[node name="Player" type="XROrigin3D" unique_id=1709512524 groups=["Player"]]
 script = ExtResource("1_apopc")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="." unique_id=1005326857 groups=["XRCamera3D"]]
@@ -88,6 +96,13 @@ material_override = ExtResource("4_gu6f8")
 mesh = SubResource("ArrayMesh_gu6f8")
 script = ExtResource("5_dkpta")
 vignette_shader = ExtResource("4_gu6f8")
+
+[node name="HealVignette" type="MeshInstance3D" parent="XRCamera3D" unique_id=757437465]
+visible = false
+material_override = SubResource("ShaderMaterial_dkpta")
+mesh = SubResource("ArrayMesh_gu6f8")
+script = ExtResource("5_dkpta")
+vignette_shader = SubResource("ShaderMaterial_dkpta")
 
 [node name="PlayerHitbox" type="Area3D" parent="XRCamera3D" unique_id=1102494577 groups=["PlayerHitbox"]]
 

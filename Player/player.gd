@@ -10,7 +10,11 @@ func _ready() -> void:
 func hurt(damage: int = 1) -> void:
 	lives -= damage
 	$RightHand/LivesLeft.text = str(lives) + " HP"
-	$XRCamera3D/HurtVignette.play_effect()
+	
+	if damage > 0:
+		$XRCamera3D/HurtVignette.play_effect()
+	else:
+		$XRCamera3D/HealVignette.play_effect()
 
 @warning_ignore("shadowed_variable_base_class")
 func _on_trigger_button_pressed(name: String) -> void:

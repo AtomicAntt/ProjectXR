@@ -3,6 +3,7 @@ extends XRToolsPickable
 
 @export var bottle_cap: PackedScene
 @export var open_force: float = 3.0
+@export var max_fill_amount: float = 0.5
 @export var fill_amount: float = 0.5
 @export var spill_speed: float = 0.3
 
@@ -16,6 +17,18 @@ extends XRToolsPickable
 
 @onready var gravity_direction: Vector3 = Vector3.DOWN
 @onready var threshold: float = cos(deg_to_rad(angle_threshold))
+
+@onready var xr_camera: XRCamera3D = get_tree().get_nodes_in_group("XRCamera3D")[0]
+@onready var player: Player = get_tree().get_nodes_in_group("Player")[0]
+
+## Amount healed after at least 20% of the max fill amount was drank.
+@export var heal_amount: int = 0
+
+## Purpose of this variable is to figure out how much a player may have drank from it.
+## Currently, if you drink above 20%, all the effects it has should be going through.
+var amount_drank: float = 0.0
+## The distance between the bottle opening and the XRCamera3D must be within while spilling to count as drinking.
+@export var drink_distance: float = 5.0
 
 func _ready() -> void:
 	set_fill(fill_amount)
@@ -88,9 +101,17 @@ func _physics_process(delta: float) -> void:
 		var spill_ratio: float = inverse_lerp(threshold, 1, angle_between)
 		$GPUParticles3D.amount_ratio = spill_ratio
 		if not Engine.is_editor_hint():
-			fill_amount -= delta * spill_speed * spill_ratio
+			var amount_spilled: float = delta * spill_speed * spill_ratio
+			fill_amount -= amount_spilled
 			clampf(fill_amount, 0, 1)
 			set_fill(fill_amount)
+			
+			# You need to drink at least 20% of a drink to get the heal amount. Once this value is through, no more healing.
+			if global_position.distance_to(xr_camera.global_position) <= drink_distance:
+				amount_drank += amount_spilled
+				if amount_drank >= ((0.2) * max_fill_amount) and heal_amount > 0:
+					player.hurt(-heal_amount)
+					heal_amount = 0 # cant get the heal twice
 	else:
 		$GPUParticles3D.amount_ratio = 0
 	

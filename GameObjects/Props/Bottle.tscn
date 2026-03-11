@@ -47,10 +47,13 @@ top_level = true
 script = ExtResource("2_kplt7")
 bottle_cap = ExtResource("3_rjrcd")
 open_force = 3.0
+max_fill_amount = 0.5
 fill_amount = 0.5
 spill_speed = 0.3
 min_fill_amount = 0.05
 angle_threshold = 90.0
+heal_amount = 1
+drink_distance = 5.0
 second_hand_grab = 1
 
 [node name="CollisionShape3D" parent="." index="0" unique_id=1426569409]
