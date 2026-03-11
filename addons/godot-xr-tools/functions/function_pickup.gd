@@ -186,6 +186,9 @@ func _process(delta):
 	else:
 		# Average velocity of this pickup
 		_velocity_averager.add_transform(delta, global_transform)
+		
+		# custom logic: if no picked up object, hands should be visible
+		_controller.visible = true
 
 	_update_copied_collisions()
 	_update_closest_object()
@@ -404,6 +407,8 @@ func _get_closest_ranged() -> Node3D:
 
 ## Drop the currently held object
 func drop_object() -> void:
+	# Custom logic: Hands can be seen if you drop items.
+	_controller.visible = true
 	if not is_instance_valid(picked_up_object):
 		return
 
@@ -454,6 +459,7 @@ func _pick_up_object(target: Node3D) -> void:
 
 		picked_up_object.request_highlight(self, false)
 		emit_signal("has_picked_up", picked_up_object)
+		_controller.visible = false
 
 
 # Copy collision shapes on the held object to our collision hand (if applicable).
@@ -523,10 +529,8 @@ func _on_grip_pressed() -> void:
 		drop_object()
 	elif is_instance_valid(closest_object):
 		_pick_up_object(closest_object)
-		_controller.visible = false
 
 
 func _on_grip_release() -> void:
 	if is_instance_valid(picked_up_object) and picked_up_object.press_to_hold:
 		drop_object()
-		_controller.visible = true

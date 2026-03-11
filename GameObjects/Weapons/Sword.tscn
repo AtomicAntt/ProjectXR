@@ -56,10 +56,11 @@ data = PackedVector3Array(-0.0757, 0.2296, 0, -0.085999995, 0.22369999, -0.049, 
 collision_priority = 0.9
 continuous_cd = true
 script = ExtResource("2_emto3")
+damage = 60.0
 ranged_grab_method = 2
 second_hand_grab = 1
 
-[node name="CollisionShape3D" parent="." index="0"]
+[node name="CollisionShape3D" parent="." index="0" unique_id=1426569409]
 transform = Transform3D(-1.26763e-08, 8.303054e-16, 0.28999996, -0.2116121, 0.19829346, -9.249859e-09, -0.19829345, -0.21161212, -8.667682e-09, 0, 0.02014111, 0.016250417)
 shape = SubResource("ConvexPolygonShape3D_pyaes")
 
