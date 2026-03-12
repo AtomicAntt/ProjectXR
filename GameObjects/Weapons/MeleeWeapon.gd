@@ -18,7 +18,7 @@ func _on_hitbox_body_entered(body: Node3D) -> void:
 			get_node("DebugLabel2").text = "av: " + str(xr_angular_velocity.snapped(Vector3(0.1, 0.1, 0.1))) + "," + str(snapped(xr_angular_magnitude, 0.01))
 			
 			if (xr_linear_magnitude >= 1.0) or (xr_angular_magnitude >= 1.0):
-				var rumbler: XRToolsRumbleEvent = $ImpactRumbler.event
-				rumbler.magnitude = clampf(((xr_angular_magnitude/2) + (xr_linear_magnitude/2))/25, 0.0, 1.0)
-				$ImpactRumbler.rumble_hand(_grab_driver.primary.controller)
-				enemy.hurt(damage, (XRServer.get_reference_frame()*xr_linear_velocity).normalized() * xr_linear_magnitude)
+				if enemy.hurt(damage, (XRServer.get_reference_frame()*xr_linear_velocity).normalized() * xr_linear_magnitude):
+					var rumbler: XRToolsRumbleEvent = $ImpactRumbler.event
+					rumbler.magnitude = clampf(((xr_angular_magnitude/2) + (xr_linear_magnitude/2))/25, 0.0, 1.0)
+					$ImpactRumbler.rumble_hand(_grab_driver.primary.controller)

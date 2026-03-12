@@ -59,7 +59,9 @@ func set_enemy_turn() -> void:
 	$EnemyChargeTimer.start() # After this end, it should pick a random enemy that's idle to start charging.
 	set_enemy_positions()
 	disable_item_slots()
-	lock_weapon_grips()
+	
+	# Turn this into an accessability setting later, it's too confusing if you just do it without player knowledge.
+	#lock_weapon_grips()
 	
 	for enemy_selection: EnemySelection in get_tree().get_nodes_in_group("EnemySelection"):
 		enemy_selection.disable()
@@ -71,7 +73,9 @@ func set_player_turn() -> void:
 	$EnemyChargeTimer.stop() # Stopping this so that enemies are no longer picked to start charging.
 	set_enemy_positions()
 	enable_item_slots()
-	unlock_weapon_grips()
+	
+	# Turn this into an accessability setting later, it's too confusing if you just do it without player knowledge.
+	#unlock_weapon_grips()
 
 # This function will check if all enemies are waiting during an enemy turn. If they are, then it will finally be the player's turn.
 func check_waiting() -> void:

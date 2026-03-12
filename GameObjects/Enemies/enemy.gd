@@ -101,8 +101,10 @@ func is_waiting() -> bool:
 func is_idle() -> bool:
 	return state == States.IDLE
 
-func hurt(damage_taken: float, new_velocity: Vector3 = Vector3.ZERO) -> void:
-	if state != States.DEAD:
+## Calls hurt with damage taken, optionally give a new velocity if needed.
+## Returns true if it hurt the enemy, false if it could not. (Ex.: Haptics are only applied if hurt was successful)
+func hurt(damage_taken: float, new_velocity: Vector3 = Vector3.ZERO) -> bool:
+	if state != States.DEAD and state != States.HURT:
 		health -= damage_taken
 		health_bar_3d.set_value(health)
 		flash_material.set_shader_parameter("flash", 1.0)
@@ -111,7 +113,9 @@ func hurt(damage_taken: float, new_velocity: Vector3 = Vector3.ZERO) -> void:
 		
 		velocity = new_velocity
 		set_hurt()
-		
+		return true
+	else:
+		return false
 		#if health <= 0:
 			#death()
 
