@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c2aei3iovtt7x"]
+
+[ext_resource type="Shader" uid="uid://c8hao0mq0facn" path="res://Shaders/UI/Highlight.gdshader" id="1_6trap"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_6trap")
+shader_parameter/outline_color = Color(1, 1, 1, 0.019607844)
+shader_parameter/outline_width = 1.0
