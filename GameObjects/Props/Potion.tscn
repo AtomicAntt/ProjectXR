@@ -82,6 +82,7 @@ min_fill_amount = 0.05
 angle_threshold = 90.0
 heal_amount = 3
 drink_distance = 5.0
+ranged_grab_method = 2
 second_hand_grab = 1
 
 [node name="CollisionShape3D" parent="." index="0" unique_id=1426569409]

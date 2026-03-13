@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cf8ik4xbe81gh" path="res://GameObjects/Props/Potion.tscn" id="8_jfium"]
 [ext_resource type="PackedScene" uid="uid://d4awg3m1fvmtr" path="res://GameObjects/Environment/Mushroom.tscn" id="9_wenv2"]
 [ext_resource type="PackedScene" uid="uid://ccririi5oouxq" path="res://GameObjects/Weapons/Sword.tscn" id="10_8x8nf"]
+[ext_resource type="PackedScene" uid="uid://ewaotobyeors" path="res://GameObjects/Props/Bread.tscn" id="10_ej1bv"]
 [ext_resource type="PackedScene" uid="uid://468xstcis34h" path="res://GameObjects/Weapons/Sword2.tscn" id="11_ej1bv"]
 [ext_resource type="PackedScene" uid="uid://bin4d8ywgo1i0" path="res://GameObjects/NPCs/TestNPC.tscn" id="14_ijb51"]
 
@@ -80,6 +81,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61077094, 0.54999995, -3.11
 
 [node name="DialogueMarker3D" parent="TestNpc" index="2" unique_id=1880908404]
 transform = Transform3D(0.9992379, 0, 0.0390331, 0, 1, 0, -0.0390331, 0, 0.9992379, 1.3993952, -0.464482, -0.31813693)
+
+[node name="Bread" parent="." unique_id=1430911432 groups=["Refreshable"] instance=ExtResource("10_ej1bv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17047405, 0.5235886, -1.1387107)
 
 [connection signal="timeout" from="Table/Timer" to="Table" method="_on_timer_timeout"]
 
