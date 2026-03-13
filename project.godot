@@ -63,6 +63,7 @@ EnemyAttack="If this body collides with the player, the player should get hurt."
 PlayerHitbox="Area3D for a player. Purpose is to hurt the player if an attack collides with this."
 Vignette=""
 Player=""
+Food=""
 
 [physics]
 

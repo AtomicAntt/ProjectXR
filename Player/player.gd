@@ -43,3 +43,10 @@ func _on_right_function_pickup_has_hover_exited() -> void:
 func _on_player_hitbox_body_entered(body: Node3D) -> void:
 	if body.is_in_group("EnemyAttack"):
 		hurt()
+
+func _on_player_eat_hitbox_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Food"):
+		if body is Food:
+			print("nom")
+			var food_eaten: Food = body
+			hurt(-food_eaten.eat()) # eat() returns the amount healed, and negative hurt = healing

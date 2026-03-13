@@ -41,6 +41,7 @@ size = Vector3(3, 0.5, 1)
 shape = SubResource("BoxShape3D_a02cp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/CollisionShape3D" unique_id=1553235300]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0005623698, 0.0012941957, -0.00060498714)
 mesh = SubResource("BoxMesh_go701")
 
 [node name="Table" type="StaticBody3D" parent="." unique_id=579551677]

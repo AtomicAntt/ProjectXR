@@ -48,6 +48,9 @@ shader_parameter/fade = 0.6
 radius = 0.107421875
 height = 2.0110111
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_dkpta"]
+radius = 0.16108918
+
 [sub_resource type="Resource" id="Resource_fhl08"]
 script = ExtResource("6_od3ui")
 duration_ms = 50
@@ -109,6 +112,14 @@ vignette_shader = SubResource("ShaderMaterial_dkpta")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="XRCamera3D/PlayerHitbox" unique_id=468336194]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9305625, 0)
 shape = SubResource("CapsuleShape3D_5htga")
+
+[node name="PlayerEatHitbox" type="Area3D" parent="XRCamera3D" unique_id=1466655601]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.102119684, -0.0644837)
+collision_layer = 0
+collision_mask = 65536
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XRCamera3D/PlayerEatHitbox" unique_id=244854119]
+shape = SubResource("SphereShape3D_dkpta")
 
 [node name="LeftHand" type="XRController3D" parent="." unique_id=291603510]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
@@ -193,6 +204,7 @@ event = SubResource("Resource_apopc")
 metadata/_custom_type_script = "uid://b1dtx7o3p7qgq"
 
 [connection signal="body_entered" from="XRCamera3D/PlayerHitbox" to="." method="_on_player_hitbox_body_entered"]
+[connection signal="body_entered" from="XRCamera3D/PlayerEatHitbox" to="." method="_on_player_eat_hitbox_body_entered"]
 [connection signal="button_pressed" from="LeftHand" to="." method="_on_trigger_button_pressed"]
 [connection signal="has_hover_entered" from="LeftHand/FunctionPickup" to="HapticsManager" method="_on_left_hand_hover_entered"]
 [connection signal="has_hover_entered_ranged" from="LeftHand/FunctionPickup" to="." method="_on_left_function_pickup_has_hover_entered_ranged"]
