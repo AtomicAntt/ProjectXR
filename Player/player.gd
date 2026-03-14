@@ -44,9 +44,12 @@ func _on_player_hitbox_body_entered(body: Node3D) -> void:
 	if body.is_in_group("EnemyAttack"):
 		hurt()
 
-func _on_player_eat_hitbox_body_entered(body: Node3D) -> void:
-	if body.is_in_group("Food"):
-		if body is Food:
-			print("nom")
-			var food_eaten: Food = body
+func _on_player_eat_hitbox_area_entered(area: Area3D) -> void:
+	print("area3d found")
+	if area.is_in_group("Food"):
+		print("food found")
+		if area.get_parent() is Food:
+			var food_eaten: Food = area.get_parent()
 			hurt(-food_eaten.eat()) # eat() returns the amount healed, and negative hurt = healing
+		else:
+			print("not food")
